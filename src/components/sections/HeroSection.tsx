@@ -67,7 +67,7 @@ const HeroSection = () => {
             <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50">
               <iframe 
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/44G2R8EWAF4" 
+                src="https://www.youtube.com/embed/44G2R8EWAF4?modestbranding=1&controls=0&rel=0&showinfo=0&iv_load_policy=3" 
                 title="CONHEÇA A MENTORIA RESIDENTE DE ELITE 2026" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
