@@ -1,5 +1,6 @@
 import HeroSection from "@/components/sections/HeroSection";
 import ProblemSection from "@/components/sections/ProblemSection";
+import DirectionSection from "@/components/sections/DirectionSection";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       </div>
       
       <ProblemSection />
+      <DirectionSection />
     </div>
   );
 };
