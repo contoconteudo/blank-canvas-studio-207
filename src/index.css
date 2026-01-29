@@ -103,3 +103,92 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  /* Premium card with gradient depth and glowing border effect */
+  .card-gradient-depth {
+    @apply relative rounded-2xl overflow-hidden;
+    background: linear-gradient(145deg, 
+      hsl(206 58% 22%) 0%, 
+      hsl(226 36% 17%) 50%, 
+      hsl(206 58% 18%) 100%);
+    box-shadow: 
+      0 4px 24px -4px rgba(0, 0, 0, 0.5),
+      0 12px 48px -8px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .card-gradient-depth::before {
+    content: '';
+    @apply absolute inset-x-0 bottom-0 h-1;
+    background: linear-gradient(90deg, 
+      hsl(196 80% 45%) 0%, 
+      hsl(196 90% 50%) 50%, 
+      hsl(196 80% 45%) 100%);
+    box-shadow: 
+      0 0 20px 2px hsl(196 90% 50% / 0.6),
+      0 0 40px 4px hsl(196 90% 50% / 0.3);
+  }
+
+  /* Variant with top and bottom glow */
+  .card-gradient-depth-full::before {
+    @apply h-0.5;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsl(196 80% 45%) 20%, 
+      hsl(196 90% 55%) 50%, 
+      hsl(196 80% 45%) 80%,
+      transparent 100%);
+  }
+
+  .card-gradient-depth-full::after {
+    content: '';
+    @apply absolute inset-x-0 top-0 h-px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsl(196 80% 40% / 0.5) 30%, 
+      hsl(196 80% 40% / 0.5) 70%,
+      transparent 100%);
+  }
+
+  /* Feature card variant - smaller cards */
+  .card-feature-depth {
+    @apply relative rounded-2xl overflow-hidden;
+    background: linear-gradient(165deg, 
+      hsl(206 58% 24%) 0%, 
+      hsl(226 36% 17%) 40%, 
+      hsl(226 36% 15%) 100%);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .card-feature-depth::before {
+    content: '';
+    @apply absolute inset-x-0 bottom-0 h-0.5;
+    background: linear-gradient(90deg, 
+      transparent 10%, 
+      hsl(196 80% 50%) 50%, 
+      transparent 90%);
+    box-shadow: 0 0 16px 1px hsl(196 90% 50% / 0.5);
+  }
+
+  /* Animated glow pulse */
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 
+        0 0 20px 2px hsl(196 90% 50% / 0.6),
+        0 0 40px 4px hsl(196 90% 50% / 0.3);
+    }
+    50% {
+      box-shadow: 
+        0 0 25px 4px hsl(196 90% 50% / 0.7),
+        0 0 50px 8px hsl(196 90% 50% / 0.4);
+    }
+  }
+
+  .card-gradient-depth-animated::before {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+}

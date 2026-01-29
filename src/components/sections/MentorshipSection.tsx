@@ -32,19 +32,17 @@ const MentorshipSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="relative group"
+              className="card-feature-depth p-4 md:p-6 text-center h-full flex flex-col items-center justify-center min-h-[140px] transition-all duration-300 hover:scale-[1.02]"
             >
-              <div className="relative bg-[#1C233B] border border-white/10 rounded-2xl p-4 md:p-6 text-center shadow-[0_8px_32px_rgba(28,35,59,0.4),inset_0_1px_0_rgba(255,255,255,0.05)] h-full flex flex-col items-center justify-center min-h-[120px] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(28,35,59,0.5)] hover:scale-[1.02]">
-                {/* Check icon */}
-                <div className="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/40 flex items-center justify-center mb-4">
-                  <Check className="w-5 h-5 text-secondary" />
-                </div>
-                
-                {/* Feature text */}
-                <p className="text-white font-medium text-base md:text-lg leading-snug">
-                  {feature}
-                </p>
+              {/* Check icon */}
+              <div className="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/40 flex items-center justify-center mb-4">
+                <Check className="w-5 h-5 text-secondary" />
               </div>
+              
+              {/* Feature text */}
+              <p className="text-white font-medium text-base md:text-lg leading-snug">
+                {feature}
+              </p>
             </div>
           ))}
         </div>

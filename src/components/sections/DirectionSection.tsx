@@ -34,7 +34,7 @@ const DirectionSection = () => {
     <section className="relative bg-white py-20 md:py-32 overflow-hidden">
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Framed content */}
-        <div className="relative border-2 border-secondary/50 rounded-2xl p-8 md:p-12 lg:p-16 bg-gradient-to-br from-brand-navy/5 to-secondary/10 backdrop-blur-lg shadow-[0_8px_40px_rgba(4,87,119,0.15),0_0_0_1px_rgba(187,152,104,0.2)]">
+        <div className="relative card-gradient-depth card-gradient-depth-full card-gradient-depth-animated p-8 md:p-12 lg:p-16">
           {/* Decorative corner accents */}
           <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-secondary rounded-tl-lg -translate-x-0.5 -translate-y-0.5" />
           <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-secondary rounded-tr-lg translate-x-0.5 -translate-y-0.5" />
