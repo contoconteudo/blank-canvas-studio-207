@@ -29,12 +29,13 @@ const plans = [
     ]
   },
   {
-    badge: "MENTORIA + INTENSIVÃO",
+    badge: "RECOMENDADO",
     subtitle: "2 ANOS",
     description: "Opção para quem quer se preparar desde o 5° ano",
     originalPrice: "8.694",
     installments: "650,28",
     cashPrice: "6.400",
+    highlighted: true,
     features: [
       "Planejamento longo prazo",
       "Mentoria completa",
@@ -47,12 +48,19 @@ const plans = [
 ];
 
 const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
+  const isHighlighted = 'highlighted' in plan && plan.highlighted;
+  
   return (
-    <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl flex flex-col h-full">
+    <div 
+      className={`bg-white rounded-2xl p-6 md:p-8 shadow-xl flex flex-col h-full ${isHighlighted ? 'animate-pulse-slow ring-4 ring-[#BE9964]' : ''}`}
+      style={isHighlighted ? { 
+        boxShadow: '0 0 30px rgba(190, 153, 100, 0.4)'
+      } : undefined}
+    >
       {/* Badge */}
       <div 
         className="text-center py-2 px-4 rounded-lg mb-4 font-bold text-sm md:text-base"
-        style={{ backgroundColor: '#305CA9', color: 'white' }}
+        style={{ backgroundColor: isHighlighted ? '#BE9964' : '#305CA9', color: 'white' }}
       >
         {plan.badge}
       </div>
