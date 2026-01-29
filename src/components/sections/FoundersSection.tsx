@@ -18,22 +18,22 @@ const FoundersSection = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             <div className="bg-white rounded-xl px-6 py-4 shadow-lg">
               <p className="text-lg md:text-xl font-medium" style={{ color: '#1C233B' }}>
-                viveram a pressão da prova
+                Viveram a pressão da prova
               </p>
             </div>
             <div className="bg-white rounded-xl px-6 py-4 shadow-lg">
               <p className="text-lg md:text-xl font-medium" style={{ color: '#1C233B' }}>
-                entenderam os padrões das bancas
+                Entenderam os padrões das bancas
               </p>
             </div>
             <div className="bg-white rounded-xl px-6 py-4 shadow-lg">
               <p className="text-lg md:text-xl font-medium" style={{ color: '#1C233B' }}>
-                erraram, ajustaram e acertaram
+                Erraram, ajustaram e acertaram
               </p>
             </div>
             <div className="bg-white rounded-xl px-6 py-4 shadow-lg">
               <p className="text-lg md:text-xl font-medium" style={{ color: '#1C233B' }}>
-                passaram entre os primeiros lugares
+                Passaram entre os primeiros lugares
               </p>
             </div>
           </div>
