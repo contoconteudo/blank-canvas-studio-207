@@ -13,20 +13,81 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(226,36%,17%)] via-[hsl(206,58%,20%)] to-[hsl(226,36%,12%)]" />
+      {/* Dark base background */}
+      <div className="absolute inset-0 bg-[#0a0a0f]" />
       
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, hsl(35, 41%, 57%) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }} />
-      </div>
-
-      {/* Glow effects */}
-      <div className="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-[hsl(196,93%,24%)] opacity-10 blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-[hsl(35,41%,57%)] opacity-10 blur-3xl" />
+      {/* Left light beam */}
+      <div 
+        className="absolute top-0 left-[15%] w-[500px] h-[800px] opacity-70"
+        style={{
+          background: `
+            radial-gradient(ellipse 40% 70% at 50% 0%, 
+              hsl(196 100% 50% / 0.4) 0%, 
+              hsl(196 100% 45% / 0.2) 30%, 
+              transparent 70%
+            )
+          `,
+          filter: 'blur(40px)',
+          transform: 'rotate(-15deg) translateY(-10%)',
+        }}
+      />
+      
+      {/* Right light beam */}
+      <div 
+        className="absolute top-0 right-[15%] w-[500px] h-[800px] opacity-70"
+        style={{
+          background: `
+            radial-gradient(ellipse 40% 70% at 50% 0%, 
+              hsl(196 100% 50% / 0.4) 0%, 
+              hsl(196 100% 45% / 0.2) 30%, 
+              transparent 70%
+            )
+          `,
+          filter: 'blur(40px)',
+          transform: 'rotate(15deg) translateY(-10%)',
+        }}
+      />
+      
+      {/* Center glow where beams meet */}
+      <div 
+        className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] opacity-50"
+        style={{
+          background: `
+            radial-gradient(ellipse 80% 50% at 50% 50%, 
+              hsl(196 100% 55% / 0.3) 0%, 
+              hsl(196 100% 45% / 0.1) 40%, 
+              transparent 70%
+            )
+          `,
+          filter: 'blur(60px)',
+        }}
+      />
+      
+      {/* Top edge glow */}
+      <div 
+        className="absolute top-0 left-0 right-0 h-32"
+        style={{
+          background: `
+            linear-gradient(to bottom,
+              hsl(196 100% 50% / 0.15) 0%,
+              transparent 100%
+            )
+          `,
+        }}
+      />
+      
+      {/* Subtle bottom vignette */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-64"
+        style={{
+          background: `
+            linear-gradient(to top,
+              hsl(226 36% 8%) 0%,
+              transparent 100%
+            )
+          `,
+        }}
+      />
 
       <div className="container relative z-10 mx-auto px-4 py-16 lg:py-24">
         <div className="flex flex-col items-center text-center">
