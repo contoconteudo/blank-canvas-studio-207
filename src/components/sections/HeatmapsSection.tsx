@@ -17,13 +17,7 @@ const HeatmapsSection = () => {
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
             {/* Image Placeholder */}
             <div className="w-full md:w-1/2">
-              <div 
-                className="aspect-video rounded-2xl flex items-center justify-center border"
-                style={{ 
-                  backgroundColor: '#085D7D',
-                  borderColor: 'rgba(190, 153, 100, 0.3)'
-                }}
-              >
+              <div className="card-gradient-depth card-gradient-depth-full aspect-video flex items-center justify-center">
                 <span className="text-white/60 text-lg">Imagem do Heatmap</span>
               </div>
             </div>

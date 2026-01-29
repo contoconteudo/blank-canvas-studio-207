@@ -16,11 +16,11 @@ const ProblemSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Image Placeholder */}
           <div className="relative order-2 lg:order-1">
-            <div className="aspect-[4/5] rounded-2xl bg-card/50 border border-border/30 flex items-center justify-center overflow-hidden">
+            <div className="card-gradient-depth card-gradient-depth-full aspect-[4/5] flex items-center justify-center overflow-hidden">
               <div className="text-center p-8">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-muted/30 flex items-center justify-center">
+                <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
                   <svg 
-                    className="w-12 h-12 text-muted-foreground/50" 
+                    className="w-12 h-12 text-white/50" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -33,11 +33,9 @@ const ProblemSection = () => {
                     />
                   </svg>
                 </div>
-                <p className="text-muted-foreground text-sm">Imagem do mentor</p>
+                <p className="text-white/60 text-sm">Imagem do mentor</p>
               </div>
             </div>
-            {/* Decorative glow */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-3xl blur-2xl -z-10" />
           </div>
 
           {/* Right Column - Text Content */}

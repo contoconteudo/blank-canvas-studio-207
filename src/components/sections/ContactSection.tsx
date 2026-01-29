@@ -28,8 +28,7 @@ const ContactSection = () => {
           {/* WhatsApp Card */}
           <div className="max-w-sm mx-auto">
             <div 
-              className="rounded-2xl p-8 text-center cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              style={{ backgroundColor: '#1C233B' }}
+              className="card-gradient-depth card-gradient-depth-full p-8 text-center cursor-pointer transition-all duration-300 hover:scale-105"
               onClick={handleWhatsAppClick}
             >
               <div 

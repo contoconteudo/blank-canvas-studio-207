@@ -31,10 +31,7 @@ const BulletRow = ({
   imagePosition: "left" | "right";
 }) => {
   const imageBlock = (
-    <div 
-      className="w-full md:w-1/2 aspect-video rounded-2xl flex items-center justify-center"
-      style={{ backgroundColor: '#085D7D' }}
-    >
+    <div className="w-full md:w-1/2 card-feature-depth aspect-video flex items-center justify-center">
       <span className="text-white/40 text-sm">Imagem</span>
     </div>
   );
@@ -98,10 +95,7 @@ const ForWhoSection = () => {
           </div>
 
           {/* Closing Statement */}
-          <div 
-            className="mt-16 md:mt-20 text-center p-8 rounded-2xl"
-            style={{ backgroundColor: '#1C233B' }}
-          >
+          <div className="mt-16 md:mt-20 text-center p-8 card-gradient-depth card-gradient-depth-full">
             <p 
               className="text-xl md:text-2xl font-medium"
               style={{ color: '#BE9964' }}

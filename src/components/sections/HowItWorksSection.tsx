@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const mentorshipSteps = [
@@ -65,13 +64,9 @@ const HowItWorksSection = () => {
             const isOdd = step.id % 2 !== 0;
             
             return (
-              <Card
+              <div
                 key={step.id}
-                className="overflow-hidden border-0"
-                style={{ 
-                  backgroundColor: '#085D7D',
-                  borderRadius: '1rem'
-                }}
+                className="card-gradient-depth card-gradient-depth-animated"
               >
                 <div className={`flex flex-col ${isOdd ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   {/* Text Content */}
@@ -127,7 +122,7 @@ const HowItWorksSection = () => {
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>
