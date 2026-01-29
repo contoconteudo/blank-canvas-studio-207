@@ -7,6 +7,7 @@ import HeatmapsSection from "@/components/sections/HeatmapsSection";
 import FoundersSection from "@/components/sections/FoundersSection";
 import TeachersSection from "@/components/sections/TeachersSection";
 import ForWhoSection from "@/components/sections/ForWhoSection";
+import PricingSection from "@/components/sections/PricingSection";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -27,6 +28,7 @@ const Index = () => {
       <FoundersSection />
       <TeachersSection />
       <ForWhoSection />
+      <PricingSection />
     </div>
   );
 };
