@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 const bulletPoints = [
   {
     text: "Já tentou estudar sozinho",
@@ -106,9 +108,17 @@ const ForWhoSection = () => {
             >
               Se busca processo, método e direção,
             </p>
-            <p className="text-xl md:text-2xl font-bold text-white mt-2">
+            <p className="text-xl md:text-2xl font-bold text-white mt-2 mb-6">
               você está no lugar certo.
             </p>
+            
+            <Button 
+              size="lg"
+              className="font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
+              style={{ backgroundColor: '#BE9964', color: '#1C233B' }}
+            >
+              Quero fazer parte
+            </Button>
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 const FoundersSection = () => {
   return (
     <section 
@@ -42,9 +44,17 @@ const FoundersSection = () => {
             <p className="text-white text-xl md:text-2xl font-semibold mb-2">
               Não ensinamos teoria.
             </p>
-            <p className="text-white text-xl md:text-2xl font-semibold">
+            <p className="text-white text-xl md:text-2xl font-semibold mb-8">
               Ensinamos o caminho que percorremos.
             </p>
+            
+            <Button 
+              size="lg"
+              className="font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
+              style={{ backgroundColor: '#BE9964', color: '#1C233B' }}
+            >
+              Conhecer os fundadores
+            </Button>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
 
 const DirectionSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -61,6 +62,14 @@ const DirectionSection = () => {
               <p className="text-black font-semibold text-xl">
                 E é isso que ensinamos.
               </p>
+
+              <Button 
+                size="lg"
+                className="mt-8 font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: '#1C233B', color: '#BE9964' }}
+              >
+                Quero aprender com quem passou
+              </Button>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const MentorshipSection = () => {
   const features = [
@@ -50,10 +51,18 @@ const MentorshipSection = () => {
 
         {/* Closing text */}
         <div className="text-center">
-          <p className="text-xl md:text-2xl text-black max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-black max-w-3xl mx-auto mb-8">
             Você deixa de estudar <span className="text-black/60">"tentando acertar"</span> e passa a estudar{" "}
             <span className="font-bold text-secondary">sabendo o que faz sentido.</span>
           </p>
+          
+          <Button 
+            size="lg"
+            className="font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
+            style={{ backgroundColor: '#1C233B', color: '#BE9964' }}
+          >
+            Quero estudar com método
+          </Button>
         </div>
       </div>
     </section>

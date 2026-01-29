@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 const teachers = [
   {
     name: "Mirella Laranjeira",
@@ -114,10 +116,21 @@ const TeachersSection = () => {
           </div>
 
           {/* Second row - 2 teachers centered */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12">
             {teachers.slice(3, 5).map((teacher, index) => (
               <TeacherCard key={index} teacher={teacher} />
             ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="text-center">
+            <Button 
+              size="lg"
+              className="font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
+              style={{ backgroundColor: '#BE9964', color: '#1C233B' }}
+            >
+              Quero aprender com especialistas
+            </Button>
           </div>
         </div>
       </div>
