@@ -4,7 +4,7 @@ import DirectionSection from "@/components/sections/DirectionSection";
 import MentorshipSection from "@/components/sections/MentorshipSection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import HeatmapsSection from "@/components/sections/HeatmapsSection";
-
+import FoundersSection from "@/components/sections/FoundersSection";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -22,6 +22,7 @@ const Index = () => {
       <MentorshipSection />
       <HowItWorksSection />
       <HeatmapsSection />
+      <FoundersSection />
     </div>
   );
 };
