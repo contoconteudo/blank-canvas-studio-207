@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import logoRde from "@/assets/logo-rde.png";
 
 const HeroSection = () => {
   const learnings = [
@@ -31,14 +32,11 @@ const HeroSection = () => {
         <div className="flex flex-col items-center text-center">
           {/* Logo */}
           <div className="mb-12">
-            <div className="flex items-center gap-3">
-              <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-secondary to-[hsl(35,41%,47%)] flex items-center justify-center">
-                <span className="text-2xl font-bold text-secondary-foreground">RE</span>
-              </div>
-              <span className="text-2xl font-bold text-foreground">
-                Residente de <span className="text-secondary">Elite</span>
-              </span>
-            </div>
+            <img 
+              src={logoRde} 
+              alt="Residente de Elite - Curso para Residência Médica" 
+              className="h-16 md:h-20 lg:h-24 w-auto"
+            />
           </div>
 
           {/* Headline */}
