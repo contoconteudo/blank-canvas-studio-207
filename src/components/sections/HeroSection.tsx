@@ -14,62 +14,97 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Dark base background */}
-      <div className="absolute inset-0 bg-[#0a0a0f]" />
+      <div className="absolute inset-0 bg-[#050508]" />
       
-      {/* Left light beam */}
+      {/* Left light beam - main */}
       <div 
-        className="absolute top-0 left-[15%] w-[500px] h-[800px] opacity-70"
+        className="absolute top-0 left-[10%] w-[600px] h-[900px]"
         style={{
           background: `
-            radial-gradient(ellipse 40% 70% at 50% 0%, 
-              hsl(196 100% 50% / 0.4) 0%, 
-              hsl(196 100% 45% / 0.2) 30%, 
-              transparent 70%
+            radial-gradient(ellipse 50% 80% at 50% 0%, 
+              hsl(196 100% 55% / 0.7) 0%, 
+              hsl(196 100% 50% / 0.4) 25%, 
+              hsl(196 100% 45% / 0.15) 50%, 
+              transparent 75%
             )
           `,
-          filter: 'blur(40px)',
-          transform: 'rotate(-15deg) translateY(-10%)',
+          filter: 'blur(30px)',
+          transform: 'rotate(-12deg) translateY(-5%)',
         }}
       />
       
-      {/* Right light beam */}
+      {/* Left light beam - bright core */}
       <div 
-        className="absolute top-0 right-[15%] w-[500px] h-[800px] opacity-70"
+        className="absolute top-0 left-[12%] w-[300px] h-[600px]"
         style={{
           background: `
-            radial-gradient(ellipse 40% 70% at 50% 0%, 
-              hsl(196 100% 50% / 0.4) 0%, 
-              hsl(196 100% 45% / 0.2) 30%, 
+            radial-gradient(ellipse 30% 60% at 50% 0%, 
+              hsl(196 100% 70% / 0.8) 0%, 
+              hsl(196 100% 55% / 0.3) 40%, 
               transparent 70%
             )
           `,
-          filter: 'blur(40px)',
-          transform: 'rotate(15deg) translateY(-10%)',
+          filter: 'blur(20px)',
+          transform: 'rotate(-12deg) translateY(-5%)',
+        }}
+      />
+      
+      {/* Right light beam - main */}
+      <div 
+        className="absolute top-0 right-[10%] w-[600px] h-[900px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 50% 80% at 50% 0%, 
+              hsl(196 100% 55% / 0.7) 0%, 
+              hsl(196 100% 50% / 0.4) 25%, 
+              hsl(196 100% 45% / 0.15) 50%, 
+              transparent 75%
+            )
+          `,
+          filter: 'blur(30px)',
+          transform: 'rotate(12deg) translateY(-5%)',
+        }}
+      />
+      
+      {/* Right light beam - bright core */}
+      <div 
+        className="absolute top-0 right-[12%] w-[300px] h-[600px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 30% 60% at 50% 0%, 
+              hsl(196 100% 70% / 0.8) 0%, 
+              hsl(196 100% 55% / 0.3) 40%, 
+              transparent 70%
+            )
+          `,
+          filter: 'blur(20px)',
+          transform: 'rotate(12deg) translateY(-5%)',
         }}
       />
       
       {/* Center glow where beams meet */}
       <div 
-        className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] opacity-50"
+        className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[800px] h-[500px]"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 50% 50%, 
-              hsl(196 100% 55% / 0.3) 0%, 
-              hsl(196 100% 45% / 0.1) 40%, 
+            radial-gradient(ellipse 90% 60% at 50% 40%, 
+              hsl(196 100% 60% / 0.35) 0%, 
+              hsl(196 100% 50% / 0.15) 40%, 
               transparent 70%
             )
           `,
-          filter: 'blur(60px)',
+          filter: 'blur(50px)',
         }}
       />
       
-      {/* Top edge glow */}
+      {/* Top edge bright glow */}
       <div 
-        className="absolute top-0 left-0 right-0 h-32"
+        className="absolute top-0 left-0 right-0 h-48"
         style={{
           background: `
             linear-gradient(to bottom,
-              hsl(196 100% 50% / 0.15) 0%,
+              hsl(196 100% 60% / 0.25) 0%,
+              hsl(196 100% 50% / 0.1) 40%,
               transparent 100%
             )
           `,
