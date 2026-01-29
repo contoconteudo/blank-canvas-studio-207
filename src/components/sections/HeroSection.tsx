@@ -57,7 +57,7 @@ const HeroSection = () => {
           </div>
 
           {/* Video */}
-          <div className="relative mb-12 w-full max-w-4xl">
+          <div className="relative mb-12 w-full max-w-2xl">
             {/* Video frame glow */}
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-secondary via-primary to-secondary opacity-50 blur-lg" />
             
