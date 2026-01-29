@@ -15,12 +15,28 @@ const FoundersSection = () => {
             O Residente de Elite foi criado por médicos que:
           </h2>
           
-          <ul className="space-y-3 mb-10">
-            <li className="text-white/90 text-lg md:text-xl">viveram a pressão da prova</li>
-            <li className="text-white/90 text-lg md:text-xl">entenderam os padrões das bancas</li>
-            <li className="text-white/90 text-lg md:text-xl">erraram, ajustaram e acertaram</li>
-            <li className="text-white/90 text-lg md:text-xl">passaram entre os primeiros lugares</li>
-          </ul>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            <div className="bg-white rounded-xl px-6 py-4 shadow-lg">
+              <p className="text-lg md:text-xl font-medium" style={{ color: '#1C233B' }}>
+                viveram a pressão da prova
+              </p>
+            </div>
+            <div className="bg-white rounded-xl px-6 py-4 shadow-lg">
+              <p className="text-lg md:text-xl font-medium" style={{ color: '#1C233B' }}>
+                entenderam os padrões das bancas
+              </p>
+            </div>
+            <div className="bg-white rounded-xl px-6 py-4 shadow-lg">
+              <p className="text-lg md:text-xl font-medium" style={{ color: '#1C233B' }}>
+                erraram, ajustaram e acertaram
+              </p>
+            </div>
+            <div className="bg-white rounded-xl px-6 py-4 shadow-lg">
+              <p className="text-lg md:text-xl font-medium" style={{ color: '#1C233B' }}>
+                passaram entre os primeiros lugares
+              </p>
+            </div>
+          </div>
           
           <div className="pt-6 border-t border-white/20">
             <p className="text-white text-xl md:text-2xl font-semibold mb-2">
