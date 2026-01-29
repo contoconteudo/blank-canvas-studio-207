@@ -3,6 +3,7 @@ import ProblemSection from "@/components/sections/ProblemSection";
 import DirectionSection from "@/components/sections/DirectionSection";
 import MentorshipSection from "@/components/sections/MentorshipSection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
+import HeatmapsSection from "@/components/sections/HeatmapsSection";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <DirectionSection />
       <MentorshipSection />
       <HowItWorksSection />
+      <HeatmapsSection />
     </div>
   );
 };
