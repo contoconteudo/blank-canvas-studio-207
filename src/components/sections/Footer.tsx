@@ -1,4 +1,5 @@
 import { Instagram, Youtube, Linkedin } from "lucide-react";
+import logoRde from "@/assets/logo-rde.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,20 +12,13 @@ const Footer = () => {
           <div className="max-w-4xl mx-auto text-center">
             {/* Logo / Brand */}
             <div className="mb-8">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <div 
-                  className="h-14 w-14 rounded-xl flex items-center justify-center"
-                  style={{ backgroundColor: '#BE9964' }}
-                >
-                  <span className="text-2xl font-bold" style={{ color: '#1C233B' }}>RE</span>
-                </div>
+              <div className="flex items-center justify-center mb-6">
+                <img 
+                  src={logoRde} 
+                  alt="Residente de Elite - Curso para Residência Médica" 
+                  className="h-20 md:h-24 w-auto"
+                />
               </div>
-              <h2 
-                className="text-3xl md:text-4xl font-bold mb-2"
-                style={{ color: '#BE9964' }}
-              >
-                Residente de Elite
-              </h2>
               <p className="text-white/80 text-lg md:text-xl italic">
                 O que importa. Do jeito certo.
               </p>
