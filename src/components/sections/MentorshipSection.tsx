@@ -9,10 +9,10 @@ const MentorshipSection = () => {
   ];
 
   return (
-    <section className="relative bg-white py-12 md:py-20">
+    <section className="relative bg-white py-6 md:py-10">
       <div className="container mx-auto px-6 max-w-5xl">
         {/* Intro text */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <p className="text-lg md:text-xl text-black/80 mb-6 max-w-3xl mx-auto">
             Neste ano de 2026 o <span className="font-semibold text-black">Residente de Elite</span> não criou um cursinho, que você assiste aula e pronto. Montamos uma{" "}
             <span className="font-bold text-secondary">mentoria completa de preparação para residência médica.</span>
@@ -27,13 +27,13 @@ const MentorshipSection = () => {
         </div>
 
         {/* Feature cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
           {features.map((feature, index) => (
             <div
               key={index}
               className="relative group"
             >
-              <div className="relative bg-[#1C233B] border border-white/10 rounded-2xl p-6 md:p-8 text-center shadow-[0_8px_32px_rgba(28,35,59,0.4),inset_0_1px_0_rgba(255,255,255,0.05)] h-full flex flex-col items-center justify-center min-h-[160px] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(28,35,59,0.5)] hover:scale-[1.02]">
+              <div className="relative bg-[#1C233B] border border-white/10 rounded-2xl p-4 md:p-6 text-center shadow-[0_8px_32px_rgba(28,35,59,0.4),inset_0_1px_0_rgba(255,255,255,0.05)] h-full flex flex-col items-center justify-center min-h-[120px] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(28,35,59,0.5)] hover:scale-[1.02]">
                 {/* Check icon */}
                 <div className="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/40 flex items-center justify-center mb-4">
                   <Check className="w-5 h-5 text-secondary" />
