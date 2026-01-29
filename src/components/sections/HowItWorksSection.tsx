@@ -75,7 +75,7 @@ const HowItWorksSection = () => {
                 <div className={`flex flex-col ${isOdd ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   {/* Text Content */}
                   <div className="flex-1 p-6 md:p-10 flex flex-col justify-center">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+                    <h3 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#BE9964' }}>
                       {step.title}
                     </h3>
                     
