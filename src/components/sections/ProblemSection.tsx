@@ -40,7 +40,7 @@ const ProblemSection = () => {
 
           {/* Right Column - Text Content */}
           <div className="order-1 lg:order-2 space-y-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
               Você já percebeu e entendeu que{" "}
               <span className="text-secondary">estudar muito não garante aprovação.</span>
             </h2>
