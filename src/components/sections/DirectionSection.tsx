@@ -31,27 +31,38 @@ const DirectionSection = () => {
 
   return (
     <section className="relative bg-white py-20 md:py-32 overflow-hidden">
-      <div className="container mx-auto px-6 text-center max-w-4xl">
-        {/* Main headline */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-12 leading-tight">
-          Quem passa estuda com direção.
-        </h2>
+      <div className="container mx-auto px-6 max-w-4xl">
+        {/* Framed content */}
+        <div className="relative border-2 border-secondary/30 rounded-lg p-8 md:p-12 lg:p-16 bg-gradient-to-br from-white to-secondary/5">
+          {/* Decorative corner accents */}
+          <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-secondary rounded-tl-lg -translate-x-0.5 -translate-y-0.5" />
+          <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-secondary rounded-tr-lg translate-x-0.5 -translate-y-0.5" />
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-secondary rounded-bl-lg -translate-x-0.5 translate-y-0.5" />
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-secondary rounded-br-lg translate-x-0.5 translate-y-0.5" />
 
-        {/* Story text */}
-        <div className="space-y-6 text-lg md:text-xl text-black/80">
-          <p>
-            O <span className="font-semibold text-black">Residente de Elite</span> nasceu quando três médicos, aprovados entre os primeiros lugares, chegaram à mesma conclusão:
-          </p>
-          <p className="text-2xl md:text-3xl font-semibold text-black">
-            A aprovação não é sobre quantidade.{" "}
-            <span className="text-secondary">É sobre estratégia, foco e timing.</span>
-          </p>
-          <p className="text-black/70 italic">
-            Foi assim que passamos.
-          </p>
-          <p className="text-black font-semibold text-xl">
-            E é isso que ensinamos.
-          </p>
+          <div className="text-center">
+            {/* Main headline */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-10 leading-tight">
+              Quem passa estuda com direção.
+            </h2>
+
+            {/* Story text */}
+            <div className="space-y-6 text-lg md:text-xl text-black/80">
+              <p>
+                O <span className="font-semibold text-black">Residente de Elite</span> nasceu quando três médicos, aprovados entre os primeiros lugares, chegaram à mesma conclusão:
+              </p>
+              <p className="text-2xl md:text-3xl font-semibold text-black">
+                A aprovação não é sobre quantidade.{" "}
+                <span className="text-secondary">É sobre estratégia, foco e timing.</span>
+              </p>
+              <p className="text-black/70 italic">
+                Foi assim que passamos.
+              </p>
+              <p className="text-black font-semibold text-xl">
+                E é isso que ensinamos.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
