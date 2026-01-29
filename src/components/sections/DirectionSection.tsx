@@ -33,7 +33,7 @@ const DirectionSection = () => {
     <section className="relative bg-white py-20 md:py-32 overflow-hidden">
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Framed content */}
-        <div className="relative border-2 border-secondary/30 rounded-lg p-8 md:p-12 lg:p-16 bg-gradient-to-br from-white to-secondary/5">
+        <div className="relative border border-secondary/40 rounded-2xl p-8 md:p-12 lg:p-16 bg-white/60 backdrop-blur-md shadow-[0_8px_32px_rgba(4,87,119,0.08)] ring-1 ring-brand-navy/5">
           {/* Decorative corner accents */}
           <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-secondary rounded-tl-lg -translate-x-0.5 -translate-y-0.5" />
           <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-secondary rounded-tr-lg translate-x-0.5 -translate-y-0.5" />
