@@ -9,7 +9,7 @@ const MentorshipSection = () => {
   ];
 
   return (
-    <section className="relative bg-white py-6 md:py-10">
+    <section className="relative bg-white py-4 md:py-6">
       <div className="container mx-auto px-6 max-w-5xl">
         {/* Intro text */}
         <div className="text-center mb-8">
