@@ -58,29 +58,22 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Video Placeholder */}
+          {/* Video */}
           <div className="relative mb-12 w-full max-w-4xl">
             {/* Video frame glow */}
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-secondary via-primary to-secondary opacity-50 blur-lg" />
             
             {/* Video container */}
-            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm">
-              {/* Inner glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10" />
-              
-              {/* Play button placeholder */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-secondary/90 shadow-2xl transition-transform hover:scale-110 cursor-pointer">
-                  <svg className="ml-1 h-8 w-8 text-secondary-foreground" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Video embed placeholder text */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-muted-foreground">
-                Vídeo em breve
-              </div>
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50">
+              <iframe 
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/44G2R8EWAF4" 
+                title="CONHEÇA A MENTORIA RESIDENTE DE ELITE 2026" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+              />
             </div>
           </div>
 
