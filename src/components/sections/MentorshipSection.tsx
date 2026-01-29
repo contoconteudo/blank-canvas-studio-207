@@ -33,7 +33,7 @@ const MentorshipSection = () => {
               key={index}
               className="relative group"
             >
-              <div className="relative bg-brand-navy/90 backdrop-blur-lg border border-white/10 rounded-2xl p-6 md:p-8 text-center shadow-[0_8px_32px_rgba(4,87,119,0.3)] ring-1 ring-white/5 h-full flex flex-col items-center justify-center min-h-[160px] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(4,87,119,0.4)] hover:scale-[1.02]">
+              <div className="relative bg-primary/95 backdrop-blur-lg border border-white/10 rounded-2xl p-6 md:p-8 text-center shadow-[0_8px_32px_rgba(4,87,119,0.3)] ring-1 ring-white/5 h-full flex flex-col items-center justify-center min-h-[160px] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(4,87,119,0.4)] hover:scale-[1.02]">
                 {/* Check icon */}
                 <div className="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/40 flex items-center justify-center mb-4">
                   <Check className="w-5 h-5 text-secondary" />
