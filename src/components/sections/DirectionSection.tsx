@@ -33,9 +33,6 @@ const DirectionSection = () => {
     <section className="relative bg-white py-20 md:py-32 overflow-hidden">
       <div className="container mx-auto px-6 text-center max-w-4xl">
         {/* Main headline */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 leading-tight">
-          Quem passa não estuda no escuro.
-        </h2>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-12 leading-tight">
           Quem passa estuda com direção.
         </h2>
