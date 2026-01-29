@@ -1,5 +1,11 @@
+import HeroSection from "@/components/sections/HeroSection";
+
 const Index = () => {
-  return <div className="min-h-screen bg-background" />;
+  return (
+    <div className="min-h-screen bg-background">
+      <HeroSection />
+    </div>
+  );
 };
 
 export default Index;
