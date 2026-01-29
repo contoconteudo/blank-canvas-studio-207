@@ -17,11 +17,9 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <HeroSection />
       
-      {/* Logo between Hero and Problem sections */}
-      <div 
-        className="relative z-10 flex justify-center py-8 bg-background"
-      >
-        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white border-4 border-secondary/30 flex items-center justify-center shadow-xl shadow-black/20 p-4">
+      {/* Logo between Hero and Problem sections - positioned to overlap */}
+      <div className="relative z-10 flex justify-center -mt-16 -mb-16 pointer-events-none">
+        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white border-4 border-secondary/30 flex items-center justify-center shadow-xl shadow-black/20 p-4 pointer-events-auto">
           <img 
             src={logoRde} 
             alt="Residente de Elite" 
@@ -38,14 +36,9 @@ const Index = () => {
       <FoundersSection />
       <TeachersSection />
       
-      {/* Logo between Teachers and ForWho sections - with gradient background */}
-      <div 
-        className="relative z-10 flex justify-center py-8"
-        style={{ 
-          background: 'linear-gradient(to bottom, #000000 0%, #000000 50%, #ffffff 50%, #ffffff 100%)' 
-        }}
-      >
-        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white border-4 border-secondary/30 flex items-center justify-center shadow-xl shadow-black/20 p-4">
+      {/* Logo between Teachers and ForWho sections - positioned to overlap */}
+      <div className="relative z-10 flex justify-center -mt-16 -mb-16 pointer-events-none">
+        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white border-4 border-secondary/30 flex items-center justify-center shadow-xl shadow-black/20 p-4 pointer-events-auto">
           <img 
             src={logoRde} 
             alt="Residente de Elite" 
