@@ -26,20 +26,7 @@ const MentorshipSection = () => {
           </p>
         </div>
 
-        {/* Video embed */}
-        <div className="mb-10 flex justify-center">
-          <div className="w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(28,35,59,0.3)]">
-            <iframe 
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/44G2R8EWAF4" 
-              title="CONHEÇA A MENTORIA RESIDENTE DE ELITE 2026" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin" 
-              allowFullScreen
-            />
-          </div>
-        </div>
+        {/* Feature cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
           {features.map((feature, index) => (
             <div
