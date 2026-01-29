@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const mentorshipSteps = [
   {
@@ -129,6 +130,17 @@ const HowItWorksSection = () => {
               </Card>
             );
           })}
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center mt-16">
+          <Button 
+            size="lg"
+            className="font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
+            style={{ backgroundColor: '#BE9964', color: '#1C233B' }}
+          >
+            Quero começar minha preparação
+          </Button>
         </div>
       </div>
     </section>
