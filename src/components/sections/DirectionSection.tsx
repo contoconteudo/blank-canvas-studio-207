@@ -33,7 +33,7 @@ const DirectionSection = () => {
     <section className="relative bg-white py-20 md:py-32 overflow-hidden">
       <div className="container mx-auto px-6 text-center max-w-4xl">
         {/* Main headline */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-navy mb-4 leading-tight">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 leading-tight">
           Quem passa não estuda no escuro.
         </h2>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-12 leading-tight">
@@ -41,34 +41,34 @@ const DirectionSection = () => {
         </h2>
 
         {/* Story text */}
-        <div className="space-y-6 text-lg md:text-xl text-brand-navy/80">
+        <div className="space-y-6 text-lg md:text-xl text-black/80">
           <p>
-            O <span className="font-semibold text-brand-navy">Residente de Elite</span> nasceu quando três médicos, aprovados entre os primeiros lugares, chegaram à mesma conclusão:
+            O <span className="font-semibold text-black">Residente de Elite</span> nasceu quando três médicos, aprovados entre os primeiros lugares, chegaram à mesma conclusão:
           </p>
-          <p className="text-2xl md:text-3xl font-semibold text-brand-navy">
+          <p className="text-2xl md:text-3xl font-semibold text-black">
             A aprovação não é sobre quantidade.{" "}
             <span className="text-secondary">É sobre estratégia, foco e timing.</span>
           </p>
-          <p className="text-brand-navy/70 italic">
+          <p className="text-black/70 italic">
             Foi assim que passamos.
           </p>
-          <p className="text-brand-navy font-semibold text-xl">
+          <p className="text-black font-semibold text-xl">
             E é isso que ensinamos.
           </p>
         </div>
       </div>
 
       {/* Infinite scroll bar */}
-      <div className="mt-20 md:mt-32 bg-brand-navy py-4 overflow-hidden">
+      <div className="mt-20 md:mt-32 bg-secondary py-4 overflow-hidden">
         <div 
           ref={scrollRef}
           className="flex whitespace-nowrap"
           style={{ willChange: 'transform' }}
         >
-          <span className="text-2xl md:text-3xl font-bold text-secondary tracking-widest">
+          <span className="text-2xl md:text-3xl font-bold text-brand-navy tracking-widest">
             {directionText}
           </span>
-          <span className="text-2xl md:text-3xl font-bold text-secondary tracking-widest">
+          <span className="text-2xl md:text-3xl font-bold text-brand-navy tracking-widest">
             {directionText}
           </span>
         </div>
