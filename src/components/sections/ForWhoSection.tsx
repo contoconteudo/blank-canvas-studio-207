@@ -39,20 +39,12 @@ const BulletRow = ({
 
   const textBlock = (
     <div className="w-full md:w-1/2 flex items-center">
-      <div className="flex items-start gap-4">
-        <span 
-          className="text-2xl md:text-3xl font-bold flex-shrink-0"
-          style={{ color: '#BE9964' }}
-        >
-          ✔
-        </span>
-        <p 
-          className="text-xl md:text-2xl font-medium"
-          style={{ color: '#1C233B' }}
-        >
-          {text}
-        </p>
-      </div>
+      <p 
+        className="text-xl md:text-2xl font-medium"
+        style={{ color: '#1C233B' }}
+      >
+        {text}
+      </p>
     </div>
   );
 
