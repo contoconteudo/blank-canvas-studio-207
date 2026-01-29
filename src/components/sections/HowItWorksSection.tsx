@@ -75,19 +75,11 @@ const HowItWorksSection = () => {
                 <div className={`flex flex-col ${isOdd ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   {/* Text Content */}
                   <div className="flex-1 p-6 md:p-10 flex flex-col justify-center">
-                    <div className="flex items-center gap-4 mb-4">
-                      <span 
-                        className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-lg md:text-xl font-bold"
-                        style={{ backgroundColor: '#1C233B', color: '#BB9868' }}
-                      >
-                        {step.id}
-                      </span>
-                      <h3 className="text-xl md:text-2xl font-bold text-white">
-                        {step.title}
-                      </h3>
-                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+                      {step.title}
+                    </h3>
                     
-                    <div className="text-white/90 text-base md:text-lg leading-relaxed pl-14 md:pl-16">
+                    <div className="text-white/90 text-base md:text-lg leading-relaxed">
                       <p>{step.description}</p>
                       
                       {step.bullets && (
