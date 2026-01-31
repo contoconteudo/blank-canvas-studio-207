@@ -3,6 +3,7 @@ import mirellaPhoto from "@/assets/teachers/mirella-laranjeira.png";
 import barbaraPhoto from "@/assets/teachers/barbara-lucinda.png";
 import millenaPhoto from "@/assets/teachers/millena-andrade.png";
 import gabrielPhoto from "@/assets/teachers/gabriel-morais.png";
+import pedroPhoto from "@/assets/teachers/pedro-brainer.png";
 
 const teachers = [
   {
@@ -50,7 +51,7 @@ const teachers = [
   {
     name: "Pedro Brainer",
     role: "Prof. Cirurgia Geral",
-    photo: null,
+    photo: pedroPhoto,
     achievements: [
       "1º Lugar geral ENARE Cirurgia Geral",
       "1º Lugar geral SES-PE Cirurgia Geral",
