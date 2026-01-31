@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
+import mirellaPhoto from "@/assets/teachers/mirella-laranjeira.png";
 
 const teachers = [
   {
     name: "Mirella Laranjeira",
     role: "Prof. Ginecologia e Obstetrícia",
+    photo: mirellaPhoto,
     achievements: [
       "Professora de Ginecologia UFPE",
       "1° Lugar geral Mastologia SES-PE",
@@ -15,6 +17,7 @@ const teachers = [
   {
     name: "Bárbara Lucinda",
     role: "Prof. Ginecologia e Obstetrícia",
+    photo: null,
     achievements: [
       "1° Lugar geral SES-PE GO",
       "2º Lugar ENARE Medicina Fetal - HC UFPE",
@@ -24,6 +27,7 @@ const teachers = [
   {
     name: "Millena Andrade",
     role: "Prof. Pediatria",
+    photo: null,
     achievements: [
       "Médica formada pela Universidade de Pernambuco",
       "1º Lugar geral SES-PE em pediatria",
@@ -33,6 +37,7 @@ const teachers = [
   {
     name: "Gabriel Morais",
     role: "Prof. Clínica Médica",
+    photo: null,
     achievements: [
       "8º lugar SES-PE Clínica Médica",
       "Médico Diarista Hospital Alfa",
@@ -42,6 +47,7 @@ const teachers = [
   {
     name: "Pedro Brainer",
     role: "Prof. Cirurgia Geral",
+    photo: null,
     achievements: [
       "1º Lugar geral ENARE Cirurgia Geral",
       "1º Lugar geral SES-PE Cirurgia Geral",
@@ -53,12 +59,20 @@ const teachers = [
 const TeacherCard = ({ teacher }: { teacher: typeof teachers[0] }) => {
   return (
     <div className="flex flex-col">
-      {/* Photo Placeholder */}
+      {/* Photo */}
       <div 
-        className="aspect-[3/4] rounded-2xl mb-4 flex items-center justify-center"
+        className="aspect-[3/4] rounded-2xl mb-4 flex items-center justify-center overflow-hidden"
         style={{ backgroundColor: '#085D7D' }}
       >
-        <span className="text-white/40 text-sm">Foto</span>
+        {teacher.photo ? (
+          <img 
+            src={teacher.photo} 
+            alt={teacher.name}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-white/40 text-sm">Foto</span>
+        )}
       </div>
       
       {/* Info Card */}
