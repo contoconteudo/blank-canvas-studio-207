@@ -11,6 +11,7 @@ import ForWhoSection from "@/components/sections/ForWhoSection";
 import PricingSection from "@/components/sections/PricingSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/sections/Footer";
+import AnimatedSection from "@/components/AnimatedSection";
 import logoRde from "@/assets/logo-rde.png";
 
 const Index = () => {
@@ -29,14 +30,37 @@ const Index = () => {
         </div>
       </div>
       
-      <ProblemSection />
-      <CandidatesSection />
-      <DirectionSection />
-      <MentorshipSection />
-      <HowItWorksSection />
-      <HeatmapsSection />
-      <FoundersSection />
-      <TeachersSection />
+      <AnimatedSection>
+        <ProblemSection />
+      </AnimatedSection>
+      
+      <AnimatedSection delay={0.1}>
+        <CandidatesSection />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <DirectionSection />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <MentorshipSection />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <HowItWorksSection />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <HeatmapsSection />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <FoundersSection />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <TeachersSection />
+      </AnimatedSection>
       
       {/* Logo between Teachers and ForWho sections - positioned to overlap */}
       <div className="relative z-10 flex justify-center -mt-16 -mb-16 pointer-events-none">
@@ -49,9 +73,18 @@ const Index = () => {
         </div>
       </div>
       
-      <ForWhoSection />
-      <PricingSection />
-      <ContactSection />
+      <AnimatedSection>
+        <ForWhoSection />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <PricingSection />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <ContactSection />
+      </AnimatedSection>
+      
       <Footer />
     </div>
   );
