@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import mirellaPhoto from "@/assets/teachers/mirella-laranjeira.png";
 import barbaraPhoto from "@/assets/teachers/barbara-lucinda.png";
+import millenaPhoto from "@/assets/teachers/millena-andrade.png";
 
 const teachers = [
   {
@@ -28,7 +29,7 @@ const teachers = [
   {
     name: "Millena Andrade",
     role: "Prof. Pediatria",
-    photo: null,
+    photo: millenaPhoto,
     achievements: [
       "Médica formada pela Universidade de Pernambuco",
       "1º Lugar geral SES-PE em pediatria",
