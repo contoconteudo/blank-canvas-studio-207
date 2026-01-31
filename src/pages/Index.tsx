@@ -1,5 +1,6 @@
 import HeroSection from "@/components/sections/HeroSection";
 import ProblemSection from "@/components/sections/ProblemSection";
+import CandidatesSection from "@/components/sections/CandidatesSection";
 import DirectionSection from "@/components/sections/DirectionSection";
 import MentorshipSection from "@/components/sections/MentorshipSection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
@@ -29,6 +30,7 @@ const Index = () => {
       </div>
       
       <ProblemSection />
+      <CandidatesSection />
       <DirectionSection />
       <MentorshipSection />
       <HowItWorksSection />
