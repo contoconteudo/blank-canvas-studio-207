@@ -17,13 +17,11 @@ const ProblemSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Image Placeholder */}
           <div className="relative order-2 lg:order-1">
-            <div className="card-gradient-depth card-gradient-depth-full aspect-[4/5] flex items-center justify-center overflow-hidden">
-              <img 
-                src={professoresGrupo} 
-                alt="Professores do Residente de Elite" 
-                className="w-full h-full object-contain"
-              />
-            </div>
+            <img 
+              src={professoresGrupo} 
+              alt="Professores do Residente de Elite" 
+              className="w-full h-auto"
+            />
           </div>
 
           {/* Right Column - Text Content */}
