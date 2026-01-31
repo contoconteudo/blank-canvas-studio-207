@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import mirellaPhoto from "@/assets/teachers/mirella-laranjeira.png";
+import barbaraPhoto from "@/assets/teachers/barbara-lucinda.png";
 
 const teachers = [
   {
@@ -17,7 +18,7 @@ const teachers = [
   {
     name: "Bárbara Lucinda",
     role: "Prof. Ginecologia e Obstetrícia",
-    photo: null,
+    photo: barbaraPhoto,
     achievements: [
       "1° Lugar geral SES-PE GO",
       "2º Lugar ENARE Medicina Fetal - HC UFPE",
