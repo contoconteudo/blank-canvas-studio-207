@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import livroMapas from "@/assets/livro-mapas-aprovacao.png";
 
 const HeatmapsSection = () => {
   return (
@@ -15,11 +16,13 @@ const HeatmapsSection = () => {
 
           {/* Content Grid */}
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            {/* Image Placeholder */}
-            <div className="w-full md:w-1/2">
-              <div className="card-gradient-depth card-gradient-depth-full aspect-video flex items-center justify-center">
-                <span className="text-white/60 text-lg">Imagem do Heatmap</span>
-              </div>
+            {/* Book Image */}
+            <div className="w-full md:w-1/2 flex justify-center">
+              <img 
+                src={livroMapas} 
+                alt="Livro Mapas de Aprovação" 
+                className="max-w-xs md:max-w-sm lg:max-w-md h-auto"
+              />
             </div>
 
             {/* Text Content */}
