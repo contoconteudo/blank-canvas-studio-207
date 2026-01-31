@@ -2,7 +2,7 @@ import professoresGrupo from "@/assets/professores-grupo.png";
 
 const ProblemSection = () => {
   return (
-    <section className="relative py-24 px-4 bg-background">
+    <section className="relative pt-24 pb-12 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Image */}

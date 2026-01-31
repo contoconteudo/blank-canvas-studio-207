@@ -12,7 +12,7 @@ const CandidatesSection = () => {
 
   return (
     <section 
-      className="relative py-20 md:py-28 px-4"
+      className="relative pt-12 pb-20 md:pb-28 px-4"
       style={{ backgroundColor: '#1C233B' }}
     >
       <div className="max-w-4xl mx-auto text-center">
