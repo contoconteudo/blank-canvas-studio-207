@@ -21,7 +21,7 @@ const HeatmapsSection = () => {
               <img 
                 src={livroMapas} 
                 alt="Livro Mapas de Aprovação" 
-                className="max-w-xs md:max-w-sm lg:max-w-md h-auto"
+                className="max-w-xs md:max-w-sm lg:max-w-md h-auto animate-gentle-rock"
               />
             </div>
 

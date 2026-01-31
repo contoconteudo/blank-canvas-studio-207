@@ -90,11 +90,20 @@ export default {
             transform: "scale(1.02)",
           },
         },
+        "gentle-rock": {
+          "0%, 100%": {
+            transform: "rotate(-2deg)",
+          },
+          "50%": {
+            transform: "rotate(2deg)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-slow": "pulse-slow 3s ease-in-out infinite",
+        "gentle-rock": "gentle-rock 4s ease-in-out infinite",
       },
     },
   },
