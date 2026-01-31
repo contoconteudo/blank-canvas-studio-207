@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import mirellaPhoto from "@/assets/teachers/mirella-laranjeira.png";
 import barbaraPhoto from "@/assets/teachers/barbara-lucinda.png";
 import millenaPhoto from "@/assets/teachers/millena-andrade.png";
+import gabrielPhoto from "@/assets/teachers/gabriel-morais.png";
 
 const teachers = [
   {
@@ -39,7 +40,7 @@ const teachers = [
   {
     name: "Gabriel Morais",
     role: "Prof. Clínica Médica",
-    photo: null,
+    photo: gabrielPhoto,
     achievements: [
       "8º lugar SES-PE Clínica Médica",
       "Médico Diarista Hospital Alfa",
