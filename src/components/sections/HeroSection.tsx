@@ -17,79 +17,28 @@ const HeroSection = () => {
       {/* Dark base background */}
       <div className="absolute inset-0 bg-[#050508]" />
       
-      {/* Left light beam - main */}
+      {/* Primary ambient glow - top center */}
       <div 
-        className="absolute top-0 left-[10%] w-[600px] h-[900px]"
+        className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1400px] h-[1000px]"
         style={{
           background: `
-            radial-gradient(ellipse 50% 80% at 50% 0%, 
-              hsl(196 100% 55% / 0.7) 0%, 
-              hsl(196 100% 50% / 0.4) 25%, 
-              hsl(196 100% 45% / 0.15) 50%, 
-              transparent 75%
-            )
-          `,
-          filter: 'blur(30px)',
-          transform: 'rotate(-12deg) translateY(-5%)',
-        }}
-      />
-      
-      {/* Left light beam - bright core */}
-      <div 
-        className="absolute top-0 left-[12%] w-[300px] h-[600px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 30% 60% at 50% 0%, 
-              hsl(196 100% 70% / 0.8) 0%, 
-              hsl(196 100% 55% / 0.3) 40%, 
+            radial-gradient(ellipse 70% 50% at 50% 30%, 
+              hsl(196 100% 55% / 0.35) 0%, 
+              hsl(196 100% 50% / 0.15) 35%, 
               transparent 70%
             )
           `,
-          filter: 'blur(20px)',
-          transform: 'rotate(-12deg) translateY(-5%)',
+          filter: 'blur(60px)',
         }}
       />
       
-      {/* Right light beam - main */}
+      {/* Left floating orb - upper */}
       <div 
-        className="absolute top-0 right-[10%] w-[600px] h-[900px]"
+        className="absolute top-[10%] left-[5%] w-[500px] h-[500px]"
         style={{
           background: `
-            radial-gradient(ellipse 50% 80% at 50% 0%, 
-              hsl(196 100% 55% / 0.7) 0%, 
-              hsl(196 100% 50% / 0.4) 25%, 
-              hsl(196 100% 45% / 0.15) 50%, 
-              transparent 75%
-            )
-          `,
-          filter: 'blur(30px)',
-          transform: 'rotate(12deg) translateY(-5%)',
-        }}
-      />
-      
-      {/* Right light beam - bright core */}
-      <div 
-        className="absolute top-0 right-[12%] w-[300px] h-[600px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 30% 60% at 50% 0%, 
-              hsl(196 100% 70% / 0.8) 0%, 
-              hsl(196 100% 55% / 0.3) 40%, 
-              transparent 70%
-            )
-          `,
-          filter: 'blur(20px)',
-          transform: 'rotate(12deg) translateY(-5%)',
-        }}
-      />
-      
-      {/* Center glow where beams meet */}
-      <div 
-        className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[800px] h-[500px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 90% 60% at 50% 40%, 
-              hsl(196 100% 60% / 0.35) 0%, 
+            radial-gradient(circle at 50% 50%, 
+              hsl(196 100% 60% / 0.4) 0%, 
               hsl(196 100% 50% / 0.15) 40%, 
               transparent 70%
             )
@@ -98,27 +47,101 @@ const HeroSection = () => {
         }}
       />
       
-      {/* Top edge bright glow */}
+      {/* Right floating orb - upper */}
       <div 
-        className="absolute top-0 left-0 right-0 h-48"
+        className="absolute top-[15%] right-[8%] w-[450px] h-[450px]"
         style={{
           background: `
-            linear-gradient(to bottom,
-              hsl(196 100% 60% / 0.25) 0%,
-              hsl(196 100% 50% / 0.1) 40%,
-              transparent 100%
+            radial-gradient(circle at 50% 50%, 
+              hsl(196 100% 65% / 0.35) 0%, 
+              hsl(196 100% 50% / 0.12) 45%, 
+              transparent 75%
+            )
+          `,
+          filter: 'blur(45px)',
+        }}
+      />
+      
+      {/* Center-left mid glow */}
+      <div 
+        className="absolute top-[40%] left-[20%] w-[600px] h-[400px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 80% 60% at 50% 50%, 
+              hsl(196 100% 55% / 0.25) 0%, 
+              hsl(196 100% 45% / 0.08) 50%, 
+              transparent 80%
+            )
+          `,
+          filter: 'blur(55px)',
+        }}
+      />
+      
+      {/* Center-right mid glow */}
+      <div 
+        className="absolute top-[35%] right-[15%] w-[550px] h-[450px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 70% 70% at 50% 50%, 
+              hsl(196 100% 50% / 0.22) 0%, 
+              hsl(196 100% 45% / 0.08) 45%, 
+              transparent 75%
+            )
+          `,
+          filter: 'blur(50px)',
+        }}
+      />
+      
+      {/* Bottom left subtle glow */}
+      <div 
+        className="absolute bottom-[10%] left-[10%] w-[400px] h-[350px]"
+        style={{
+          background: `
+            radial-gradient(circle at 50% 50%, 
+              hsl(196 100% 50% / 0.18) 0%, 
+              hsl(196 100% 45% / 0.06) 50%, 
+              transparent 80%
+            )
+          `,
+          filter: 'blur(45px)',
+        }}
+      />
+      
+      {/* Bottom right subtle glow */}
+      <div 
+        className="absolute bottom-[15%] right-[5%] w-[450px] h-[300px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 80% 60% at 50% 50%, 
+              hsl(196 100% 55% / 0.15) 0%, 
+              hsl(196 100% 45% / 0.05) 55%, 
+              transparent 85%
+            )
+          `,
+          filter: 'blur(40px)',
+        }}
+      />
+      
+      {/* Connecting ambient - subtle wide spread */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(ellipse 100% 80% at 50% 50%, 
+              hsl(196 100% 50% / 0.08) 0%, 
+              transparent 60%
             )
           `,
         }}
       />
       
-      {/* Subtle bottom vignette */}
+      {/* Subtle bottom vignette for depth */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-64"
+        className="absolute bottom-0 left-0 right-0 h-48"
         style={{
           background: `
             linear-gradient(to top,
-              hsl(226 36% 8%) 0%,
+              hsl(226 36% 6% / 0.8) 0%,
               transparent 100%
             )
           `,
