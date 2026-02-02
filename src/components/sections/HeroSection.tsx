@@ -17,143 +17,134 @@ const HeroSection = () => {
       {/* Dark base background */}
       <div className="absolute inset-0 bg-[#050508]" />
       
-      {/* Wave 1 - Top flowing from left to right */}
-      <div 
-        className="absolute top-[-5%] left-[-10%] w-[120%] h-[400px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 100% 200% at 30% 100%, 
-              hsl(196 100% 65% / 0.5) 0%, 
-              hsl(196 100% 55% / 0.25) 30%, 
-              transparent 60%
-            )
-          `,
-          filter: 'blur(50px)',
-          transform: 'rotate(-8deg)',
-        }}
-      />
+      {/* Main SVG flowing curves - organic aurora-like waves */}
+      <div className="absolute inset-0 overflow-hidden">
+        <svg 
+          className="absolute w-[200%] h-[200%] left-[-50%] top-[-30%]"
+          viewBox="0 0 1200 1000"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            {/* Gradient for flowing curves */}
+            <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="hsl(196 100% 60%)" stopOpacity="0.35" />
+              <stop offset="50%" stopColor="hsl(196 100% 55%)" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="hsl(196 100% 50%)" stopOpacity="0.05" />
+            </linearGradient>
+            <linearGradient id="waveGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="hsl(196 100% 65%)" stopOpacity="0.3" />
+              <stop offset="50%" stopColor="hsl(196 100% 55%)" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="hsl(196 100% 50%)" stopOpacity="0.02" />
+            </linearGradient>
+            <linearGradient id="waveGradient3" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stopColor="hsl(196 100% 58%)" stopOpacity="0.4" />
+              <stop offset="60%" stopColor="hsl(196 100% 52%)" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="hsl(196 100% 50%)" stopOpacity="0" />
+            </linearGradient>
+            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="25" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <filter id="heavyBlur" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="40" />
+            </filter>
+          </defs>
+          
+          {/* Primary flowing curve - center dominant */}
+          <path
+            d="M-100,300 
+               C150,200 300,450 500,350 
+               S700,150 900,280 
+               S1100,450 1300,300"
+            fill="none"
+            stroke="url(#waveGradient3)"
+            strokeWidth="180"
+            strokeLinecap="round"
+            filter="url(#heavyBlur)"
+          />
+          
+          {/* Secondary curve - upper flow */}
+          <path
+            d="M-50,180 
+               C200,100 350,320 550,200 
+               S800,80 1000,180 
+               S1200,320 1400,200"
+            fill="none"
+            stroke="url(#waveGradient1)"
+            strokeWidth="140"
+            strokeLinecap="round"
+            filter="url(#heavyBlur)"
+          />
+          
+          {/* Tertiary curve - lower subtle flow */}
+          <path
+            d="M0,500 
+               C250,400 400,600 600,480 
+               S850,350 1050,460 
+               S1250,580 1400,450"
+            fill="none"
+            stroke="url(#waveGradient2)"
+            strokeWidth="120"
+            strokeLinecap="round"
+            filter="url(#heavyBlur)"
+          />
+          
+          {/* Accent curve - adds depth */}
+          <path
+            d="M-200,380 
+               C100,280 280,500 480,380 
+               S720,220 920,340 
+               S1150,500 1350,360"
+            fill="none"
+            stroke="url(#waveGradient1)"
+            strokeWidth="100"
+            strokeLinecap="round"
+            filter="url(#heavyBlur)"
+            opacity="0.6"
+          />
+          
+          {/* Soft upper accent */}
+          <path
+            d="M100,120 
+               C300,50 500,200 700,100 
+               S950,20 1150,100 
+               S1350,200 1500,80"
+            fill="none"
+            stroke="url(#waveGradient2)"
+            strokeWidth="90"
+            strokeLinecap="round"
+            filter="url(#heavyBlur)"
+            opacity="0.5"
+          />
+          
+          {/* Lower ambient wave */}
+          <path
+            d="M-100,620 
+               C150,520 350,700 550,580 
+               S800,440 1000,560 
+               S1200,700 1400,560"
+            fill="none"
+            stroke="url(#waveGradient3)"
+            strokeWidth="100"
+            strokeLinecap="round"
+            filter="url(#heavyBlur)"
+            opacity="0.4"
+          />
+        </svg>
+      </div>
       
-      {/* Wave 2 - Upper diagonal sweep */}
-      <div 
-        className="absolute top-[8%] left-[-15%] w-[130%] h-[350px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 80% 150% at 60% 80%, 
-              hsl(196 100% 60% / 0.45) 0%, 
-              hsl(196 100% 50% / 0.18) 40%, 
-              transparent 70%
-            )
-          `,
-          filter: 'blur(55px)',
-          transform: 'rotate(5deg)',
-        }}
-      />
-      
-      {/* Wave 3 - Mid-upper flowing band */}
-      <div 
-        className="absolute top-[20%] left-[-5%] w-[110%] h-[300px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 90% 180% at 40% 50%, 
-              hsl(196 100% 58% / 0.4) 0%, 
-              hsl(196 100% 50% / 0.15) 35%, 
-              transparent 65%
-            )
-          `,
-          filter: 'blur(45px)',
-          transform: 'rotate(-3deg)',
-        }}
-      />
-      
-      {/* Wave 4 - Center serpentine flow */}
-      <div 
-        className="absolute top-[30%] left-[-8%] w-[116%] h-[380px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 95% 160% at 55% 60%, 
-              hsl(196 100% 62% / 0.38) 0%, 
-              hsl(196 100% 52% / 0.15) 40%, 
-              transparent 70%
-            )
-          `,
-          filter: 'blur(50px)',
-          transform: 'rotate(6deg)',
-        }}
-      />
-      
-      {/* Wave 5 - Mid flowing ribbon */}
-      <div 
-        className="absolute top-[42%] left-[-12%] w-[124%] h-[320px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 85% 170% at 35% 50%, 
-              hsl(196 100% 55% / 0.42) 0%, 
-              hsl(196 100% 48% / 0.16) 38%, 
-              transparent 68%
-            )
-          `,
-          filter: 'blur(48px)',
-          transform: 'rotate(-5deg)',
-        }}
-      />
-      
-      {/* Wave 6 - Lower-mid undulating band */}
-      <div 
-        className="absolute top-[52%] left-[-6%] w-[112%] h-[350px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 88% 155% at 65% 55%, 
-              hsl(196 100% 58% / 0.36) 0%, 
-              hsl(196 100% 50% / 0.14) 42%, 
-              transparent 72%
-            )
-          `,
-          filter: 'blur(52px)',
-          transform: 'rotate(4deg)',
-        }}
-      />
-      
-      {/* Wave 7 - Lower flowing stream */}
-      <div 
-        className="absolute top-[65%] left-[-10%] w-[120%] h-[300px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 92% 165% at 45% 60%, 
-              hsl(196 100% 52% / 0.34) 0%, 
-              hsl(196 100% 45% / 0.12) 40%, 
-              transparent 70%
-            )
-          `,
-          filter: 'blur(45px)',
-          transform: 'rotate(-6deg)',
-        }}
-      />
-      
-      {/* Wave 8 - Bottom flowing wave */}
-      <div 
-        className="absolute top-[78%] left-[-8%] w-[116%] h-[280px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 85% 150% at 55% 50%, 
-              hsl(196 100% 55% / 0.32) 0%, 
-              hsl(196 100% 48% / 0.1) 45%, 
-              transparent 75%
-            )
-          `,
-          filter: 'blur(50px)',
-          transform: 'rotate(5deg)',
-        }}
-      />
-      
-      {/* Ambient connecting layer */}
+      {/* Ambient center glow */}
       <div 
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 120% 100% at 50% 50%, 
-              hsl(196 100% 55% / 0.1) 0%, 
-              hsl(196 100% 50% / 0.04) 50%, 
-              transparent 80%
+            radial-gradient(ellipse 80% 60% at 50% 40%, 
+              hsl(196 100% 55% / 0.12) 0%, 
+              transparent 70%
             )
           `,
         }}
@@ -161,11 +152,11 @@ const HeroSection = () => {
       
       {/* Subtle bottom vignette for depth */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-32"
+        className="absolute bottom-0 left-0 right-0 h-40"
         style={{
           background: `
             linear-gradient(to top,
-              hsl(226 36% 6% / 0.6) 0%,
+              hsl(226 36% 6% / 0.8) 0%,
               transparent 100%
             )
           `,
