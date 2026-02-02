@@ -17,181 +17,143 @@ const HeroSection = () => {
       {/* Dark base background */}
       <div className="absolute inset-0 bg-[#050508]" />
       
-      {/* Main ambient glow - intense top center */}
+      {/* Wave 1 - Top flowing from left to right */}
       <div 
-        className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[1600px] h-[1100px]"
+        className="absolute top-[-5%] left-[-10%] w-[120%] h-[400px]"
         style={{
           background: `
-            radial-gradient(ellipse 80% 60% at 50% 25%, 
-              hsl(196 100% 60% / 0.5) 0%, 
+            radial-gradient(ellipse 100% 200% at 30% 100%, 
+              hsl(196 100% 65% / 0.5) 0%, 
               hsl(196 100% 55% / 0.25) 30%, 
-              hsl(196 100% 50% / 0.1) 50%, 
-              transparent 75%
+              transparent 60%
             )
           `,
           filter: 'blur(50px)',
+          transform: 'rotate(-8deg)',
         }}
       />
       
-      {/* Top left bright orb */}
+      {/* Wave 2 - Upper diagonal sweep */}
       <div 
-        className="absolute top-[5%] left-[8%] w-[550px] h-[550px]"
+        className="absolute top-[8%] left-[-15%] w-[130%] h-[350px]"
         style={{
           background: `
-            radial-gradient(circle at 50% 50%, 
-              hsl(196 100% 70% / 0.55) 0%, 
-              hsl(196 100% 55% / 0.25) 35%, 
-              transparent 65%
-            )
-          `,
-          filter: 'blur(40px)',
-        }}
-      />
-      
-      {/* Top right bright orb */}
-      <div 
-        className="absolute top-[8%] right-[5%] w-[500px] h-[500px]"
-        style={{
-          background: `
-            radial-gradient(circle at 50% 50%, 
-              hsl(196 100% 68% / 0.5) 0%, 
-              hsl(196 100% 55% / 0.2) 40%, 
+            radial-gradient(ellipse 80% 150% at 60% 80%, 
+              hsl(196 100% 60% / 0.45) 0%, 
+              hsl(196 100% 50% / 0.18) 40%, 
               transparent 70%
-            )
-          `,
-          filter: 'blur(45px)',
-        }}
-      />
-      
-      {/* Center intense glow */}
-      <div 
-        className="absolute top-[25%] left-1/2 -translate-x-1/2 w-[900px] h-[600px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 70% 60% at 50% 50%, 
-              hsl(196 100% 65% / 0.4) 0%, 
-              hsl(196 100% 55% / 0.18) 40%, 
-              transparent 75%
             )
           `,
           filter: 'blur(55px)',
+          transform: 'rotate(5deg)',
         }}
       />
       
-      {/* Left mid floating light */}
+      {/* Wave 3 - Mid-upper flowing band */}
       <div 
-        className="absolute top-[35%] left-[3%] w-[500px] h-[450px]"
+        className="absolute top-[20%] left-[-5%] w-[110%] h-[300px]"
         style={{
           background: `
-            radial-gradient(circle at 50% 50%, 
-              hsl(196 100% 60% / 0.45) 0%, 
-              hsl(196 100% 50% / 0.15) 45%, 
+            radial-gradient(ellipse 90% 180% at 40% 50%, 
+              hsl(196 100% 58% / 0.4) 0%, 
+              hsl(196 100% 50% / 0.15) 35%, 
+              transparent 65%
+            )
+          `,
+          filter: 'blur(45px)',
+          transform: 'rotate(-3deg)',
+        }}
+      />
+      
+      {/* Wave 4 - Center serpentine flow */}
+      <div 
+        className="absolute top-[30%] left-[-8%] w-[116%] h-[380px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 95% 160% at 55% 60%, 
+              hsl(196 100% 62% / 0.38) 0%, 
+              hsl(196 100% 52% / 0.15) 40%, 
               transparent 70%
             )
           `,
           filter: 'blur(50px)',
+          transform: 'rotate(6deg)',
         }}
       />
       
-      {/* Right mid floating light */}
+      {/* Wave 5 - Mid flowing ribbon */}
       <div 
-        className="absolute top-[40%] right-[8%] w-[550px] h-[500px]"
+        className="absolute top-[42%] left-[-12%] w-[124%] h-[320px]"
         style={{
           background: `
-            radial-gradient(circle at 50% 50%, 
-              hsl(196 100% 58% / 0.4) 0%, 
-              hsl(196 100% 50% / 0.15) 40%, 
-              transparent 75%
+            radial-gradient(ellipse 85% 170% at 35% 50%, 
+              hsl(196 100% 55% / 0.42) 0%, 
+              hsl(196 100% 48% / 0.16) 38%, 
+              transparent 68%
+            )
+          `,
+          filter: 'blur(48px)',
+          transform: 'rotate(-5deg)',
+        }}
+      />
+      
+      {/* Wave 6 - Lower-mid undulating band */}
+      <div 
+        className="absolute top-[52%] left-[-6%] w-[112%] h-[350px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 88% 155% at 65% 55%, 
+              hsl(196 100% 58% / 0.36) 0%, 
+              hsl(196 100% 50% / 0.14) 42%, 
+              transparent 72%
+            )
+          `,
+          filter: 'blur(52px)',
+          transform: 'rotate(4deg)',
+        }}
+      />
+      
+      {/* Wave 7 - Lower flowing stream */}
+      <div 
+        className="absolute top-[65%] left-[-10%] w-[120%] h-[300px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 92% 165% at 45% 60%, 
+              hsl(196 100% 52% / 0.34) 0%, 
+              hsl(196 100% 45% / 0.12) 40%, 
+              transparent 70%
             )
           `,
           filter: 'blur(45px)',
+          transform: 'rotate(-6deg)',
         }}
       />
       
-      {/* Center-left lower glow */}
+      {/* Wave 8 - Bottom flowing wave */}
       <div 
-        className="absolute top-[55%] left-[25%] w-[600px] h-[450px]"
+        className="absolute top-[78%] left-[-8%] w-[116%] h-[280px]"
         style={{
           background: `
-            radial-gradient(ellipse 75% 65% at 50% 50%, 
-              hsl(196 100% 55% / 0.35) 0%, 
-              hsl(196 100% 45% / 0.12) 45%, 
-              transparent 80%
+            radial-gradient(ellipse 85% 150% at 55% 50%, 
+              hsl(196 100% 55% / 0.32) 0%, 
+              hsl(196 100% 48% / 0.1) 45%, 
+              transparent 75%
             )
           `,
           filter: 'blur(50px)',
+          transform: 'rotate(5deg)',
         }}
       />
       
-      {/* Center-right lower glow */}
-      <div 
-        className="absolute top-[50%] right-[20%] w-[550px] h-[400px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 70% 60% at 50% 50%, 
-              hsl(196 100% 52% / 0.32) 0%, 
-              hsl(196 100% 45% / 0.1) 50%, 
-              transparent 80%
-            )
-          `,
-          filter: 'blur(45px)',
-        }}
-      />
-      
-      {/* Bottom left orb */}
-      <div 
-        className="absolute bottom-[5%] left-[12%] w-[450px] h-[400px]"
-        style={{
-          background: `
-            radial-gradient(circle at 50% 50%, 
-              hsl(196 100% 55% / 0.35) 0%, 
-              hsl(196 100% 45% / 0.12) 45%, 
-              transparent 75%
-            )
-          `,
-          filter: 'blur(45px)',
-        }}
-      />
-      
-      {/* Bottom center glow */}
-      <div 
-        className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[700px] h-[350px]"
-        style={{
-          background: `
-            radial-gradient(ellipse 80% 60% at 50% 50%, 
-              hsl(196 100% 50% / 0.3) 0%, 
-              hsl(196 100% 45% / 0.1) 50%, 
-              transparent 80%
-            )
-          `,
-          filter: 'blur(50px)',
-        }}
-      />
-      
-      {/* Bottom right orb */}
-      <div 
-        className="absolute bottom-[8%] right-[10%] w-[480px] h-[380px]"
-        style={{
-          background: `
-            radial-gradient(circle at 50% 50%, 
-              hsl(196 100% 58% / 0.32) 0%, 
-              hsl(196 100% 48% / 0.1) 50%, 
-              transparent 75%
-            )
-          `,
-          filter: 'blur(40px)',
-        }}
-      />
-      
-      {/* Ambient overlay - wide spread */}
+      {/* Ambient connecting layer */}
       <div 
         className="absolute inset-0"
         style={{
           background: `
             radial-gradient(ellipse 120% 100% at 50% 50%, 
-              hsl(196 100% 55% / 0.12) 0%, 
-              hsl(196 100% 50% / 0.05) 40%, 
-              transparent 70%
+              hsl(196 100% 55% / 0.1) 0%, 
+              hsl(196 100% 50% / 0.04) 50%, 
+              transparent 80%
             )
           `,
         }}
