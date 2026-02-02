@@ -113,8 +113,8 @@ const TeacherCard = ({ teacher }: { teacher: typeof teachers[0] }) => {
 const TeachersSection = () => {
   return (
     <section className="py-20 md:py-28 bg-black">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16">
+        <div className="max-w-5xl mx-auto">
           {/* Title */}
           <h2 
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4"
