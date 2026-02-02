@@ -23,7 +23,7 @@ const HeatmapsSection = () => {
                 <div 
                   className="absolute inset-0 blur-3xl opacity-60 scale-110"
                   style={{
-                    background: 'radial-gradient(ellipse at center, rgba(190, 153, 100, 0.6) 0%, rgba(190, 153, 100, 0.3) 40%, transparent 70%)',
+                    background: 'radial-gradient(ellipse at center, rgba(8, 180, 200, 0.5) 0%, rgba(8, 150, 180, 0.25) 40%, transparent 70%)',
                   }}
                 />
                 <img 
