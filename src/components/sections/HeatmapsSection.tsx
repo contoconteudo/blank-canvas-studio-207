@@ -18,11 +18,20 @@ const HeatmapsSection = () => {
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
             {/* Book Image */}
             <div className="w-full md:w-1/2 flex justify-center">
-              <img 
-                src={livroMapas} 
-                alt="Livro Mapas de Aprovação" 
-                className="max-w-xs md:max-w-sm lg:max-w-md h-auto animate-gentle-rock"
+              <div className="relative">
+                {/* Glow effect behind the image */}
+                <div 
+                  className="absolute inset-0 blur-3xl opacity-60 scale-110"
+                  style={{
+                    background: 'radial-gradient(ellipse at center, rgba(190, 153, 100, 0.6) 0%, rgba(190, 153, 100, 0.3) 40%, transparent 70%)',
+                  }}
+                />
+                <img 
+                  src={livroMapas} 
+                  alt="Livro Mapas de Aprovação" 
+                  className="relative z-10 max-w-xs md:max-w-sm lg:max-w-md h-auto animate-gentle-rock"
               />
+              </div>
             </div>
 
             {/* Text Content */}
