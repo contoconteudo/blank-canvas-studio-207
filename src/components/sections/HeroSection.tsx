@@ -17,146 +17,108 @@ const HeroSection = () => {
       {/* Dark base background */}
       <div className="absolute inset-0 bg-[#050508]" />
       
-      {/* Main SVG flowing curves - organic aurora-like waves */}
-      <div className="absolute inset-0 overflow-hidden">
-        <svg 
-          className="absolute w-[200%] h-[200%] left-[-50%] top-[-30%]"
-          viewBox="0 0 1200 1000"
-          preserveAspectRatio="xMidYMid slice"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            {/* Gradient for flowing curves */}
-            <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="hsl(196 100% 60%)" stopOpacity="0.35" />
-              <stop offset="50%" stopColor="hsl(196 100% 55%)" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="hsl(196 100% 50%)" stopOpacity="0.05" />
-            </linearGradient>
-            <linearGradient id="waveGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="hsl(196 100% 65%)" stopOpacity="0.3" />
-              <stop offset="50%" stopColor="hsl(196 100% 55%)" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="hsl(196 100% 50%)" stopOpacity="0.02" />
-            </linearGradient>
-            <linearGradient id="waveGradient3" x1="50%" y1="0%" x2="50%" y2="100%">
-              <stop offset="0%" stopColor="hsl(196 100% 58%)" stopOpacity="0.4" />
-              <stop offset="60%" stopColor="hsl(196 100% 52%)" stopOpacity="0.12" />
-              <stop offset="100%" stopColor="hsl(196 100% 50%)" stopOpacity="0" />
-            </linearGradient>
-            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="25" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            <filter id="heavyBlur" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="40" />
-            </filter>
-          </defs>
-          
-          {/* Primary flowing curve - center dominant */}
-          <path
-            d="M-100,300 
-               C150,200 300,450 500,350 
-               S700,150 900,280 
-               S1100,450 1300,300"
-            fill="none"
-            stroke="url(#waveGradient3)"
-            strokeWidth="180"
-            strokeLinecap="round"
-            filter="url(#heavyBlur)"
-          />
-          
-          {/* Secondary curve - upper flow */}
-          <path
-            d="M-50,180 
-               C200,100 350,320 550,200 
-               S800,80 1000,180 
-               S1200,320 1400,200"
-            fill="none"
-            stroke="url(#waveGradient1)"
-            strokeWidth="140"
-            strokeLinecap="round"
-            filter="url(#heavyBlur)"
-          />
-          
-          {/* Tertiary curve - lower subtle flow */}
-          <path
-            d="M0,500 
-               C250,400 400,600 600,480 
-               S850,350 1050,460 
-               S1250,580 1400,450"
-            fill="none"
-            stroke="url(#waveGradient2)"
-            strokeWidth="120"
-            strokeLinecap="round"
-            filter="url(#heavyBlur)"
-          />
-          
-          {/* Accent curve - adds depth */}
-          <path
-            d="M-200,380 
-               C100,280 280,500 480,380 
-               S720,220 920,340 
-               S1150,500 1350,360"
-            fill="none"
-            stroke="url(#waveGradient1)"
-            strokeWidth="100"
-            strokeLinecap="round"
-            filter="url(#heavyBlur)"
-            opacity="0.6"
-          />
-          
-          {/* Soft upper accent */}
-          <path
-            d="M100,120 
-               C300,50 500,200 700,100 
-               S950,20 1150,100 
-               S1350,200 1500,80"
-            fill="none"
-            stroke="url(#waveGradient2)"
-            strokeWidth="90"
-            strokeLinecap="round"
-            filter="url(#heavyBlur)"
-            opacity="0.5"
-          />
-          
-          {/* Lower ambient wave */}
-          <path
-            d="M-100,620 
-               C150,520 350,700 550,580 
-               S800,440 1000,560 
-               S1200,700 1400,560"
-            fill="none"
-            stroke="url(#waveGradient3)"
-            strokeWidth="100"
-            strokeLinecap="round"
-            filter="url(#heavyBlur)"
-            opacity="0.4"
-          />
-        </svg>
-      </div>
-      
-      {/* Ambient center glow */}
+      {/* Left light beam - main */}
       <div 
-        className="absolute inset-0"
+        className="absolute top-0 left-[10%] w-[600px] h-[900px]"
         style={{
           background: `
-            radial-gradient(ellipse 80% 60% at 50% 40%, 
-              hsl(196 100% 55% / 0.12) 0%, 
+            radial-gradient(ellipse 50% 80% at 50% 0%, 
+              hsl(196 100% 55% / 0.7) 0%, 
+              hsl(196 100% 50% / 0.4) 25%, 
+              hsl(196 100% 45% / 0.15) 50%, 
+              transparent 75%
+            )
+          `,
+          filter: 'blur(30px)',
+          transform: 'rotate(-12deg) translateY(-5%)',
+        }}
+      />
+      
+      {/* Left light beam - bright core */}
+      <div 
+        className="absolute top-0 left-[12%] w-[300px] h-[600px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 30% 60% at 50% 0%, 
+              hsl(196 100% 70% / 0.8) 0%, 
+              hsl(196 100% 55% / 0.3) 40%, 
               transparent 70%
+            )
+          `,
+          filter: 'blur(20px)',
+          transform: 'rotate(-12deg) translateY(-5%)',
+        }}
+      />
+      
+      {/* Right light beam - main */}
+      <div 
+        className="absolute top-0 right-[10%] w-[600px] h-[900px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 50% 80% at 50% 0%, 
+              hsl(196 100% 55% / 0.7) 0%, 
+              hsl(196 100% 50% / 0.4) 25%, 
+              hsl(196 100% 45% / 0.15) 50%, 
+              transparent 75%
+            )
+          `,
+          filter: 'blur(30px)',
+          transform: 'rotate(12deg) translateY(-5%)',
+        }}
+      />
+      
+      {/* Right light beam - bright core */}
+      <div 
+        className="absolute top-0 right-[12%] w-[300px] h-[600px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 30% 60% at 50% 0%, 
+              hsl(196 100% 70% / 0.8) 0%, 
+              hsl(196 100% 55% / 0.3) 40%, 
+              transparent 70%
+            )
+          `,
+          filter: 'blur(20px)',
+          transform: 'rotate(12deg) translateY(-5%)',
+        }}
+      />
+      
+      {/* Center glow where beams meet */}
+      <div 
+        className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[800px] h-[500px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 90% 60% at 50% 40%, 
+              hsl(196 100% 60% / 0.35) 0%, 
+              hsl(196 100% 50% / 0.15) 40%, 
+              transparent 70%
+            )
+          `,
+          filter: 'blur(50px)',
+        }}
+      />
+      
+      {/* Top edge bright glow */}
+      <div 
+        className="absolute top-0 left-0 right-0 h-48"
+        style={{
+          background: `
+            linear-gradient(to bottom,
+              hsl(196 100% 60% / 0.25) 0%,
+              hsl(196 100% 50% / 0.1) 40%,
+              transparent 100%
             )
           `,
         }}
       />
       
-      {/* Subtle bottom vignette for depth */}
+      {/* Subtle bottom vignette */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-40"
+        className="absolute bottom-0 left-0 right-0 h-64"
         style={{
           background: `
             linear-gradient(to top,
-              hsl(226 36% 6% / 0.8) 0%,
+              hsl(226 36% 8%) 0%,
               transparent 100%
             )
           `,
