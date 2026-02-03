@@ -46,6 +46,7 @@ const HeatmapsSection = () => {
                 style={{ 
                   backgroundColor: '#BE9964',
                 }}
+                onClick={() => document.getElementById('ofertas')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Quero entender qual o melhor formato para mim
               </Button>

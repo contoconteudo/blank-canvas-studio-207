@@ -128,7 +128,7 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
 
 const PricingSection = () => {
   return (
-    <section className="py-20 md:py-28" style={{ backgroundColor: '#1C233B' }}>
+    <section id="ofertas" className="py-20 md:py-28" style={{ backgroundColor: '#1C233B' }}>
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header Text */}

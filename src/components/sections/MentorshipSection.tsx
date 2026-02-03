@@ -58,6 +58,7 @@ const MentorshipSection = () => {
             size="lg"
             className="btn-glow font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
             style={{ backgroundColor: '#1C233B', color: '#BE9964' }}
+            onClick={() => document.getElementById('ofertas')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Quero estudar com método
           </Button>

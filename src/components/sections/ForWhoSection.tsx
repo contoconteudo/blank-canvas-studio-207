@@ -110,6 +110,7 @@ const ForWhoSection = () => {
               size="lg"
               className="btn-glow font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
               style={{ backgroundColor: '#BE9964', color: '#1C233B' }}
+              onClick={() => document.getElementById('ofertas')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Quero fazer parte
             </Button>
