@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import CheckoutModal from "@/components/CheckoutModal";
 
 const plans = [
   {
@@ -7,6 +9,7 @@ const plans = [
     originalPrice: "5.947",
     installments: "394,64",
     cashPrice: "3.884",
+    checkoutUrl: "https://pay.hub.la/CqZF7dHdfWFmCbo5ctil",
     features: [
       "Mentoria completa",
       "Simulados autorais",
@@ -21,6 +24,7 @@ const plans = [
     originalPrice: "4.847",
     installments: "372,28",
     cashPrice: "3.664",
+    checkoutUrl: "https://pay.hub.la/CqZF7dHdfWFmCbo5ctil",
     features: [
       "Mentoria completa",
       "Simulados autorais",
@@ -35,6 +39,7 @@ const plans = [
     originalPrice: "8.694",
     installments: "650,28",
     cashPrice: "6.400",
+    checkoutUrl: "https://pay.hub.la/CqZF7dHdfWFmCbo5ctil",
     highlighted: true,
     features: [
       "Planejamento longo prazo",
@@ -47,7 +52,12 @@ const plans = [
   }
 ];
 
-const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
+interface PricingCardProps {
+  plan: typeof plans[0];
+  onCtaClick: () => void;
+}
+
+const PricingCard = ({ plan, onCtaClick }: PricingCardProps) => {
   const isHighlighted = 'highlighted' in plan && plan.highlighted;
   
   return (
@@ -119,6 +129,7 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
         size="lg"
         className="btn-glow-teal w-full font-semibold py-6 text-base md:text-lg rounded-xl transition-all duration-300 hover:scale-105"
         style={{ backgroundColor: '#305CA9', color: 'white' }}
+        onClick={onCtaClick}
       >
         Quero garantir minha vaga
       </Button>
@@ -127,6 +138,14 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
 };
 
 const PricingSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedCheckoutUrl, setSelectedCheckoutUrl] = useState("");
+
+  const handleCtaClick = (checkoutUrl: string) => {
+    setSelectedCheckoutUrl(checkoutUrl);
+    setModalOpen(true);
+  };
+
   return (
     <section id="ofertas" className="py-20 md:py-28" style={{ backgroundColor: '#1C233B' }}>
       <div className="container mx-auto px-4 md:px-8">
@@ -150,11 +169,22 @@ const PricingSection = () => {
           {/* Pricing Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {plans.map((plan, index) => (
-              <PricingCard key={index} plan={plan} />
+              <PricingCard 
+                key={index} 
+                plan={plan} 
+                onCtaClick={() => handleCtaClick(plan.checkoutUrl)}
+              />
             ))}
           </div>
         </div>
       </div>
+
+      {/* Checkout Modal */}
+      <CheckoutModal
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+        checkoutUrl={selectedCheckoutUrl}
+      />
     </section>
   );
 };
