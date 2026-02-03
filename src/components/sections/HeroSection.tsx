@@ -1,7 +1,64 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import logoRde from "@/assets/logo-rde.png";
+import videoCover from "@/assets/video-cover.png";
+
+const VideoPlayer = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  return (
+    <div className="relative mb-12 w-full max-w-2xl">
+      {/* Video frame glow */}
+      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-secondary via-primary to-secondary opacity-50 blur-lg" />
+      
+      {/* Video container */}
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50">
+        {isPlaying ? (
+          <iframe 
+            className="w-full h-full"
+            src="https://www.youtube.com/embed/44G2R8EWAF4?autoplay=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3" 
+            title="CONHEÇA A MENTORIA RESIDENTE DE ELITE 2026" 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerPolicy="strict-origin-when-cross-origin" 
+            allowFullScreen
+          />
+        ) : (
+          <button
+            onClick={() => setIsPlaying(true)}
+            className="relative w-full h-full group cursor-pointer"
+            aria-label="Reproduzir vídeo"
+          >
+            {/* Cover image */}
+            <img 
+              src={videoCover} 
+              alt="Capa do vídeo - Mentoria Residente de Elite" 
+              className="w-full h-full object-cover"
+            />
+            
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300" />
+            
+            {/* Play button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative">
+                {/* Glow effect */}
+                <div className="absolute inset-0 rounded-full bg-secondary/50 blur-xl scale-150 group-hover:scale-175 transition-transform duration-300" />
+                
+                {/* Button */}
+                <div className="relative flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-secondary group-hover:bg-secondary/90 transition-all duration-300 shadow-2xl shadow-secondary/40 group-hover:scale-110">
+                  <Play className="w-8 h-8 md:w-10 md:h-10 text-secondary-foreground fill-secondary-foreground ml-1" />
+                </div>
+              </div>
+            </div>
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const HeroSection = () => {
   const learnings = [
@@ -154,23 +211,7 @@ const HeroSection = () => {
           </div>
 
           {/* Video */}
-          <div className="relative mb-12 w-full max-w-2xl">
-            {/* Video frame glow */}
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-secondary via-primary to-secondary opacity-50 blur-lg" />
-            
-            {/* Video container */}
-            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50">
-              <iframe 
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/44G2R8EWAF4?modestbranding=1&controls=0&rel=0&showinfo=0&iv_load_policy=3" 
-                title="CONHEÇA A MENTORIA RESIDENTE DE ELITE 2026" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerPolicy="strict-origin-when-cross-origin" 
-                allowFullScreen
-              />
-            </div>
-          </div>
+          <VideoPlayer />
 
           {/* Taglines */}
           <div className="mb-12 max-w-2xl">
