@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import aulasObjetivasImg from "@/assets/aulas-objetivas-complementares.png";
 import diagnosticoInicialImg from "@/assets/diagnostico-inicial.png";
+import intensivaoFinalImg from "@/assets/intensivao-final.png";
 
 const mentorshipSteps = [
   {
@@ -50,6 +51,7 @@ const mentorshipSteps = [
     id: 8,
     title: "Intensivão final ENAMED e SES-PE",
     description: "Revisões altamente direcionadas na reta final. Aqui nossos professores são reconhecidos pela alta didática!",
+    image: intensivaoFinalImg,
   },
 ];
 
