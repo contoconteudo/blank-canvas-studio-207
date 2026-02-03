@@ -9,7 +9,7 @@ const plans = [
     originalPrice: "5.947",
     installments: "394,64",
     cashPrice: "3.884",
-    checkoutUrl: "https://pay.hub.la/CqZF7dHdfWFmCbo5ctil",
+    checkoutUrl: "https://pay.hub.la/PiSKxMDXWRGthaP8s4Wp",
     features: [
       "Mentoria completa",
       "Simulados autorais",
