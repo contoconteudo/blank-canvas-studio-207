@@ -5,6 +5,7 @@ import intensivaoFinalImg from "@/assets/intensivao-final.png";
 import materialDidaticoImg from "@/assets/material-didatico.png";
 import mentoriaAcompanhamentoImg from "@/assets/mentoria-acompanhamento.png";
 import planejamentoEstrategicoImg from "@/assets/planejamento-estrategico.png";
+import simuladosAutoraisImg from "@/assets/simulados-autorais.png";
 
 const mentorshipSteps = [
   {
@@ -34,7 +35,8 @@ const mentorshipSteps = [
       "por que erra",
       "como corrigir"
     ],
-    additionalText: "Aqui nossos professores avaliam: seu desempenho, o tipo de erro que está cometendo e a relevância do erro em cada tema e analisam a sua evolução."
+    additionalText: "Aqui nossos professores avaliam: seu desempenho, o tipo de erro que está cometendo e a relevância do erro em cada tema e analisam a sua evolução.",
+    image: simuladosAutoraisImg,
   },
   {
     id: 5,
