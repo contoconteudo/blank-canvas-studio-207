@@ -310,3 +310,9 @@ All colors MUST be HSL.
     );
   }
 }
+
+/* Hide Lovable badges */
+#lovable-badge,
+#gptengineer-badge {
+  display: none !important;
+}
