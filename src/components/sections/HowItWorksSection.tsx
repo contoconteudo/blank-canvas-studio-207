@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import aulasObjetivasImg from "@/assets/aulas-objetivas-complementares.png";
 import diagnosticoInicialImg from "@/assets/diagnostico-inicial.png";
 import intensivaoFinalImg from "@/assets/intensivao-final.png";
@@ -7,7 +8,6 @@ import mentoriaAcompanhamentoImg from "@/assets/mentoria-acompanhamento.png";
 import planejamentoEstrategicoImg from "@/assets/planejamento-estrategico.png";
 import simuladosAutoraisImg from "@/assets/simulados-autorais.png";
 import revisaoInteligenteImg from "@/assets/revisao-inteligente.png";
-
 const mentorshipSteps = [
   {
     id: 1,
@@ -80,8 +80,16 @@ const HowItWorksSection = () => {
             const isOdd = step.id % 2 !== 0;
             
             return (
-              <div
+              <motion.div
                 key={step.id}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  ease: [0.22, 1, 0.36, 1] 
+                }}
                 className="card-gradient-depth card-gradient-depth-animated"
               >
                 <div className={`flex flex-col ${isOdd ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
@@ -151,7 +159,7 @@ const HowItWorksSection = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
