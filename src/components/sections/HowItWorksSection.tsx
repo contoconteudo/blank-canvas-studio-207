@@ -3,6 +3,7 @@ import aulasObjetivasImg from "@/assets/aulas-objetivas-complementares.png";
 import diagnosticoInicialImg from "@/assets/diagnostico-inicial.png";
 import intensivaoFinalImg from "@/assets/intensivao-final.png";
 import materialDidaticoImg from "@/assets/material-didatico.png";
+import mentoriaAcompanhamentoImg from "@/assets/mentoria-acompanhamento.png";
 
 const mentorshipSteps = [
   {
@@ -20,6 +21,7 @@ const mentorshipSteps = [
     id: 3,
     title: "Mentoria com acompanhamento contínuo",
     description: "Você não fica sozinho. Seu desempenho é acompanhado, analisado e ajustado a todo momento.",
+    image: mentoriaAcompanhamentoImg,
   },
   {
     id: 4,
