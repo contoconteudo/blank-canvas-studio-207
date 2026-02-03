@@ -1,4 +1,3 @@
-import { Instagram, Youtube, Linkedin } from "lucide-react";
 import logoRde from "@/assets/logo-rde.png";
 
 const Footer = () => {
@@ -35,39 +34,6 @@ const Footer = () => {
               Aqui, você não estuda mais sozinho.
             </p>
 
-            {/* Social Links */}
-            <div className="flex items-center justify-center gap-4 mb-10">
-              <a 
-                href="https://instagram.com/residentedeelite" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                style={{ backgroundColor: '#085D7D' }}
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5 text-white" />
-              </a>
-              <a 
-                href="https://youtube.com/@residentedeelite" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                style={{ backgroundColor: '#085D7D' }}
-                aria-label="YouTube"
-              >
-                <Youtube className="w-5 h-5 text-white" />
-              </a>
-              <a 
-                href="https://linkedin.com/company/residentedeelite" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                style={{ backgroundColor: '#085D7D' }}
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5 text-white" />
-              </a>
-            </div>
           </div>
         </div>
       </div>
