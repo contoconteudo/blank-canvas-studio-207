@@ -65,7 +65,7 @@ const DirectionSection = () => {
 
               <Button 
                 size="lg"
-                className="mt-8 font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
+                className="btn-glow mt-8 font-semibold px-8 py-6 text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105"
                 style={{ backgroundColor: '#1C233B', color: '#BE9964' }}
               >
                 Quero aprender com quem passou

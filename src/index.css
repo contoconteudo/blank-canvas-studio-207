@@ -194,4 +194,54 @@ All colors MUST be HSL.
   .card-gradient-depth-animated::before {
     animation: glow-pulse 3s ease-in-out infinite;
   }
+
+  /* Subtle diffuse glow behind buttons */
+  .btn-glow {
+    @apply relative;
+  }
+
+  .btn-glow::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: radial-gradient(
+      ellipse 120% 100% at center,
+      hsl(35 41% 57% / 0.4) 0%,
+      hsl(35 41% 57% / 0.2) 40%,
+      transparent 70%
+    );
+    filter: blur(16px);
+    transform: scale(1.3);
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+
+  .btn-glow:hover::before {
+    transform: scale(1.5);
+    filter: blur(20px);
+    background: radial-gradient(
+      ellipse 120% 100% at center,
+      hsl(35 41% 57% / 0.5) 0%,
+      hsl(35 41% 57% / 0.25) 40%,
+      transparent 70%
+    );
+  }
+
+  /* Teal glow variant */
+  .btn-glow-teal::before {
+    background: radial-gradient(
+      ellipse 120% 100% at center,
+      hsl(196 93% 24% / 0.5) 0%,
+      hsl(196 93% 24% / 0.25) 40%,
+      transparent 70%
+    );
+  }
+
+  .btn-glow-teal:hover::before {
+    background: radial-gradient(
+      ellipse 120% 100% at center,
+      hsl(196 93% 24% / 0.6) 0%,
+      hsl(196 93% 24% / 0.3) 40%,
+      transparent 70%
+    );
+  }
 }
