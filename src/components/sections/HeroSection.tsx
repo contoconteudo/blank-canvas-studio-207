@@ -43,7 +43,7 @@ const VideoPlayer = () => {
             
             {/* Play button */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative">
+              <div className="relative animate-[play-breathe_2.5s_ease-in-out_infinite]">
                 {/* Glow effect */}
                 <div className="absolute inset-0 rounded-full bg-secondary/50 blur-xl scale-150 group-hover:scale-175 transition-transform duration-300" />
                 
