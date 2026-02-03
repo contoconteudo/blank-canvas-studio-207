@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import aulasObjetivasImg from "@/assets/aulas-objetivas-complementares.png";
 
 const mentorshipSteps = [
   {
@@ -31,6 +32,7 @@ const mentorshipSteps = [
     id: 5,
     title: "Aulas objetivas complementares",
     description: "Foco no que cai. Linguagem de prova e atalhos cognitivos. Sem teoria infinita.",
+    image: aulasObjetivasImg,
   },
   {
     id: 6,
@@ -95,31 +97,44 @@ const HowItWorksSection = () => {
                     </div>
                   </div>
 
-                  {/* Image Placeholder */}
+                  {/* Image */}
                   <div className="flex-1 min-h-[200px] md:min-h-[280px] relative">
-                    <div 
-                      className="absolute inset-0 flex items-center justify-center"
-                      style={{ backgroundColor: '#045777' }}
-                    >
-                      <div className="text-center text-white/60">
-                        <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 rounded-lg border-2 border-dashed border-white/30 flex items-center justify-center">
-                          <svg 
-                            className="w-8 h-8 md:w-10 md:h-10 text-white/40" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24"
-                          >
-                            <path 
-                              strokeLinecap="round" 
-                              strokeLinejoin="round" 
-                              strokeWidth={1.5} 
-                              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" 
-                            />
-                          </svg>
-                        </div>
-                        <span className="text-sm">Imagem {step.id}</span>
+                    {step.image ? (
+                      <div 
+                        className="absolute inset-0 flex items-center justify-center"
+                        style={{ backgroundColor: '#045777' }}
+                      >
+                        <img 
+                          src={step.image} 
+                          alt={step.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                    </div>
+                    ) : (
+                      <div 
+                        className="absolute inset-0 flex items-center justify-center"
+                        style={{ backgroundColor: '#045777' }}
+                      >
+                        <div className="text-center text-white/60">
+                          <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 rounded-lg border-2 border-dashed border-white/30 flex items-center justify-center">
+                            <svg 
+                              className="w-8 h-8 md:w-10 md:h-10 text-white/40" 
+                              fill="none" 
+                              stroke="currentColor" 
+                              viewBox="0 0 24 24"
+                            >
+                              <path 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth={1.5} 
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" 
+                              />
+                            </svg>
+                          </div>
+                          <span className="text-sm">Imagem {step.id}</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
