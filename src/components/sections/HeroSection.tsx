@@ -254,7 +254,7 @@ const HeroSection = () => {
           {/* CTA Button */}
           <Button
             size="lg"
-            className="h-14 px-10 text-lg font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-xl shadow-secondary/20 transition-all hover:shadow-2xl hover:shadow-secondary/30"
+            className="btn-glow h-14 px-10 text-lg font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-xl shadow-secondary/20 transition-all hover:shadow-2xl hover:shadow-secondary/30"
           >
             Quero conhecer a mentoria
           </Button>

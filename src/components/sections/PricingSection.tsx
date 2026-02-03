@@ -117,7 +117,7 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
       {/* CTA Button */}
       <Button 
         size="lg"
-        className="w-full font-semibold py-6 text-base md:text-lg rounded-xl transition-all duration-300 hover:scale-105"
+        className="btn-glow-teal w-full font-semibold py-6 text-base md:text-lg rounded-xl transition-all duration-300 hover:scale-105"
         style={{ backgroundColor: '#305CA9', color: 'white' }}
       >
         Quero garantir minha vaga
