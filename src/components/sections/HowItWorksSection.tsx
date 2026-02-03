@@ -4,6 +4,7 @@ import diagnosticoInicialImg from "@/assets/diagnostico-inicial.png";
 import intensivaoFinalImg from "@/assets/intensivao-final.png";
 import materialDidaticoImg from "@/assets/material-didatico.png";
 import mentoriaAcompanhamentoImg from "@/assets/mentoria-acompanhamento.png";
+import planejamentoEstrategicoImg from "@/assets/planejamento-estrategico.png";
 
 const mentorshipSteps = [
   {
@@ -16,6 +17,7 @@ const mentorshipSteps = [
     id: 2,
     title: "Planejamento estratégico individual",
     description: "Você recebe um mapa de estudo realista, focado no que importa para a sua prova.",
+    image: planejamentoEstrategicoImg,
   },
   {
     id: 3,
