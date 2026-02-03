@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import aulasObjetivasImg from "@/assets/aulas-objetivas-complementares.png";
 import diagnosticoInicialImg from "@/assets/diagnostico-inicial.png";
 import intensivaoFinalImg from "@/assets/intensivao-final.png";
+import materialDidaticoImg from "@/assets/material-didatico.png";
 
 const mentorshipSteps = [
   {
@@ -41,6 +42,7 @@ const mentorshipSteps = [
     id: 6,
     title: "Material didático enxuto",
     description: "Mapas mentais e ebooks direcionados. Conteúdo filtrado por incidência.",
+    image: materialDidaticoImg,
   },
   {
     id: 7,
