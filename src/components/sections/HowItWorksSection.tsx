@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import aulasObjetivasImg from "@/assets/aulas-objetivas-complementares.png";
+import diagnosticoInicialImg from "@/assets/diagnostico-inicial.png";
 
 const mentorshipSteps = [
   {
     id: 1,
     title: "Diagnóstico inicial",
     description: "Analisamos seu ponto de partida, histórico, rotina e objetivo.",
+    image: diagnosticoInicialImg,
   },
   {
     id: 2,
