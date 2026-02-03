@@ -49,6 +49,20 @@ const plans = [
       "Heatmaps: mapas de incidência SES-PE",
       "Intensivão final SES-PE e ENAMED"
     ]
+  },
+  {
+    badge: "4° ANO",
+    subtitle: "MENTORIA + INTENSIVÃO ENAMED",
+    originalPrice: "4.786",
+    installments: "372,28",
+    cashPrice: "3.664",
+    checkoutUrl: "https://pay.hub.la/CqZF7dHdfWFmCbo5ctil",
+    features: [
+      "Mentoria completa",
+      "Simulados autorais",
+      "Materiais didáticos e aulas",
+      "Intensivão ENAMED"
+    ]
   }
 ];
 
