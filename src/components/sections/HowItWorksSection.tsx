@@ -6,6 +6,7 @@ import materialDidaticoImg from "@/assets/material-didatico.png";
 import mentoriaAcompanhamentoImg from "@/assets/mentoria-acompanhamento.png";
 import planejamentoEstrategicoImg from "@/assets/planejamento-estrategico.png";
 import simuladosAutoraisImg from "@/assets/simulados-autorais.png";
+import revisaoInteligenteImg from "@/assets/revisao-inteligente.png";
 
 const mentorshipSteps = [
   {
@@ -54,6 +55,7 @@ const mentorshipSteps = [
     id: 7,
     title: "Revisão inteligente e direcionada",
     description: "Repetição espaçada + recuperação ativa no momento certo.",
+    image: revisaoInteligenteImg,
   },
   {
     id: 8,
