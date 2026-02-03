@@ -255,6 +255,7 @@ const HeroSection = () => {
           <Button
             size="lg"
             className="btn-glow h-14 px-10 text-lg font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-xl shadow-secondary/20 transition-all hover:shadow-2xl hover:shadow-secondary/30"
+            onClick={() => document.getElementById('ofertas')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Quero conhecer a mentoria
           </Button>
