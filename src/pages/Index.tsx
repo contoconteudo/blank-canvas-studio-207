@@ -4,6 +4,7 @@ import CandidatesSection from "@/components/sections/CandidatesSection";
 import DirectionSection from "@/components/sections/DirectionSection";
 import MentorshipSection from "@/components/sections/MentorshipSection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import HeatmapsSection from "@/components/sections/HeatmapsSection";
 import FoundersSection from "@/components/sections/FoundersSection";
 import TeachersSection from "@/components/sections/TeachersSection";
@@ -44,6 +45,10 @@ const Index = () => {
       
       <AnimatedSection>
         <MentorshipSection />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <TestimonialsSection />
       </AnimatedSection>
       
       <AnimatedSection>
