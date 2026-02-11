@@ -15,8 +15,8 @@ interface CheckoutModalProps {
   checkoutUrl: string;
 }
 
-const AC_API_URL = "https://residentelitemarketing.api-us1.com/api/3/contacts";
 const AC_API_KEY = "e36fc9bf06cd078e2da948e9ee37e1a80d5aa3902f6b7ef70c8c319da6f59f7dd02a439a";
+const AC_BASE = "https://residentelitemarketing.api-us1.com";
 
 const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) => {
   const [name, setName] = useState("");
@@ -44,51 +44,66 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
     return url.toString();
   }, [checkoutUrl, name, email, phone, utms]);
 
-  const handleSubmit = useCallback(async () => {
-    if (!email.trim()) {
-      setError("Preencha seu email");
-      return;
-    }
+  const sendToActiveCampaign = useCallback(() => {
+    // Use AC v1 API with form-encoded POST (simple request, no preflight, bypasses CORS)
+    const body = new URLSearchParams();
+    body.set("api_key", AC_API_KEY);
+    body.set("api_action", "contact_add");
+    body.set("api_output", "json");
+    body.set("email", email.trim());
+    body.set("first_name", name.trim());
+    if (phone.trim()) body.set("phone", phone.trim());
+
+    // UTM fields (field IDs 1-5)
+    const utmFieldMap: Record<string, string> = {
+      utm_source: "1",
+      utm_content: "2",
+      utm_medium: "3",
+      utm_term: "4",
+      utm_campaign: "5",
+    };
+    Object.entries(utms).forEach(([key, value]) => {
+      const fieldId = utmFieldMap[key];
+      if (fieldId && value) {
+        body.set(`field[${fieldId},0]`, value);
+      }
+    });
+
+    // Send as simple request — browser sends it even without CORS headers in response
+    // We don't need to read the response, just fire and forget
+    fetch(`${AC_BASE}/admin/api.php`, {
+      method: "POST",
+      body: body.toString(),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      mode: "no-cors",
+    }).catch(() => {
+      // Silently fail — redirect will happen regardless
+    });
+  }, [email, name, phone, utms]);
+
+  const handleSubmit = useCallback(() => {
     if (!name.trim()) {
       setError("Preencha seu nome");
+      return;
+    }
+    if (!email.trim()) {
+      setError("Preencha seu email");
       return;
     }
 
     setError(null);
     setIsSubmitting(true);
 
-    const fieldValues: { field: string; value: string }[] = [];
-    if (utms.utm_source) fieldValues.push({ field: "1", value: utms.utm_source });
-    if (utms.utm_content) fieldValues.push({ field: "2", value: utms.utm_content });
-    if (utms.utm_medium) fieldValues.push({ field: "3", value: utms.utm_medium });
-    if (utms.utm_term) fieldValues.push({ field: "4", value: utms.utm_term });
-    if (utms.utm_campaign) fieldValues.push({ field: "5", value: utms.utm_campaign });
+    // Fire AC request (fire-and-forget)
+    sendToActiveCampaign();
 
-    try {
-      await fetch(AC_API_URL, {
-        method: "POST",
-        headers: {
-          "Api-Token": AC_API_KEY,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contact: {
-            email: email.trim(),
-            firstName: name.trim(),
-            phone: phone.trim() || undefined,
-            fieldValues: fieldValues.length > 0 ? fieldValues : undefined,
-          },
-        }),
-      });
-    } catch {
-      // Even if AC fails, redirect to checkout
-      console.warn("AC request failed, redirecting anyway");
-    }
-
-    // Redirect to checkout
-    const finalUrl = buildCheckoutUrl();
-    window.location.href = finalUrl;
-  }, [name, email, phone, utms, buildCheckoutUrl]);
+    // Redirect to checkout after small delay to let request go out
+    setTimeout(() => {
+      window.location.href = buildCheckoutUrl();
+    }, 800);
+  }, [name, email, sendToActiveCampaign, buildCheckoutUrl]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
