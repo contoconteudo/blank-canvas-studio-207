@@ -15,8 +15,7 @@ interface CheckoutModalProps {
   checkoutUrl: string;
 }
 
-const AC_API_KEY = "e36fc9bf06cd078e2da948e9ee37e1a80d5aa3902f6b7ef70c8c319da6f59f7dd02a439a";
-const AC_BASE = "https://residentelitemarketing.api-us1.com";
+const AC_PROC_URL = "https://residentelitemarketing.activehosted.com/proc.php";
 
 const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) => {
   const [name, setName] = useState("");
@@ -45,42 +44,36 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
   }, [checkoutUrl, name, email, phone, utms]);
 
   const sendToActiveCampaign = useCallback(() => {
-    // Use AC v1 API with form-encoded POST (simple request, no preflight, bypasses CORS)
-    const body = new URLSearchParams();
-    body.set("api_key", AC_API_KEY);
-    body.set("api_action", "contact_add");
-    body.set("api_output", "json");
-    body.set("email", email.trim());
-    body.set("first_name", name.trim());
-    if (phone.trim()) body.set("phone", phone.trim());
+    const formData = new FormData();
 
-    // UTM fields (field IDs 1-5)
-    const utmFieldMap: Record<string, string> = {
-      utm_source: "1",
-      utm_content: "2",
-      utm_medium: "3",
-      utm_term: "4",
-      utm_campaign: "5",
-    };
-    Object.entries(utms).forEach(([key, value]) => {
-      const fieldId = utmFieldMap[key];
-      if (fieldId && value) {
-        body.set(`field[${fieldId},0]`, value);
-      }
-    });
+    // AC hidden fields
+    formData.set("u", "7");
+    formData.set("f", "7");
+    formData.set("s", "");
+    formData.set("c", "0");
+    formData.set("m", "0");
+    formData.set("act", "sub");
+    formData.set("v", "2");
+    formData.set("or", "be60195a-cbc0-4161-8d61-8227b9ebd1bc");
 
-    // Send as simple request — browser sends it even without CORS headers in response
-    // We don't need to read the response, just fire and forget
-    fetch(`${AC_BASE}/admin/api.php`, {
+    // User data
+    formData.set("fullname", name.trim());
+    formData.set("email", email.trim());
+    if (phone.trim()) formData.set("phone", phone.trim());
+
+    // UTM custom fields
+    if (utms.utm_source) formData.set("field[2]", utms.utm_source);
+    if (utms.utm_content) formData.set("field[4]", utms.utm_content);
+    if (utms.utm_medium) formData.set("field[5]", utms.utm_medium);
+    if (utms.utm_term) formData.set("field[6]", utms.utm_term);
+    if (utms.utm_campaign) formData.set("field[7]", utms.utm_campaign);
+
+    fetch(AC_PROC_URL, {
       method: "POST",
-      body: body.toString(),
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
+      body: formData,
       mode: "no-cors",
-    }).catch(() => {
-      // Silently fail — redirect will happen regardless
-    });
+      keepalive: true,
+    }).catch(() => {});
   }, [email, name, phone, utms]);
 
   const handleSubmit = useCallback(() => {
@@ -96,13 +89,11 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
     setError(null);
     setIsSubmitting(true);
 
-    // Fire AC request (fire-and-forget)
+    // Fire-and-forget to AC
     sendToActiveCampaign();
 
-    // Redirect to checkout after small delay to let request go out
-    setTimeout(() => {
-      window.location.href = buildCheckoutUrl();
-    }, 800);
+    // Redirect immediately — keepalive ensures request completes
+    window.location.href = buildCheckoutUrl();
   }, [name, email, sendToActiveCampaign, buildCheckoutUrl]);
 
   return (
