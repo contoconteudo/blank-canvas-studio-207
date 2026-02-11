@@ -8,6 +8,7 @@ const CandidatesSection = () => {
     "Resolve questões sem saber exatamente o que errou e por quê",
     "Acumula matéria e vive com a sensação de estar sempre atrasado",
     "Não sabe se está indo no ritmo certo",
+    "Perde mais tempo planejando e organizando do que realmente estudando",
   ];
 
   return (
