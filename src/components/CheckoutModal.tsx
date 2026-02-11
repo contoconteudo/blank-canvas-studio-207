@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -17,7 +17,9 @@ interface CheckoutModalProps {
 }
 
 const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -32,6 +34,15 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
     return out;
   }, []);
 
+  // Formata o telefone para o ActiveCampaign (Adiciona +55 se for BR)
+  const formattedPhone = useMemo(() => {
+    const clean = phone.replace(/\D/g, "");
+    if (clean.length >= 10 && clean.length <= 11) {
+      return `+55${clean}`;
+    }
+    return clean;
+  }, [phone]);
+
   const buildCheckoutUrl = () => {
     try {
       const url = new URL(checkoutUrl);
@@ -41,7 +52,7 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
       Object.entries(utms).forEach(([k, v]) => url.searchParams.set(k, v));
       return url.toString();
     } catch (e) {
-      console.error("URL Inválida", e);
+      console.error("URL Error", e);
       return checkoutUrl;
     }
   };
@@ -49,16 +60,27 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
   const handleNativeSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (!name || !email) {
       e.preventDefault();
-      alert("Por favor, preencha todos os campos obrigatórios.");
+      alert("Por favor, preencha os campos obrigatórios.");
       return;
     }
 
     setIsSubmitting(true);
 
-    // O form envia nativamente para o iframe. Apenas agendamos o redirect.
+    // Backup via sendBeacon para garantir envio mesmo se a página fechar
+    try {
+      if (formRef.current) {
+        const formData = new FormData(formRef.current);
+        navigator.sendBeacon("https://residentelitemarketing.activehosted.com/proc.php", formData);
+      }
+    } catch (err) {
+      console.log("Beacon error", err);
+    }
+
+    // O envio nativo via form -> iframe acontece automaticamente (sem preventDefault)
+
     setTimeout(() => {
       window.location.href = buildCheckoutUrl();
-    }, 2000);
+    }, 1500);
   };
 
   return (
@@ -74,13 +96,14 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
         </DialogHeader>
 
         <form
+          ref={formRef}
           action="https://residentelitemarketing.activehosted.com/proc.php"
           method="POST"
           target="hidden_iframe"
           onSubmit={handleNativeSubmit}
           className="space-y-4 mt-4"
         >
-          {/* Campos Ocultos de Configuração do AC */}
+          {/* Campos Ocultos de Configuração */}
           <input type="hidden" name="u" value="7" />
           <input type="hidden" name="f" value="7" />
           <input type="hidden" name="s" />
@@ -90,6 +113,9 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
           <input type="hidden" name="v" value="2" />
           <input type="hidden" name="or" value="f5ed6570-3047-4163-9976-b8d190598eb4" />
 
+          {/* Telefone formatado com +55 enviado ao AC */}
+          <input type="hidden" name="phone" value={formattedPhone} />
+
           {/* Campos Ocultos de UTM */}
           <input type="hidden" name="field[2]" value={utms.utm_source || ""} />
           <input type="hidden" name="field[4]" value={utms.utm_medium || ""} />
@@ -97,7 +123,7 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
           <input type="hidden" name="field[6]" value={utms.utm_content || ""} />
           <input type="hidden" name="field[7]" value={utms.utm_term || ""} />
 
-          {/* Inputs Visíveis com name nativo */}
+          {/* Inputs Visíveis */}
           <div className="space-y-1.5">
             <Label htmlFor="fullname" className="text-zinc-300">Nome Completo</Label>
             <Input
@@ -125,12 +151,12 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="phone" className="text-zinc-300">WhatsApp</Label>
+            <Label htmlFor="phone_view" className="text-zinc-300">WhatsApp</Label>
             <Input
-              id="phone"
-              name="phone"
+              id="phone_view"
+              name="phone_view"
               type="tel"
-              placeholder="(00) 00000-0000"
+              placeholder="(84) 99999-9999"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="h-12 bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-blue-600"
@@ -146,7 +172,6 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
           </Button>
         </form>
 
-        {/* Iframe receptor invisível */}
         <iframe name="hidden_iframe" style={{ display: "none" }} title="hidden" />
       </DialogContent>
     </Dialog>
