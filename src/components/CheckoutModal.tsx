@@ -34,11 +34,9 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [utmParams, setUtmParams] = useState<Record<string, string>>({});
 
-  // Capture UTM parameters on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const utms: Record<string, string> = {};
-    
     const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
     utmKeys.forEach((key) => {
       const value = params.get(key);
@@ -46,13 +44,11 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
         utms[key] = value;
       }
     });
-    
     setUtmParams(utms);
   }, []);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    // Clear error when user types
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
@@ -60,45 +56,24 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
 
   const buildCheckoutUrl = (data: FormData): string => {
     const url = new URL(checkoutUrl);
-    
-    // Add form data
-    if (data.fullname) {
-      url.searchParams.set("name", data.fullname);
-    }
-    if (data.email) {
-      url.searchParams.set("email", data.email);
-    }
-    if (data.phone) {
-      url.searchParams.set("phone", data.phone);
-    }
-    
-    // Add UTM parameters
+    if (data.fullname) url.searchParams.set("name", data.fullname);
+    if (data.email) url.searchParams.set("email", data.email);
+    if (data.phone) url.searchParams.set("phone", data.phone);
     Object.entries(utmParams).forEach(([key, value]) => {
       url.searchParams.set(key, value);
     });
-    
     return url.toString();
   };
 
-  // Robust redirect function - multiple fallback methods
   const robustRedirect = (url: string) => {
-    // Method 1: Standard location assignment
     try {
       window.location.href = url;
     } catch (e) {
-      console.log("Method 1 failed, trying alternatives");
+      console.log("Method 1 failed");
     }
-
-    // Method 2: location.replace (doesn't add to history)
     setTimeout(() => {
-      try {
-        window.location.replace(url);
-      } catch (e) {
-        console.log("Method 2 failed");
-      }
+      try { window.location.replace(url); } catch (e) { console.log("Method 2 failed"); }
     }, 100);
-
-    // Method 3: Create and click a link element
     setTimeout(() => {
       try {
         const link = document.createElement("a");
@@ -109,28 +84,17 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-      } catch (e) {
-        console.log("Method 3 failed");
-      }
+      } catch (e) { console.log("Method 3 failed"); }
     }, 200);
-
-    // Method 4: Open in same window
     setTimeout(() => {
-      try {
-        window.open(url, "_self");
-      } catch (e) {
-        console.log("Method 4 failed");
-      }
+      try { window.open(url, "_self"); } catch (e) { console.log("Method 4 failed"); }
     }, 300);
-
-    // Method 5: Form submission fallback
     setTimeout(() => {
       try {
         const form = document.createElement("form");
         form.method = "GET";
         form.action = url.split("?")[0];
         form.style.display = "none";
-        
         const urlParams = new URL(url).searchParams;
         urlParams.forEach((value, key) => {
           const input = document.createElement("input");
@@ -139,34 +103,68 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
           input.value = value;
           form.appendChild(input);
         });
-        
         document.body.appendChild(form);
         form.submit();
-      } catch (e) {
-        console.log("Method 5 failed");
-      }
+      } catch (e) { console.log("Method 5 failed"); }
     }, 400);
-
-    // Method 6: Meta refresh as last resort
     setTimeout(() => {
       try {
         const meta = document.createElement("meta");
         meta.httpEquiv = "refresh";
         meta.content = `0;url=${url}`;
         document.head.appendChild(meta);
-      } catch (e) {
-        console.log("Method 6 failed");
-      }
+      } catch (e) { console.log("Method 6 failed"); }
     }, 500);
+  };
+
+  const submitToActiveCampaign = (data: FormData): Promise<void> => {
+    return new Promise((resolve) => {
+      const acFormData = new window.FormData();
+
+      // ActiveCampaign hidden fields
+      acFormData.append("u", "7");
+      acFormData.append("f", "7");
+      acFormData.append("s", "");
+      acFormData.append("c", "0");
+      acFormData.append("m", "0");
+      acFormData.append("act", "sub");
+      acFormData.append("v", "2");
+      acFormData.append("or", "a]f6f454dcb1acb7b64e14e88f76a8a3");
+
+      // User fields
+      acFormData.append("fullname", data.fullname);
+      acFormData.append("email", data.email);
+      if (data.phone) {
+        acFormData.append("phone", data.phone);
+      }
+
+      // UTM fields as hidden fields
+      Object.entries(utmParams).forEach(([key, value]) => {
+        acFormData.append(key, value);
+      });
+
+      fetch("https://residentelitemarketing.activehosted.com/proc.php?jsonp=true", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+        },
+        body: acFormData,
+        mode: "no-cors",
+      })
+        .then(() => resolve())
+        .catch(() => {
+          console.log("ActiveCampaign submission failed, proceeding to checkout");
+          resolve();
+        });
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Validate form
     const result = formSchema.safeParse(formData);
-    
+
     if (!result.success) {
       const fieldErrors: Partial<Record<keyof FormData, string>> = {};
       result.error.errors.forEach((err) => {
@@ -178,17 +176,18 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
       return;
     }
 
-    // Build checkout URL with all parameters
+    // Submit to ActiveCampaign first
+    await submitToActiveCampaign(result.data);
+
+    // Then redirect to checkout
     const finalUrl = buildCheckoutUrl(result.data);
-    
-    // Store the URL in sessionStorage as backup
+
     try {
       sessionStorage.setItem("checkout_redirect_url", finalUrl);
     } catch (e) {
       // sessionStorage might be blocked
     }
 
-    // Execute robust redirect
     robustRedirect(finalUrl);
   };
 
@@ -200,7 +199,7 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
             Preencha seus dados para continuar
           </DialogTitle>
         </DialogHeader>
-        
+
         <form onSubmit={handleSubmit} className="space-y-5 mt-4">
           <div className="space-y-2">
             <Label htmlFor="fullname" className="font-semibold text-gray-700">
