@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 
@@ -34,7 +35,72 @@ const testimonials = [
   },
 ];
 
+// Duplicate for seamless loop
+const duplicated = [...testimonials, ...testimonials];
+
+const CARD_WIDTH = 360;
+const GAP = 24;
+const SPEED = 0.5; // px per frame
+
 const TestimonialsSection = () => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const offsetRef = useRef(0);
+  const rafRef = useRef<number>(0);
+  const isPausedRef = useRef(false);
+  const isDraggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragOffsetRef = useRef(0);
+  const [, forceRender] = useState(0);
+
+  const totalWidth = testimonials.length * (CARD_WIDTH + GAP);
+
+  const animate = useCallback(() => {
+    if (!isPausedRef.current && !isDraggingRef.current) {
+      offsetRef.current -= SPEED;
+      if (Math.abs(offsetRef.current) >= totalWidth) {
+        offsetRef.current += totalWidth;
+      }
+    }
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
+    }
+    rafRef.current = requestAnimationFrame(animate);
+  }, [totalWidth]);
+
+  useEffect(() => {
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [animate]);
+
+  const handlePause = () => {
+    isPausedRef.current = true;
+  };
+
+  const handleResume = () => {
+    if (!isDraggingRef.current) {
+      isPausedRef.current = false;
+    }
+  };
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    isPausedRef.current = true;
+    isDraggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    dragOffsetRef.current = offsetRef.current;
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+    const delta = e.clientX - dragStartXRef.current;
+    offsetRef.current = dragOffsetRef.current + delta;
+  };
+
+  const handlePointerUp = () => {
+    isDraggingRef.current = false;
+    isPausedRef.current = false;
+  };
+
   return (
     <section className="py-20 md:py-28 bg-background relative overflow-hidden">
       {/* Subtle glow */}
@@ -42,27 +108,55 @@ const TestimonialsSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-4xl font-bold text-secondary mb-4"
+          >
             Quem passou, aprova
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-muted-foreground max-w-2xl mx-auto text-lg"
+          >
             Veja o que nossos alunos aprovados dizem sobre a experiência no Residente de Elite
-          </p>
+          </motion.p>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto auto-rows-fr">
-          {testimonials.map((t, i) => (
-            <motion.div
+      {/* Carousel */}
+      <div
+        className="relative select-none cursor-grab active:cursor-grabbing"
+        onMouseEnter={handlePause}
+        onMouseLeave={handleResume}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+      >
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        <div
+          ref={trackRef}
+          className="flex will-change-transform"
+          style={{ gap: `${GAP}px` }}
+        >
+          {duplicated.map((t, i) => (
+            <div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative bg-gradient-to-b from-card to-card/80 border border-border/50 rounded-2xl p-6 flex flex-col hover:border-secondary/30 transition-colors duration-300 h-full"
+              className="group relative bg-gradient-to-b from-card to-card/80 border border-border/50 rounded-2xl p-6 flex flex-col hover:border-secondary/30 transition-colors duration-300 shrink-0"
+              style={{ width: `${CARD_WIDTH}px`, minHeight: "280px" }}
             >
               <Quote className="w-8 h-8 text-secondary/40 mb-4 shrink-0" />
 
-              <p className="text-foreground/90 text-sm leading-relaxed mb-6 flex-1">
+              <p className="text-foreground/90 text-sm leading-relaxed mb-6 flex-1 line-clamp-[8]">
                 {t.text}
               </p>
 
@@ -70,7 +164,7 @@ const TestimonialsSection = () => {
                 <p className="font-semibold text-secondary text-sm">{t.name}</p>
                 <p className="text-muted-foreground text-xs mt-1">{t.achievement}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
