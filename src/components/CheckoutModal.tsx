@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -15,7 +15,8 @@ interface CheckoutModalProps {
   checkoutUrl: string;
 }
 
-const AC_PROC_URL = "https://residentelitemarketing.activehosted.com/proc.php?jsonp=true";
+const AC_FORM_ACTION = "https://residentelitemarketing.activehosted.com/proc.php";
+const IFRAME_NAME = "ac_hidden_iframe";
 
 const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) => {
   const [name, setName] = useState("");
@@ -23,6 +24,7 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
   const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const utms = useMemo(() => {
     const params = new URLSearchParams(window.location.search);
@@ -44,37 +46,10 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
   }, [checkoutUrl, name, email, phone, utms]);
 
   const sendToActiveCampaign = useCallback(() => {
-    const body = new URLSearchParams();
-
-    // AC hidden fields
-    body.append("u", "7");
-    body.append("f", "7");
-    body.append("s", "");
-    body.append("c", "0");
-    body.append("m", "0");
-    body.append("act", "sub");
-    body.append("v", "2");
-    body.append("or", "be60195a-cbc0-4161-8d61-8227b9ebd1bc");
-
-    // User data
-    body.append("fullname", name.trim());
-    body.append("email", email.trim());
-    if (phone.trim()) body.append("phone", phone.trim());
-
-    // UTM custom fields
-    if (utms.utm_source) body.append("field[2]", utms.utm_source);
-    if (utms.utm_content) body.append("field[4]", utms.utm_content);
-    if (utms.utm_medium) body.append("field[5]", utms.utm_medium);
-    if (utms.utm_term) body.append("field[6]", utms.utm_term);
-    if (utms.utm_campaign) body.append("field[7]", utms.utm_campaign);
-
-    fetch(AC_PROC_URL, {
-      method: "POST",
-      body,
-      mode: "no-cors",
-      keepalive: true,
-    }).catch((err) => console.error("ActiveCampaign submission error (ignored):", err));
-  }, [email, name, phone, utms]);
+    // Submit the hidden form targeting the invisible iframe
+    // This is a native form POST — immune to AdBlockers and CORS
+    formRef.current?.submit();
+  }, []);
 
   const handleSubmit = useCallback(() => {
     if (!name.trim()) {
@@ -97,80 +72,112 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
   }, [name, email, sendToActiveCampaign, buildCheckoutUrl]);
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px] bg-background p-6 md:p-8">
-        <DialogHeader>
-          <DialogTitle className="text-xl md:text-2xl font-bold text-center text-foreground">
-            Preencha seus dados para continuar
-          </DialogTitle>
-          <DialogDescription className="text-center text-sm text-muted-foreground">
-            Seus dados serão usados para agilizar sua inscrição
-          </DialogDescription>
-        </DialogHeader>
+    <>
+      {/* Hidden iframe target — form submits here silently */}
+      <iframe name={IFRAME_NAME} style={{ display: "none" }} tabIndex={-1} aria-hidden="true" />
 
-        <div className="space-y-4 mt-4">
-          <div className="space-y-2">
-            <label htmlFor="checkout-name" className="block text-sm font-semibold text-foreground">
-              Nome completo <span className="text-destructive">*</span>
-            </label>
-            <Input
-              id="checkout-name"
-              placeholder="Digite seu nome completo"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="h-12"
-              autoComplete="name"
-            />
+      {/* Hidden native form — submitted programmatically, targets the iframe */}
+      <form
+        ref={formRef}
+        action={AC_FORM_ACTION}
+        method="POST"
+        target={IFRAME_NAME}
+        style={{ display: "none" }}
+        aria-hidden="true"
+      >
+        <input type="hidden" name="u" value="7" />
+        <input type="hidden" name="f" value="7" />
+        <input type="hidden" name="s" value="" />
+        <input type="hidden" name="c" value="0" />
+        <input type="hidden" name="m" value="0" />
+        <input type="hidden" name="act" value="sub" />
+        <input type="hidden" name="v" value="2" />
+        <input type="hidden" name="or" value="be60195a-cbc0-4161-8d61-8227b9ebd1bc" />
+        <input type="hidden" name="fullname" value={name.trim()} />
+        <input type="hidden" name="email" value={email.trim()} />
+        <input type="hidden" name="phone" value={phone.trim()} />
+        {utms.utm_source && <input type="hidden" name="field[2]" value={utms.utm_source} />}
+        {utms.utm_content && <input type="hidden" name="field[4]" value={utms.utm_content} />}
+        {utms.utm_medium && <input type="hidden" name="field[5]" value={utms.utm_medium} />}
+        {utms.utm_term && <input type="hidden" name="field[6]" value={utms.utm_term} />}
+        {utms.utm_campaign && <input type="hidden" name="field[7]" value={utms.utm_campaign} />}
+      </form>
+
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="sm:max-w-[500px] bg-background p-6 md:p-8">
+          <DialogHeader>
+            <DialogTitle className="text-xl md:text-2xl font-bold text-center text-foreground">
+              Preencha seus dados para continuar
+            </DialogTitle>
+            <DialogDescription className="text-center text-sm text-muted-foreground">
+              Seus dados serão usados para agilizar sua inscrição
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <label htmlFor="checkout-name" className="block text-sm font-semibold text-foreground">
+                Nome completo <span className="text-destructive">*</span>
+              </label>
+              <Input
+                id="checkout-name"
+                placeholder="Digite seu nome completo"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="h-12"
+                autoComplete="name"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="checkout-email" className="block text-sm font-semibold text-foreground">
+                Email <span className="text-destructive">*</span>
+              </label>
+              <Input
+                id="checkout-email"
+                type="email"
+                placeholder="Digite seu email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-12"
+                autoComplete="email"
+                inputMode="email"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="checkout-phone" className="block text-sm font-semibold text-foreground">
+                Telefone
+              </label>
+              <Input
+                id="checkout-phone"
+                type="tel"
+                placeholder="(11) 99999-9999"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="h-12"
+                autoComplete="tel"
+                inputMode="tel"
+              />
+            </div>
+
+            {error && (
+              <p className="text-sm font-medium text-destructive text-center" role="alert">
+                {error}
+              </p>
+            )}
+
+            <Button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              className="w-full h-12 text-base font-semibold"
+            >
+              {isSubmitting ? "Enviando..." : "QUERO ENTRAR"}
+            </Button>
           </div>
-
-          <div className="space-y-2">
-            <label htmlFor="checkout-email" className="block text-sm font-semibold text-foreground">
-              Email <span className="text-destructive">*</span>
-            </label>
-            <Input
-              id="checkout-email"
-              type="email"
-              placeholder="Digite seu email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-12"
-              autoComplete="email"
-              inputMode="email"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="checkout-phone" className="block text-sm font-semibold text-foreground">
-              Telefone
-            </label>
-            <Input
-              id="checkout-phone"
-              type="tel"
-              placeholder="(11) 99999-9999"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="h-12"
-              autoComplete="tel"
-              inputMode="tel"
-            />
-          </div>
-
-          {error && (
-            <p className="text-sm font-medium text-destructive text-center" role="alert">
-              {error}
-            </p>
-          )}
-
-          <Button
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-            className="w-full h-12 text-base font-semibold"
-          >
-            {isSubmitting ? "Enviando..." : "QUERO ENTRAR"}
-          </Button>
-        </div>
-      </DialogContent>
-    </Dialog>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 
