@@ -3,11 +3,11 @@ import { X } from "lucide-react";
 
 const CandidatesSection = () => {
   const problems = [
-    "estuda horas por dia",
-    "assiste aulas sem saber o que priorizar",
-    "resolve questões sem entender o padrão da banca",
-    "revisa de forma improvisada",
-    "muda a estratégia no meio do caminho",
+    "Estuda muito, mas esquece rápido",
+    "Assiste aulas demais e pratica de menos",
+    "Resolve questões sem saber exatamente o que errou e por quê",
+    "Acumula matéria e vive com a sensação de estar sempre atrasado",
+    "Não sabe se está indo no ritmo certo",
   ];
 
   return (
@@ -18,7 +18,7 @@ const CandidatesSection = () => {
       <div className="max-w-4xl mx-auto text-center">
         {/* Title */}
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">
-          A maioria dos candidatos:
+          As dores que te trouxeram até aqui
         </h2>
 
         {/* Cards Grid */}
