@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 
 const testimonials = [
@@ -51,8 +52,12 @@ const TestimonialsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto auto-rows-fr">
           {testimonials.map((t, i) => (
-            <div
+            <motion.div
               key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="group relative bg-gradient-to-b from-card to-card/80 border border-border/50 rounded-2xl p-6 flex flex-col hover:border-secondary/30 transition-colors duration-300 h-full"
             >
               <Quote className="w-8 h-8 text-secondary/40 mb-4 shrink-0" />
@@ -65,7 +70,7 @@ const TestimonialsSection = () => {
                 <p className="font-semibold text-secondary text-sm">{t.name}</p>
                 <p className="text-muted-foreground text-xs mt-1">{t.achievement}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
