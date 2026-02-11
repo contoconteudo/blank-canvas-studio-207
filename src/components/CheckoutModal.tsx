@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -17,9 +17,7 @@ interface CheckoutModalProps {
 }
 
 const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) => {
-  const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -43,46 +41,68 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
       Object.entries(utms).forEach(([k, v]) => url.searchParams.set(k, v));
       return url.toString();
     } catch (e) {
-      console.error("Invalid Checkout URL", e);
+      console.error("URL Inválida", e);
       return checkoutUrl;
     }
   };
 
-  const handleNativeSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleNativeSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (!name || !email) {
+      e.preventDefault();
+      alert("Por favor, preencha todos os campos obrigatórios.");
       return;
     }
 
     setIsSubmitting(true);
 
-    if (formRef.current) {
-      formRef.current.submit();
-    }
-
+    // O form envia nativamente para o iframe. Apenas agendamos o redirect.
     setTimeout(() => {
       window.location.href = buildCheckoutUrl();
-    }, 1500);
+    }, 2000);
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[540px] bg-zinc-950 border-zinc-800 p-0 overflow-hidden">
-        <DialogHeader className="px-6 pt-6 pb-0">
-          <DialogTitle className="text-xl md:text-2xl font-bold text-center text-white">
+      <DialogContent className="sm:max-w-md bg-zinc-950 border-zinc-800 text-white">
+        <DialogHeader>
+          <DialogTitle className="text-xl font-bold text-white text-center">
             Quase lá!
           </DialogTitle>
-          <DialogDescription className="text-center text-sm text-zinc-400">
+          <DialogDescription className="text-zinc-400 text-center">
             Preencha seus dados para liberar seu acesso exclusivo.
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleNativeSubmit} className="px-6 pb-6 space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="modal-name" className="text-zinc-300">Nome Completo</Label>
+        <form
+          action="https://residentelitemarketing.activehosted.com/proc.php"
+          method="POST"
+          target="hidden_iframe"
+          onSubmit={handleNativeSubmit}
+          className="space-y-4 mt-4"
+        >
+          {/* Campos Ocultos de Configuração do AC */}
+          <input type="hidden" name="u" value="7" />
+          <input type="hidden" name="f" value="7" />
+          <input type="hidden" name="s" />
+          <input type="hidden" name="c" value="0" />
+          <input type="hidden" name="m" value="0" />
+          <input type="hidden" name="act" value="sub" />
+          <input type="hidden" name="v" value="2" />
+          <input type="hidden" name="or" value="f5ed6570-3047-4163-9976-b8d190598eb4" />
+
+          {/* Campos Ocultos de UTM */}
+          <input type="hidden" name="field[2]" value={utms.utm_source || ""} />
+          <input type="hidden" name="field[4]" value={utms.utm_medium || ""} />
+          <input type="hidden" name="field[5]" value={utms.utm_campaign || ""} />
+          <input type="hidden" name="field[6]" value={utms.utm_content || ""} />
+          <input type="hidden" name="field[7]" value={utms.utm_term || ""} />
+
+          {/* Inputs Visíveis com name nativo */}
+          <div className="space-y-1.5">
+            <Label htmlFor="fullname" className="text-zinc-300">Nome Completo</Label>
             <Input
-              id="modal-name"
+              id="fullname"
+              name="fullname"
               type="text"
               placeholder="Seu nome completo"
               value={name}
@@ -91,10 +111,11 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="modal-email" className="text-zinc-300">Melhor Email</Label>
+          <div className="space-y-1.5">
+            <Label htmlFor="email" className="text-zinc-300">Melhor Email</Label>
             <Input
-              id="modal-email"
+              id="email"
+              name="email"
               type="email"
               placeholder="seu@email.com"
               value={email}
@@ -103,10 +124,11 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="modal-phone" className="text-zinc-300">WhatsApp</Label>
+          <div className="space-y-1.5">
+            <Label htmlFor="phone" className="text-zinc-300">WhatsApp</Label>
             <Input
-              id="modal-phone"
+              id="phone"
+              name="phone"
               type="tel"
               placeholder="(00) 00000-0000"
               value={phone}
@@ -118,40 +140,13 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-14 text-lg font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-lg"
+            className="w-full h-14 text-lg font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-xl"
           >
             {isSubmitting ? "Processando..." : "QUERO ENTRAR AGORA"}
           </Button>
         </form>
 
-        {/* Motor oculto ActiveCampaign */}
-        <form
-          ref={formRef}
-          method="POST"
-          action="https://residentelitemarketing.activehosted.com/proc.php"
-          target="hidden_iframe"
-          style={{ display: "none" }}
-        >
-          <input type="hidden" name="u" value="7" />
-          <input type="hidden" name="f" value="7" />
-          <input type="hidden" name="s" />
-          <input type="hidden" name="c" value="0" />
-          <input type="hidden" name="m" value="0" />
-          <input type="hidden" name="act" value="sub" />
-          <input type="hidden" name="v" value="2" />
-          <input type="hidden" name="or" value="f5ed6570-3047-4163-9976-b8d190598eb4" />
-
-          <input type="hidden" name="fullname" value={name} />
-          <input type="hidden" name="email" value={email} />
-          <input type="hidden" name="phone" value={phone} />
-
-          <input type="hidden" name="field[2]" value={utms.utm_source || ""} />
-          <input type="hidden" name="field[4]" value={utms.utm_medium || ""} />
-          <input type="hidden" name="field[5]" value={utms.utm_campaign || ""} />
-          <input type="hidden" name="field[6]" value={utms.utm_content || ""} />
-          <input type="hidden" name="field[7]" value={utms.utm_term || ""} />
-        </form>
-
+        {/* Iframe receptor invisível */}
         <iframe name="hidden_iframe" style={{ display: "none" }} title="hidden" />
       </DialogContent>
     </Dialog>
