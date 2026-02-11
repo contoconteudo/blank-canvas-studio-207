@@ -117,48 +117,6 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
     }, 500);
   };
 
-  const submitToActiveCampaign = (data: FormData): Promise<void> => {
-    return new Promise((resolve) => {
-      const acFormData = new window.FormData();
-
-      // ActiveCampaign hidden fields
-      acFormData.append("u", "7");
-      acFormData.append("f", "7");
-      acFormData.append("s", "");
-      acFormData.append("c", "0");
-      acFormData.append("m", "0");
-      acFormData.append("act", "sub");
-      acFormData.append("v", "2");
-      acFormData.append("or", "a]f6f454dcb1acb7b64e14e88f76a8a3");
-
-      // User fields
-      acFormData.append("fullname", data.fullname);
-      acFormData.append("email", data.email);
-      if (data.phone) {
-        acFormData.append("phone", data.phone);
-      }
-
-      // UTM fields as hidden fields
-      Object.entries(utmParams).forEach(([key, value]) => {
-        acFormData.append(key, value);
-      });
-
-      fetch("https://residentelitemarketing.activehosted.com/proc.php?jsonp=true", {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
-        body: acFormData,
-        mode: "no-cors",
-      })
-        .then(() => resolve())
-        .catch(() => {
-          console.log("ActiveCampaign submission failed, proceeding to checkout");
-          resolve();
-        });
-    });
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -176,10 +134,6 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
       return;
     }
 
-    // Submit to ActiveCampaign first
-    await submitToActiveCampaign(result.data);
-
-    // Then redirect to checkout
     const finalUrl = buildCheckoutUrl(result.data);
 
     try {
