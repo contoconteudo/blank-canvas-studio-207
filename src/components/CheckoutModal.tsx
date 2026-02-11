@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -6,6 +6,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 interface CheckoutModalProps {
   open: boolean;
@@ -13,44 +15,15 @@ interface CheckoutModalProps {
   checkoutUrl: string;
 }
 
-const AC_BASE = "https://residentelitemarketing.activehosted.com";
-
-function toE164BrazilMaybe(raw: string): string {
-  const trimmed = raw.trim();
-  if (!trimmed) return "";
-
-  // Keep digits and +
-  let normalized = trimmed.replace(/[^0-9+]/g, "");
-
-  // If user typed + already, keep it
-  if (normalized.startsWith("+")) {
-    return "+" + normalized.slice(1).replace(/\D/g, "");
-  }
-
-  // Pure digits
-  const digits = normalized.replace(/\D/g, "");
-
-  // If looks like BR local (10-11 digits), prefix +55
-  if (digits.length === 10 || digits.length === 11) {
-    return `+55${digits}`;
-  }
-
-  // If already includes country code without +, just add +
-  if (digits.length >= 8) {
-    return `+${digits}`;
-  }
-
-  return "";
-}
-
-function isValidE164(phone: string): boolean {
-  return /^\+[1-9]\d{7,14}$/.test(phone);
-}
+const AC_API_URL = "https://residentelitemarketing.api-us1.com/api/3/contacts";
+const AC_API_KEY = "e36fc9bf06cd078e2da948e9ee37e1a80d5aa3902f6b7ef70c8c319da6f59f7dd02a439a";
 
 const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const utms = useMemo(() => {
     const params = new URLSearchParams(window.location.search);
@@ -62,198 +35,60 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
     return out;
   }, []);
 
-  const acFormHtml = useMemo(() => {
-    // IMPORTANT: no action/method to avoid navigation; submission is handled by our JS (JSONP)
-    return `
-<form id="_form_7_" class="space-y-4" novalidate>
-  <input type="hidden" name="u" value="7" />
-  <input type="hidden" name="f" value="7" />
-  <input type="hidden" name="s" value="" />
-  <input type="hidden" name="c" value="0" />
-  <input type="hidden" name="m" value="0" />
-  <input type="hidden" name="act" value="sub" />
-  <input type="hidden" name="v" value="2" />
-  <input type="hidden" name="or" value="a]f6f454dcb1acb7b64e14e88f76a8a3" />
+  const buildCheckoutUrl = useCallback(() => {
+    const url = new URL(checkoutUrl);
+    if (name) url.searchParams.set("name", name.trim());
+    if (email) url.searchParams.set("email", email.trim());
+    if (phone) url.searchParams.set("phone", phone.trim());
+    Object.entries(utms).forEach(([k, v]) => url.searchParams.set(k, v));
+    return url.toString();
+  }, [checkoutUrl, name, email, phone, utms]);
 
-  <div class="space-y-2">
-    <label for="ac_fullname" class="block text-sm font-semibold text-foreground">Nome completo</label>
-    <input
-      id="ac_fullname"
-      name="fullname"
-      type="text"
-      placeholder="Digite seu nome completo"
-      class="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      autocomplete="name"
-    />
-  </div>
-
-  <div class="space-y-2">
-    <label for="ac_email" class="block text-sm font-semibold text-foreground">Email <span class="text-destructive">*</span></label>
-    <input
-      id="ac_email"
-      name="email"
-      type="email"
-      placeholder="Digite seu email"
-      required
-      class="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      autocomplete="email"
-      inputmode="email"
-    />
-  </div>
-
-  <div class="space-y-2">
-    <label for="ac_phone" class="block text-sm font-semibold text-foreground">Telefone</label>
-    <input
-      id="ac_phone"
-      name="phone"
-      type="tel"
-      placeholder="+55 11 99999-9999"
-      class="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      inputmode="tel"
-    />
-    <p class="text-xs text-muted-foreground">Se preencher, use DDI. Ex: +55...</p>
-  </div>
-
-  <button
-    id="_form_7_submit"
-    type="submit"
-    class="inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-6 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90 disabled:pointer-events-none disabled:opacity-50"
-  >
-    QUERO ENTRAR
-  </button>
-</form>
-`;
-  }, []);
-
-  useEffect(() => {
-    if (!open) {
-      setIsSubmitting(false);
-      setPhoneError(null);
+  const handleSubmit = useCallback(async () => {
+    if (!email.trim()) {
+      setError("Preencha seu email");
+      return;
+    }
+    if (!name.trim()) {
+      setError("Preencha seu nome");
       return;
     }
 
-    const container = containerRef.current;
-    if (!container) return;
+    setError(null);
+    setIsSubmitting(true);
 
-    const form = container.querySelector("#_form_7_") as HTMLFormElement | null;
-    if (!form) return;
+    const fieldValues: { field: string; value: string }[] = [];
+    if (utms.utm_source) fieldValues.push({ field: "1", value: utms.utm_source });
+    if (utms.utm_content) fieldValues.push({ field: "2", value: utms.utm_content });
+    if (utms.utm_medium) fieldValues.push({ field: "3", value: utms.utm_medium });
+    if (utms.utm_term) fieldValues.push({ field: "4", value: utms.utm_term });
+    if (utms.utm_campaign) fieldValues.push({ field: "5", value: utms.utm_campaign });
 
-    // Ensure UTM hidden inputs exist
-    Object.entries(utms).forEach(([key, value]) => {
-      let input = form.querySelector(`input[name="${key}"]`) as HTMLInputElement | null;
-      if (!input) {
-        input = document.createElement("input");
-        input.type = "hidden";
-        input.name = key;
-        form.appendChild(input);
-      }
-      input.value = value;
-    });
+    try {
+      await fetch(AC_API_URL, {
+        method: "POST",
+        headers: {
+          "Api-Token": AC_API_KEY,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contact: {
+            email: email.trim(),
+            firstName: name.trim(),
+            phone: phone.trim() || undefined,
+            fieldValues: fieldValues.length > 0 ? fieldValues : undefined,
+          },
+        }),
+      });
+    } catch {
+      // Even if AC fails, redirect to checkout
+      console.warn("AC request failed, redirecting anyway");
+    }
 
-    const serialize = (f: HTMLFormElement): string => {
-      const pairs: string[] = [];
-      for (let i = 0; i < f.elements.length; i++) {
-        const el = f.elements[i] as HTMLInputElement;
-        if (!el?.name) continue;
-
-        // Skip empty phone entirely (AC can validate and block it)
-        if (el.name === "phone" && !el.value.trim()) continue;
-
-        // We only have inputs
-        pairs.push(`${encodeURIComponent(el.name)}=${encodeURIComponent(el.value)}`);
-      }
-      return pairs.join("&");
-    };
-
-    const buildCheckout = (f: HTMLFormElement): string => {
-      const url = new URL(checkoutUrl);
-      const name = (f.querySelector('input[name="fullname"]') as HTMLInputElement | null)?.value?.trim();
-      const email = (f.querySelector('input[name="email"]') as HTMLInputElement | null)?.value?.trim();
-      const phone = (f.querySelector('input[name="phone"]') as HTMLInputElement | null)?.value?.trim();
-      if (name) url.searchParams.set("name", name);
-      if (email) url.searchParams.set("email", email);
-      if (phone) url.searchParams.set("phone", phone);
-      Object.entries(utms).forEach(([k, v]) => url.searchParams.set(k, v));
-      return url.toString();
-    };
-
-    const robustRedirect = (url: string) => {
-      try {
-        window.location.href = url;
-        return;
-      } catch {
-        // ignore
-      }
-      setTimeout(() => {
-        try {
-          window.location.replace(url);
-        } catch {
-          // ignore
-        }
-      }, 80);
-    };
-
-    const onSubmit = (e: Event) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      setPhoneError(null);
-
-      const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement | null;
-      if (!emailInput?.value?.trim()) {
-        emailInput?.focus();
-        return;
-      }
-
-      const phoneInput = form.querySelector('input[name="phone"]') as HTMLInputElement | null;
-      if (phoneInput?.value?.trim()) {
-        const e164 = toE164BrazilMaybe(phoneInput.value);
-        if (!e164 || !isValidE164(e164)) {
-          setPhoneError("Forneça um número de telefone válido (formato +XXXXXXXXXXXXX)");
-          phoneInput.focus();
-          return;
-        }
-        phoneInput.value = e164;
-      }
-
-      setIsSubmitting(true);
-      const submitBtn = form.querySelector("#_form_7_submit") as HTMLButtonElement | null;
-      if (submitBtn) submitBtn.disabled = true;
-
-      const qs = serialize(form);
-      const scriptUrl = `${AC_BASE}/proc.php?${qs}&jsonp=true`;
-
-      const script = document.createElement("script");
-      script.src = scriptUrl;
-      script.async = true;
-      script.onload = () => {
-        // cleanup
-        script.remove();
-      };
-      script.onerror = () => {
-        script.remove();
-      };
-      document.head.appendChild(script);
-
-      const finalUrl = buildCheckout(form);
-      try {
-        sessionStorage.setItem("checkout_redirect_url", finalUrl);
-      } catch {
-        // ignore
-      }
-
-      // give AC a short moment, then redirect
-      setTimeout(() => {
-        robustRedirect(finalUrl);
-      }, 1200);
-    };
-
-    form.addEventListener("submit", onSubmit);
-
-    return () => {
-      form.removeEventListener("submit", onSubmit);
-    };
-  }, [open, checkoutUrl, utms]);
+    // Redirect to checkout
+    const finalUrl = buildCheckoutUrl();
+    window.location.href = finalUrl;
+  }, [name, email, phone, utms, buildCheckoutUrl]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -267,18 +102,67 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
           </DialogDescription>
         </DialogHeader>
 
-        <div ref={containerRef} dangerouslySetInnerHTML={{ __html: acFormHtml }} />
+        <div className="space-y-4 mt-4">
+          <div className="space-y-2">
+            <label htmlFor="checkout-name" className="block text-sm font-semibold text-foreground">
+              Nome completo <span className="text-destructive">*</span>
+            </label>
+            <Input
+              id="checkout-name"
+              placeholder="Digite seu nome completo"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="h-12"
+              autoComplete="name"
+            />
+          </div>
 
-        {phoneError && (
-          <p className="mt-2 text-sm font-medium text-destructive" role="alert">
-            {phoneError}
-          </p>
-        )}
+          <div className="space-y-2">
+            <label htmlFor="checkout-email" className="block text-sm font-semibold text-foreground">
+              Email <span className="text-destructive">*</span>
+            </label>
+            <Input
+              id="checkout-email"
+              type="email"
+              placeholder="Digite seu email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="h-12"
+              autoComplete="email"
+              inputMode="email"
+            />
+          </div>
 
-        {/* keep UX responsive even if user double-clicks */}
-        {isSubmitting && (
-          <p className="mt-2 text-xs text-muted-foreground">Enviando... aguarde</p>
-        )}
+          <div className="space-y-2">
+            <label htmlFor="checkout-phone" className="block text-sm font-semibold text-foreground">
+              Telefone
+            </label>
+            <Input
+              id="checkout-phone"
+              type="tel"
+              placeholder="(11) 99999-9999"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="h-12"
+              autoComplete="tel"
+              inputMode="tel"
+            />
+          </div>
+
+          {error && (
+            <p className="text-sm font-medium text-destructive text-center" role="alert">
+              {error}
+            </p>
+          )}
+
+          <Button
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+            className="w-full h-12 text-base font-semibold"
+          >
+            {isSubmitting ? "Enviando..." : "QUERO ENTRAR"}
+          </Button>
+        </div>
       </DialogContent>
     </Dialog>
   );
