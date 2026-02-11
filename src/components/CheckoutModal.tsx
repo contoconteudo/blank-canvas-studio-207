@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   Dialog,
   DialogContent,
@@ -89,33 +89,69 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
     setTimeout(() => {
       try { window.open(url, "_self"); } catch (e) { console.log("Method 4 failed"); }
     }, 300);
-    setTimeout(() => {
-      try {
-        const form = document.createElement("form");
-        form.method = "GET";
-        form.action = url.split("?")[0];
-        form.style.display = "none";
-        const urlParams = new URL(url).searchParams;
-        urlParams.forEach((value, key) => {
-          const input = document.createElement("input");
-          input.type = "hidden";
-          input.name = key;
-          input.value = value;
-          form.appendChild(input);
-        });
-        document.body.appendChild(form);
-        form.submit();
-      } catch (e) { console.log("Method 5 failed"); }
-    }, 400);
-    setTimeout(() => {
-      try {
-        const meta = document.createElement("meta");
-        meta.httpEquiv = "refresh";
-        meta.content = `0;url=${url}`;
-        document.head.appendChild(meta);
-      } catch (e) { console.log("Method 6 failed"); }
-    }, 500);
   };
+
+  const submitToActiveCampaign = useCallback((data: FormData): Promise<void> => {
+    return new Promise((resolve) => {
+      // Build the query string exactly like AC's _form_serialize does
+      const params: string[] = [];
+
+      // AC hidden fields (matching the original form exactly)
+      params.push("u=7");
+      params.push("f=7");
+      params.push("s=");
+      params.push("c=0");
+      params.push("m=0");
+      params.push("act=sub");
+      params.push("v=2");
+      params.push("or=" + encodeURIComponent("a]f6f454dcb1acb7b64e14e88f76a8a3"));
+
+      // User fields
+      params.push("fullname=" + encodeURIComponent(data.fullname));
+      params.push("email=" + encodeURIComponent(data.email));
+      if (data.phone) {
+        params.push("phone=" + encodeURIComponent(data.phone));
+      }
+
+      // UTM fields
+      Object.entries(utmParams).forEach(([key, value]) => {
+        params.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
+      });
+
+      const serialized = params.join("&");
+      const scriptUrl = "https://residentelitemarketing.activehosted.com/proc.php?" + serialized + "&jsonp=true";
+
+      // Use JSONP approach (same as AC's _load_script) - this bypasses CORS
+      const script = document.createElement("script");
+      script.src = scriptUrl;
+      script.type = "text/javascript";
+      script.charset = "utf-8";
+
+      script.onload = () => {
+        console.log("ActiveCampaign submission successful");
+        // Clean up script tag
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+        resolve();
+      };
+
+      script.onerror = () => {
+        console.log("ActiveCampaign JSONP script error, proceeding anyway");
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+        resolve();
+      };
+
+      document.head.appendChild(script);
+
+      // Safety timeout - resolve after 5 seconds regardless
+      setTimeout(() => {
+        resolve();
+      }, 5000);
+    });
+  }, [utmParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -134,6 +170,10 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
       return;
     }
 
+    // Submit to ActiveCampaign via JSONP
+    await submitToActiveCampaign(result.data);
+
+    // Then redirect to checkout
     const finalUrl = buildCheckoutUrl(result.data);
 
     try {
@@ -213,7 +253,7 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
             {isSubmitting ? (
               <span className="flex items-center gap-2">
                 <span className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></span>
-                Redirecionando...
+                Enviando...
               </span>
             ) : (
               "QUERO ENTRAR"
