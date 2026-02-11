@@ -15,7 +15,7 @@ interface CheckoutModalProps {
   checkoutUrl: string;
 }
 
-const AC_PROC_URL = "https://residentelitemarketing.activehosted.com/proc.php";
+const AC_PROC_URL = "https://residentelitemarketing.activehosted.com/proc.php?jsonp=true";
 
 const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) => {
   const [name, setName] = useState("");
@@ -44,36 +44,36 @@ const CheckoutModal = ({ open, onOpenChange, checkoutUrl }: CheckoutModalProps) 
   }, [checkoutUrl, name, email, phone, utms]);
 
   const sendToActiveCampaign = useCallback(() => {
-    const formData = new FormData();
+    const body = new URLSearchParams();
 
     // AC hidden fields
-    formData.set("u", "7");
-    formData.set("f", "7");
-    formData.set("s", "");
-    formData.set("c", "0");
-    formData.set("m", "0");
-    formData.set("act", "sub");
-    formData.set("v", "2");
-    formData.set("or", "be60195a-cbc0-4161-8d61-8227b9ebd1bc");
+    body.append("u", "7");
+    body.append("f", "7");
+    body.append("s", "");
+    body.append("c", "0");
+    body.append("m", "0");
+    body.append("act", "sub");
+    body.append("v", "2");
+    body.append("or", "be60195a-cbc0-4161-8d61-8227b9ebd1bc");
 
     // User data
-    formData.set("fullname", name.trim());
-    formData.set("email", email.trim());
-    if (phone.trim()) formData.set("phone", phone.trim());
+    body.append("fullname", name.trim());
+    body.append("email", email.trim());
+    if (phone.trim()) body.append("phone", phone.trim());
 
     // UTM custom fields
-    if (utms.utm_source) formData.set("field[2]", utms.utm_source);
-    if (utms.utm_content) formData.set("field[4]", utms.utm_content);
-    if (utms.utm_medium) formData.set("field[5]", utms.utm_medium);
-    if (utms.utm_term) formData.set("field[6]", utms.utm_term);
-    if (utms.utm_campaign) formData.set("field[7]", utms.utm_campaign);
+    if (utms.utm_source) body.append("field[2]", utms.utm_source);
+    if (utms.utm_content) body.append("field[4]", utms.utm_content);
+    if (utms.utm_medium) body.append("field[5]", utms.utm_medium);
+    if (utms.utm_term) body.append("field[6]", utms.utm_term);
+    if (utms.utm_campaign) body.append("field[7]", utms.utm_campaign);
 
     fetch(AC_PROC_URL, {
       method: "POST",
-      body: formData,
+      body,
       mode: "no-cors",
       keepalive: true,
-    }).catch(() => {});
+    }).catch((err) => console.error("ActiveCampaign submission error (ignored):", err));
   }, [email, name, phone, utms]);
 
   const handleSubmit = useCallback(() => {
