@@ -41,6 +41,7 @@ const testimonials: { text: string; name: string; achievement: string; photo?: s
     text: "Passando aqui com mais calma pra agradecer a você e a equipe do Residente de Elite! Ter vocês comigo nesse processo foi realmente decisivo. Você sabe que quando eu cheguei não tinha mais muito tempo, eu estava bem desanimada, dando cinco plantões por semana, não tinha direcionamento, não sabia pra onde correr. Ter vocês mostrando o caminho, essas aulas extremamente ricas, os simulados que me entregaram várias questões da prova, até as cobranças… Vocês foram a virada do jogo pra mim! Muito obrigada pelo trabalho INCRÍVEL que vocês fazem! Esse time eu indico de olhos fechados",
     name: "Melissa Carneiro",
     achievement: "Aprovada CG SES-PE 2° lugar HOF",
+    photo: melissaCarneiroPhoto,
   },
   {
     text: "Eu nem sei explicar, mas saiba que eu sou muuuito grata por todo seu apoio, por ter aguentado todo meu estresse e por estar comigo nesse momento tão importante. Ter o teu apoio foi muito importante para mim. Tenho certeza que o RDE vai decolar!!! Vocês são tops demais e me ajudaram muito nesse período!!! Muito obrigada mesmo!!! Essa conquista é nossa!!!",
