@@ -7,6 +7,7 @@ import nataliaBezzerraPhoto from "@/assets/students/natalia-bezerra.png";
 import aguidaLeticiaPhoto from "@/assets/students/aguida-leticia.png";
 import daniellePatricioPhoto from "@/assets/students/danielle-patricio.png";
 import lucianaCorreaPhoto from "@/assets/students/luciana-correa.png";
+import natashaLinsPhoto from "@/assets/students/natasha-lins.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
@@ -30,6 +31,7 @@ const testimonials: { text: string; name: string; achievement: string; photo?: s
     text: "As professoras de GO, Mirella e Bárbara, foram essenciais na minha aprovação na prova de R+. Didáticas, objetivas e fizeram toda a diferença na minha preparação.",
     name: "Natasha Lins",
     achievement: "Aprovada GO R+ Medicina Fetal SES-PE 1° lugar geral",
+    photo: natashaLinsPhoto,
   },
   {
     text: "Passando aqui com mais calma pra agradecer a você e a equipe do Residente de Elite! Ter vocês comigo nesse processo foi realmente decisivo. Você sabe que quando eu cheguei não tinha mais muito tempo, eu estava bem desanimada, dando cinco plantões por semana, não tinha direcionamento, não sabia pra onde correr. Ter vocês mostrando o caminho, essas aulas extremamente ricas, os simulados que me entregaram várias questões da prova, até as cobranças… Vocês foram a virada do jogo pra mim! Muito obrigada pelo trabalho INCRÍVEL que vocês fazem! Esse time eu indico de olhos fechados",
