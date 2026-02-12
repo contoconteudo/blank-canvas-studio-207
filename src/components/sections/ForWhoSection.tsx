@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import jaTentouEstudarSozinho from "@/assets/for-who/ja-tentou-estudar-sozinho.png";
-import acompanhamentoCorrecaoRota from "@/assets/for-who/acompanhamento-correcao-rota.png";
-import querMetodoNaoMaisAulas from "@/assets/for-who/quer-metodo-nao-mais-aulas.png";
-import querPassarComEstrategia from "@/assets/for-who/quer-passar-com-estrategia.png";
-import estudaMuitoEvoluiPouco from "@/assets/for-who/estuda-muito-evolui-pouco.png";
+import jaTentouEstudarSozinho from "@/assets/for-who/ja-tentou-estudar-sozinho.webp";
+import acompanhamentoCorrecaoRota from "@/assets/for-who/acompanhamento-correcao-rota.webp";
+import querMetodoNaoMaisAulas from "@/assets/for-who/quer-metodo-nao-mais-aulas.webp";
+import querPassarComEstrategia from "@/assets/for-who/quer-passar-com-estrategia.webp";
+import estudaMuitoEvoluiPouco from "@/assets/for-who/estuda-muito-evolui-pouco.webp";
 
 const bulletPoints = [
   {
