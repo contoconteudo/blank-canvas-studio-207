@@ -48,6 +48,11 @@ const testimonials = [
     name: "Luciana Correa",
     achievement: "",
   },
+  {
+    text: "Passei 🙌🏼🙌🏼🙌🏼\nMuito obrigado ao Residente de Elite por ter me ajudado de forma eficiente na reta final da SES-PE. Já venho tentando a alguns anos, mas esse foi o intensivo que mais me ajudou. Sou muito grato a todos os professores que me ajudaram a conseguir essa conquista 🎊🥳",
+    name: "Mateus Rufino",
+    achievement: "Aprovado Medicina Intensiva - 4° lugar Hospital Alfa",
+  },
 ];
 
 // Duplicate for seamless loop
