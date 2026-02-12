@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Quote, User } from "lucide-react";
 import mateusRufinoPhoto from "@/assets/students/mateus-rufino.png";
 import rafaellaLinsPhoto from "@/assets/students/rafaella-lins.png";
+import nataliaBezzerraPhoto from "@/assets/students/natalia-bezerra.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
@@ -35,6 +36,7 @@ const testimonials: { text: string; name: string; achievement: string; photo?: s
     text: "Eu nem sei explicar, mas saiba que eu sou muuuito grata por todo seu apoio, por ter aguentado todo meu estresse e por estar comigo nesse momento tão importante. Ter o teu apoio foi muito importante para mim. Tenho certeza que o RDE vai decolar!!! Vocês são tops demais e me ajudaram muito nesse período!!! Muito obrigada mesmo!!! Essa conquista é nossa!!!",
     name: "Natalia Bezerra",
     achievement: "Aprovada GO SES-PE",
+    photo: nataliaBezzerraPhoto,
   },
   {
     text: "Eu não tenho nem como agradecer a vocês por tudo que me ensinaram em tão pouco tempo. Depois de um ano exaustivo de plantões, perdida sem saber como estudar, eu conheci o curso de vocês e me permiti tentar. E em pouco tempo vocês fizeram toda a diferença!! Impossível não lembrar das aulas e dos simulados durante a prova!! Me ajudaram a realizar o meu maior sonho profissional. Muito obrigada!! Serei eternamente grata por tudo!!",
