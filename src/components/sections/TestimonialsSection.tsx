@@ -8,6 +8,7 @@ import aguidaLeticiaPhoto from "@/assets/students/aguida-leticia.png";
 import daniellePatricioPhoto from "@/assets/students/danielle-patricio.png";
 import lucianaCorreaPhoto from "@/assets/students/luciana-correa.png";
 import natashaLinsPhoto from "@/assets/students/natasha-lins.png";
+import ceciliaMagalhaesPhoto from "@/assets/students/cecilia-magalhaes.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
@@ -54,6 +55,7 @@ const testimonials: { text: string; name: string; achievement: string; photo?: s
     text: "O intensivo do RE foi essencial na reta final! A orientação individualizada e o direcionamento para as áreas mais importantes da SES-PE fez toda a diferença. Os simulados traziam feedback dos professores sobre quais tópicos focar para garantir o melhor resultado. As aulas ministradas por professores incríveis não só permitiram revisar mas também mostraram que era possível dominar os assuntos. Também não posso deixar de agradecer o apoio da minha prof maravilhosa Mirella 💪 Muita gratidão a equipe e certeza que esse projeto vem ainda mais forte em 2026!!",
     name: "Cecília Magalhães",
     achievement: "Aprovada CM SES-PE - 1° lugar HMA",
+    photo: ceciliaMagalhaesPhoto,
   },
   {
     text: "Faltando um mês para a prova eu estava estudando muito errado, acertando só 50% nas provas. Resolvi fazer o RDE e foi a virada de chave! Segui o direcionamento de vocês, foquei 100% nas aulas do RDE e até ignorei o cursinho que eu fazia. Fiz todos os simulados e fui evoluindo até acertar 70% na prova! No último mês eu estava sem esperança mas resolvi dar uma chance ao RDE. Apesar de não ter dado certo ainda (currículo me prejudicou, as anulações tb), vocês foram fundamentais no meu processo de evolução! Com direcionamento certo, fui capaz de sair de 50 para 70 questões!!",
