@@ -13,7 +13,7 @@ const plans = [
     features: [
       "Mentoria completa",
       "Simulados autorais",
-      "Materiais didáticos",
+      "Materiais didáticos e aulas",
       "Heatmaps: mapas de incidência SES-PE",
       "Intensivão final SES-PE e ENAMED"
     ]
@@ -28,7 +28,7 @@ const plans = [
     features: [
       "Mentoria completa",
       "Simulados autorais",
-      "Materiais didáticos",
+      "Materiais didáticos e aulas",
       "Heatmaps: mapas de incidência SES-PE"
     ]
   },
@@ -45,7 +45,7 @@ const plans = [
       "Planejamento longo prazo",
       "Mentoria completa",
       "Simulados autorais",
-      "Materiais didáticos",
+      "Materiais didáticos e aulas",
       "Heatmaps: mapas de incidência SES-PE",
       "Intensivão final SES-PE e ENAMED"
     ]
