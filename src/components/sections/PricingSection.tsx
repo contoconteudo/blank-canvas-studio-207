@@ -14,7 +14,7 @@ const plans = [
       "Mentoria completa",
       "Simulados autorais",
       "Materiais didáticos e aulas",
-      "Heatmaps: mapas de incidência SES-PE e ENAMED",
+      "Heatmaps: mapas de incidência SES-PE",
       "Intensivão final SES-PE e ENAMED"
     ]
   },
@@ -29,7 +29,7 @@ const plans = [
       "Mentoria completa",
       "Simulados autorais",
       "Materiais didáticos e aulas",
-      "Heatmaps: mapas de incidência SES-PE e ENAMED"
+      "Heatmaps: mapas de incidência SES-PE"
     ]
   },
   {
@@ -46,7 +46,7 @@ const plans = [
       "Mentoria completa",
       "Simulados autorais",
       "Materiais didáticos e aulas",
-      "Heatmaps: mapas de incidência SES-PE e ENAMED",
+      "Heatmaps: mapas de incidência SES-PE",
       "Intensivão final SES-PE e ENAMED"
     ]
   },

@@ -11,7 +11,7 @@ const HeatmapsSection = () => {
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12"
             style={{ color: '#BE9964' }}
           >
-            Heatmaps SES-PE
+            Heatmaps SES-PE e ENAMED
           </h2>
 
           {/* Content Grid */}
