@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import jaTentouEstudarSozinho from "@/assets/for-who/ja-tentou-estudar-sozinho.png";
+import acompanhamentoCorrecaoRota from "@/assets/for-who/acompanhamento-correcao-rota.png";
 
 const bulletPoints = [
   {
@@ -17,7 +18,8 @@ const bulletPoints = [
   },
   {
     text: "Precisa de acompanhamento e correção de rota",
-    imagePosition: "right" as const
+    imagePosition: "right" as const,
+    image: acompanhamentoCorrecaoRota
   },
   {
     text: "Quer passar com estratégia, não no improviso",
