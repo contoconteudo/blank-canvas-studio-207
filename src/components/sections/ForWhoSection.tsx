@@ -3,6 +3,7 @@ import jaTentouEstudarSozinho from "@/assets/for-who/ja-tentou-estudar-sozinho.p
 import acompanhamentoCorrecaoRota from "@/assets/for-who/acompanhamento-correcao-rota.png";
 import querMetodoNaoMaisAulas from "@/assets/for-who/quer-metodo-nao-mais-aulas.png";
 import querPassarComEstrategia from "@/assets/for-who/quer-passar-com-estrategia.png";
+import estudaMuitoEvoluiPouco from "@/assets/for-who/estuda-muito-evolui-pouco.png";
 
 const bulletPoints = [
   {
@@ -12,7 +13,8 @@ const bulletPoints = [
   },
   {
     text: "Sente que estuda muito e evolui pouco",
-    imagePosition: "right" as const
+    imagePosition: "right" as const,
+    image: estudaMuitoEvoluiPouco
   },
   {
     text: "Quer método, não mais aulas",
