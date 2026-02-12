@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
+import { Quote, User } from "lucide-react";
 
-const testimonials = [
+const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
     text: "O Residente de Elite foi exatamente o que eu precisava na fase final da preparação: uma revisão completa e focada na prova da SES-PE, priorizando o que realmente cai. Pela primeira vez, compreendi conteúdos que sempre foram confusos e que eu apenas decorava, como as classificações de cirurgia. Os professores são incríveis, ensinam com muita didática e trazem dicas que ajudam a acertar as questões.\n\nMas o MAIOR diferencial foi o feedback individualizado pós-simulado - esse cuidado extra mostrou o compromisso de vocês com a nossa aprovação. Ter a oportunidade de discutir meus erros e evoluir foi fundamental para minha aprovação. Indico demais!",
     name: "Danielle Patrício",
@@ -180,9 +180,18 @@ const TestimonialsSection = () => {
                 {t.text}
               </p>
 
-              <div className="border-t border-border/40 pt-4 mt-auto">
-                <p className="font-semibold text-secondary text-sm">{t.name}</p>
-                <p className="text-muted-foreground text-xs mt-1">{t.achievement}</p>
+              <div className="border-t border-border/40 pt-4 mt-auto flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-muted/60 border border-border/40 flex items-center justify-center shrink-0 overflow-hidden">
+                  {t.photo ? (
+                    <img src={t.photo} alt={t.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <User className="w-5 h-5 text-muted-foreground/60" />
+                  )}
+                </div>
+                <div>
+                  <p className="font-semibold text-secondary text-sm">{t.name}</p>
+                  {t.achievement && <p className="text-muted-foreground text-xs mt-0.5">{t.achievement}</p>}
+                </div>
               </div>
             </div>
           ))}
