@@ -36,6 +36,7 @@ const VideoPlayer = () => {
               src={videoCover} 
               alt="Capa do vídeo - Mentoria Residente de Elite" 
               className="w-full h-full object-cover"
+              fetchPriority="high"
             />
             
             {/* Dark overlay */}

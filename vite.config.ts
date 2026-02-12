@@ -12,6 +12,20 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-motion': ['framer-motion'],
+          'vendor-radix': [
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-tooltip',
+            '@radix-ui/react-toast',
+          ],
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     mode === 'development' && componentTagger(),

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-import CheckoutModal from "@/components/CheckoutModal";
+
+const CheckoutModal = lazy(() => import("@/components/CheckoutModal"));
 
 const plans = [
   {
@@ -194,11 +195,13 @@ const PricingSection = () => {
       </div>
 
       {/* Checkout Modal */}
-      <CheckoutModal
-        open={modalOpen}
-        onOpenChange={setModalOpen}
-        checkoutUrl={selectedCheckoutUrl}
-      />
+      <Suspense fallback={null}>
+        <CheckoutModal
+          open={modalOpen}
+          onOpenChange={setModalOpen}
+          checkoutUrl={selectedCheckoutUrl}
+        />
+      </Suspense>
     </section>
   );
 };
