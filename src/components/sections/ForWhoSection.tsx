@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
+import jaTentouEstudarSozinho from "@/assets/for-who/ja-tentou-estudar-sozinho.png";
 
 const bulletPoints = [
   {
     text: "Já tentou estudar sozinho",
-    imagePosition: "left" as const
+    imagePosition: "left" as const,
+    image: jaTentouEstudarSozinho
   },
   {
     text: "Sente que estuda muito e evolui pouco",
@@ -25,14 +27,20 @@ const bulletPoints = [
 
 const BulletRow = ({ 
   text, 
-  imagePosition 
+  imagePosition,
+  image
 }: { 
   text: string; 
   imagePosition: "left" | "right";
+  image?: string;
 }) => {
   const imageBlock = (
-    <div className="w-full md:w-1/2 card-feature-depth aspect-video flex items-center justify-center">
-      <span className="text-white/40 text-sm">Imagem</span>
+    <div className="w-full md:w-1/2 card-feature-depth aspect-video flex items-center justify-center overflow-hidden rounded-xl">
+      {image ? (
+        <img src={image} alt={text} className="w-full h-full object-cover" />
+      ) : (
+        <span className="text-white/40 text-sm">Imagem</span>
+      )}
     </div>
   );
 
@@ -89,7 +97,8 @@ const ForWhoSection = () => {
               <BulletRow 
                 key={index} 
                 text={item.text} 
-                imagePosition={item.imagePosition} 
+                imagePosition={item.imagePosition}
+                image={item.image}
               />
             ))}
           </div>
