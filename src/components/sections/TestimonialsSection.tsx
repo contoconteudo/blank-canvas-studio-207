@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Quote, User } from "lucide-react";
 import mateusRufinoPhoto from "@/assets/students/mateus-rufino.png";
+import rafaellaLinsPhoto from "@/assets/students/rafaella-lins.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
@@ -13,6 +14,7 @@ const testimonials: { text: string; name: string; achievement: string; photo?: s
     text: "Mi, passando pra agradecer a você e a todos os mentores/profs do RDE! Vocês foram essenciais na reta final... O intensivão e simulados garantiram mts questões. Obrigada por todo o suporte e cuidado com a gente!!!!! Feliz demais! Quando tu era R1 no CISAM me ensinasse muito e contribuísse demais por eu estar aqui hoje. Espero ser para os meus ddos/acadêmicos quem você foi pra mim.",
     name: "Rafaella Lins",
     achievement: "Aprovada GO SES-PE 6° lugar CISAM/UPE",
+    photo: rafaellaLinsPhoto,
   },
   {
     text: "Em meio ao caos do plantão consegui parar agora pra agradecer por tudo! O Residente de Elite foi um divisor de águas na minha preparação, e sou imensamente grata a todos vocês. Em especial a você, por me dar tanta força e direcionamento nessa reta final. Muito muito muito muito obrigada por tudo! Vocês são incríveis",
