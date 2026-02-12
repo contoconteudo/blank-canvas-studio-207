@@ -6,6 +6,7 @@ import rafaellaLinsPhoto from "@/assets/students/rafaella-lins.png";
 import nataliaBezzerraPhoto from "@/assets/students/natalia-bezerra.png";
 import aguidaLeticiaPhoto from "@/assets/students/aguida-leticia.png";
 import daniellePatricioPhoto from "@/assets/students/danielle-patricio.png";
+import lucianaCorreaPhoto from "@/assets/students/luciana-correa.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
@@ -56,6 +57,7 @@ const testimonials: { text: string; name: string; achievement: string; photo?: s
     text: "Faltando um mês para a prova eu estava estudando muito errado, acertando só 50% nas provas. Resolvi fazer o RDE e foi a virada de chave! Segui o direcionamento de vocês, foquei 100% nas aulas do RDE e até ignorei o cursinho que eu fazia. Fiz todos os simulados e fui evoluindo até acertar 70% na prova! No último mês eu estava sem esperança mas resolvi dar uma chance ao RDE. Apesar de não ter dado certo ainda (currículo me prejudicou, as anulações tb), vocês foram fundamentais no meu processo de evolução! Com direcionamento certo, fui capaz de sair de 50 para 70 questões!!",
     name: "Luciana Correa",
     achievement: "",
+    photo: lucianaCorreaPhoto,
   },
   {
     text: "Passei 🙌🏼🙌🏼🙌🏼\nMuito obrigado ao Residente de Elite por ter me ajudado de forma eficiente na reta final da SES-PE. Já venho tentando a alguns anos, mas esse foi o intensivo que mais me ajudou. Sou muito grato a todos os professores que me ajudaram a conseguir essa conquista 🎊🥳",
