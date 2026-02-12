@@ -157,7 +157,7 @@ const TestimonialsSection = () => {
 
       {/* Carousel */}
       <div
-        className="relative select-none cursor-grab active:cursor-grabbing"
+        className="relative select-none cursor-grab active:cursor-grabbing overflow-hidden touch-pan-y"
         onMouseEnter={handlePause}
         onMouseLeave={handleResume}
         onPointerDown={handlePointerDown}
