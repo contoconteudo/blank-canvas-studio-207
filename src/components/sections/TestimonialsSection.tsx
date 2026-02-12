@@ -43,6 +43,11 @@ const testimonials = [
     name: "Cecília Magalhães",
     achievement: "Aprovada CM SES-PE - 1° lugar HMA",
   },
+  {
+    text: "Faltando um mês para a prova eu estava estudando muito errado, acertando só 50% nas provas. Resolvi fazer o RDE e foi a virada de chave! Segui o direcionamento de vocês, foquei 100% nas aulas do RDE e até ignorei o cursinho que eu fazia. Fiz todos os simulados e fui evoluindo até acertar 70% na prova! No último mês eu estava sem esperança mas resolvi dar uma chance ao RDE. Apesar de não ter dado certo ainda (currículo me prejudicou, as anulações tb), vocês foram fundamentais no meu processo de evolução! Com direcionamento certo, fui capaz de sair de 50 para 70 questões!!",
+    name: "Luciana Correa",
+    achievement: "",
+  },
 ];
 
 // Duplicate for seamless loop
