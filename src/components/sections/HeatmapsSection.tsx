@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import livroMapas from "@/assets/livro-mapas-aprovacao.png";
+import livroMapas from "@/assets/livro-mapas-aprovacao.webp";
 
 const HeatmapsSection = () => {
   return (

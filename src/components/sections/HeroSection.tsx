@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, Play } from "lucide-react";
 import { motion } from "framer-motion";
-import logoRde from "@/assets/logo-rde.png";
+import logoRde from "@/assets/logo-rde.webp";
 import videoCover from "@/assets/video-cover.png";
 
 const VideoPlayer = () => {

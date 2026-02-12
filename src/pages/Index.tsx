@@ -13,7 +13,7 @@ import PricingSection from "@/components/sections/PricingSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/sections/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
-import logoRde from "@/assets/logo-rde.png";
+import logoRde from "@/assets/logo-rde.webp";
 
 const Index = () => {
   return (

@@ -1,4 +1,4 @@
-import logoRde from "@/assets/logo-rde.png";
+import logoRde from "@/assets/logo-rde.webp";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
