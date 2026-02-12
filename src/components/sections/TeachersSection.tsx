@@ -73,6 +73,7 @@ const TeacherCard = ({ teacher }: { teacher: typeof teachers[0] }) => {
             src={teacher.photo} 
             alt={teacher.name}
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         ) : (
           <span className="text-white/40 text-sm">Foto</span>

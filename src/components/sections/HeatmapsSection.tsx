@@ -30,6 +30,7 @@ const HeatmapsSection = () => {
                   src={livroMapas} 
                   alt="Livro Mapas de Aprovação" 
                   className="relative z-10 max-w-xs md:max-w-sm lg:max-w-md h-auto animate-gentle-rock"
+                  loading="lazy"
               />
               </div>
             </div>

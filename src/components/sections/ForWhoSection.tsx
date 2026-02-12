@@ -45,7 +45,7 @@ const BulletRow = ({
   const imageBlock = (
     <div className="w-full md:w-1/2 card-feature-depth aspect-video flex items-center justify-center overflow-hidden rounded-xl">
       {image ? (
-        <img src={image} alt={text} className="w-full h-full object-cover" />
+        <img src={image} alt={text} className="w-full h-full object-cover" loading="lazy" />
       ) : (
         <span className="text-white/40 text-sm">Imagem</span>
       )}
