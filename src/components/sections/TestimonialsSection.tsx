@@ -172,11 +172,11 @@ const TestimonialsSection = () => {
             <div
               key={i}
               className="group relative bg-gradient-to-b from-card to-card/80 border border-border/50 rounded-2xl p-6 flex flex-col hover:border-secondary/30 transition-colors duration-300 shrink-0"
-              style={{ width: `${CARD_WIDTH}px`, minHeight: "280px" }}
+              style={{ width: `${CARD_WIDTH}px`, minHeight: "420px" }}
             >
               <Quote className="w-8 h-8 text-secondary/40 mb-4 shrink-0" />
 
-              <p className="text-foreground/90 text-sm leading-relaxed mb-6 flex-1 line-clamp-[8]">
+              <p className="text-foreground/90 text-sm leading-relaxed mb-6 flex-1 whitespace-pre-line">
                 {t.text}
               </p>
 
