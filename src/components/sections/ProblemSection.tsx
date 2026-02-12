@@ -11,6 +11,7 @@ const ProblemSection = () => {
               src={professoresGrupo} 
               alt="Professores do Residente de Elite" 
               className="w-full h-auto"
+              loading="lazy"
             />
           </div>
 
