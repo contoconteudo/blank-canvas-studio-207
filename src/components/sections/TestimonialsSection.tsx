@@ -38,6 +38,11 @@ const testimonials = [
     name: "Aguida Letícia",
     achievement: "Aprovada GO SES-PE",
   },
+  {
+    text: "O intensivo do RE foi essencial na reta final! A orientação individualizada e o direcionamento para as áreas mais importantes da SES-PE fez toda a diferença. Os simulados traziam feedback dos professores sobre quais tópicos focar para garantir o melhor resultado. As aulas ministradas por professores incríveis não só permitiram revisar mas também mostraram que era possível dominar os assuntos. Também não posso deixar de agradecer o apoio da minha prof maravilhosa Mirella 💪 Muita gratidão a equipe e certeza que esse projeto vem ainda mais forte em 2026!!",
+    name: "Cecília Magalhães",
+    achievement: "Aprovada CM SES-PE - 1° lugar HMA",
+  },
 ];
 
 // Duplicate for seamless loop
