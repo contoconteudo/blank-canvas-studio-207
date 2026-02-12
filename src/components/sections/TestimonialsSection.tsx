@@ -1,16 +1,16 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Quote, User } from "lucide-react";
-import mateusRufinoPhoto from "@/assets/students/mateus-rufino.png";
-import rafaellaLinsPhoto from "@/assets/students/rafaella-lins.png";
-import nataliaBezzerraPhoto from "@/assets/students/natalia-bezerra.png";
-import aguidaLeticiaPhoto from "@/assets/students/aguida-leticia.png";
-import daniellePatricioPhoto from "@/assets/students/danielle-patricio.png";
-import lucianaCorreaPhoto from "@/assets/students/luciana-correa.png";
-import natashaLinsPhoto from "@/assets/students/natasha-lins.png";
-import ceciliaMagalhaesPhoto from "@/assets/students/cecilia-magalhaes.png";
-import leticiaQueirozPhoto from "@/assets/students/leticia-queiroz.png";
-import melissaCarneiroPhoto from "@/assets/students/melissa-carneiro.png";
+import mateusRufinoPhoto from "@/assets/students/mateus-rufino.webp";
+import rafaellaLinsPhoto from "@/assets/students/rafaella-lins.webp";
+import nataliaBezzerraPhoto from "@/assets/students/natalia-bezerra.webp";
+import aguidaLeticiaPhoto from "@/assets/students/aguida-leticia.webp";
+import daniellePatricioPhoto from "@/assets/students/danielle-patricio.webp";
+import lucianaCorreaPhoto from "@/assets/students/luciana-correa.webp";
+import natashaLinsPhoto from "@/assets/students/natasha-lins.webp";
+import ceciliaMagalhaesPhoto from "@/assets/students/cecilia-magalhaes.webp";
+import leticiaQueirozPhoto from "@/assets/students/leticia-queiroz.webp";
+import melissaCarneiroPhoto from "@/assets/students/melissa-carneiro.webp";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
