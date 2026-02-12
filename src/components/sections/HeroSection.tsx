@@ -190,6 +190,7 @@ const HeroSection = () => {
               src={logoRde} 
               alt="Residente de Elite - Curso para Residência Médica" 
               className="h-16 md:h-20 lg:h-24 w-auto"
+              fetchPriority="high"
             />
           </div>
 
