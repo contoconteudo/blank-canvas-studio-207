@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Quote, User } from "lucide-react";
+import mateusRufinoPhoto from "@/assets/students/mateus-rufino.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
@@ -52,6 +53,7 @@ const testimonials: { text: string; name: string; achievement: string; photo?: s
     text: "Passei 🙌🏼🙌🏼🙌🏼\nMuito obrigado ao Residente de Elite por ter me ajudado de forma eficiente na reta final da SES-PE. Já venho tentando a alguns anos, mas esse foi o intensivo que mais me ajudou. Sou muito grato a todos os professores que me ajudaram a conseguir essa conquista 🎊🥳",
     name: "Mateus Rufino",
     achievement: "Aprovado Medicina Intensiva - 4° lugar Hospital Alfa",
+    photo: mateusRufinoPhoto,
   },
 ];
 
