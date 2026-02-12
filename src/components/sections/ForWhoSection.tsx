@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import jaTentouEstudarSozinho from "@/assets/for-who/ja-tentou-estudar-sozinho.png";
 import acompanhamentoCorrecaoRota from "@/assets/for-who/acompanhamento-correcao-rota.png";
 import querMetodoNaoMaisAulas from "@/assets/for-who/quer-metodo-nao-mais-aulas.png";
+import querPassarComEstrategia from "@/assets/for-who/quer-passar-com-estrategia.png";
 
 const bulletPoints = [
   {
@@ -25,7 +26,8 @@ const bulletPoints = [
   },
   {
     text: "Quer passar com estratégia, não no improviso",
-    imagePosition: "left" as const
+    imagePosition: "left" as const,
+    image: querPassarComEstrategia
   }
 ];
 
