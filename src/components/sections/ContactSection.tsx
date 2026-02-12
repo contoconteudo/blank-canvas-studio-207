@@ -4,7 +4,7 @@ import { MessageCircle } from "lucide-react";
 const ContactSection = () => {
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent("Olá! Gostaria de saber mais sobre a Mentoria Residente de Elite.");
-    window.open(`https://wa.me/5581999999999?text=${message}`, "_blank");
+    window.open(`https://wa.me/5581999902505?text=${message}`, "_blank");
   };
 
   return (
