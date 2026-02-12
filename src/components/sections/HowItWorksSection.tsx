@@ -5,9 +5,9 @@ import diagnosticoInicialImg from "@/assets/diagnostico-inicial.webp";
 import intensivaoFinalImg from "@/assets/intensivao-final.webp";
 import materialDidaticoImg from "@/assets/material-didatico.webp";
 import mentoriaAcompanhamentoImg from "@/assets/mentoria-acompanhamento.webp";
-import planejamentoEstrategicoImg from "@/assets/planejamento-estrategico.png";
-import simuladosAutoraisImg from "@/assets/simulados-autorais.png";
-import revisaoInteligenteImg from "@/assets/revisao-inteligente.png";
+import planejamentoEstrategicoImg from "@/assets/planejamento-estrategico.webp";
+import simuladosAutoraisImg from "@/assets/simulados-autorais.webp";
+import revisaoInteligenteImg from "@/assets/revisao-inteligente.webp";
 const mentorshipSteps = [
   {
     id: 1,

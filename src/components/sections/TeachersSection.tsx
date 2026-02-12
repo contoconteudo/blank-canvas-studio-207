@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import mirellaPhoto from "@/assets/teachers/mirella-laranjeira.png";
+import mirellaPhoto from "@/assets/teachers/mirella-laranjeira.webp";
 import barbaraPhoto from "@/assets/teachers/barbara-lucinda.webp";
 import millenaPhoto from "@/assets/teachers/millena-andrade.webp";
 import gabrielPhoto from "@/assets/teachers/gabriel-morais.webp";
-import pedroPhoto from "@/assets/teachers/pedro-brainer.png";
+import pedroPhoto from "@/assets/teachers/pedro-brainer.webp";
 
 const teachers = [
   {
