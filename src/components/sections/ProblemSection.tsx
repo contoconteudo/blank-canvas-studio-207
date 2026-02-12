@@ -1,4 +1,4 @@
-import professoresGrupo from "@/assets/professores-grupo.png";
+import professoresGrupo from "@/assets/professores-grupo.webp";
 
 const ProblemSection = () => {
   return (
