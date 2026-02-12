@@ -33,6 +33,11 @@ const testimonials = [
     name: "Natalia Bezerra",
     achievement: "Aprovada GO SES-PE",
   },
+  {
+    text: "Eu não tenho nem como agradecer a vocês por tudo que me ensinaram em tão pouco tempo. Depois de um ano exaustivo de plantões, perdida sem saber como estudar, eu conheci o curso de vocês e me permiti tentar. E em pouco tempo vocês fizeram toda a diferença!! Impossível não lembrar das aulas e dos simulados durante a prova!! Me ajudaram a realizar o meu maior sonho profissional. Muito obrigada!! Serei eternamente grata por tudo!!",
+    name: "Aguida Letícia",
+    achievement: "Aprovada GO SES-PE",
+  },
 ];
 
 // Duplicate for seamless loop
