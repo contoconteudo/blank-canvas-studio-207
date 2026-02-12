@@ -9,6 +9,7 @@ import daniellePatricioPhoto from "@/assets/students/danielle-patricio.png";
 import lucianaCorreaPhoto from "@/assets/students/luciana-correa.png";
 import natashaLinsPhoto from "@/assets/students/natasha-lins.png";
 import ceciliaMagalhaesPhoto from "@/assets/students/cecilia-magalhaes.png";
+import leticiaQueirozPhoto from "@/assets/students/leticia-queiroz.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
@@ -27,6 +28,7 @@ const testimonials: { text: string; name: string; achievement: string; photo?: s
     text: "Em meio ao caos do plantão consegui parar agora pra agradecer por tudo! O Residente de Elite foi um divisor de águas na minha preparação, e sou imensamente grata a todos vocês. Em especial a você, por me dar tanta força e direcionamento nessa reta final. Muito muito muito muito obrigada por tudo! Vocês são incríveis",
     name: "Letícia Queiroz",
     achievement: "Aprovada Pediatria SES-PE - 10° lugar geral - 2° lugar HUOC/UPE",
+    photo: leticiaQueirozPhoto,
   },
   {
     text: "As professoras de GO, Mirella e Bárbara, foram essenciais na minha aprovação na prova de R+. Didáticas, objetivas e fizeram toda a diferença na minha preparação.",
