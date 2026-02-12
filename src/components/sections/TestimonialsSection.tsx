@@ -4,6 +4,7 @@ import { Quote, User } from "lucide-react";
 import mateusRufinoPhoto from "@/assets/students/mateus-rufino.png";
 import rafaellaLinsPhoto from "@/assets/students/rafaella-lins.png";
 import nataliaBezzerraPhoto from "@/assets/students/natalia-bezerra.png";
+import aguidaLeticiaPhoto from "@/assets/students/aguida-leticia.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
@@ -42,6 +43,7 @@ const testimonials: { text: string; name: string; achievement: string; photo?: s
     text: "Eu não tenho nem como agradecer a vocês por tudo que me ensinaram em tão pouco tempo. Depois de um ano exaustivo de plantões, perdida sem saber como estudar, eu conheci o curso de vocês e me permiti tentar. E em pouco tempo vocês fizeram toda a diferença!! Impossível não lembrar das aulas e dos simulados durante a prova!! Me ajudaram a realizar o meu maior sonho profissional. Muito obrigada!! Serei eternamente grata por tudo!!",
     name: "Aguida Letícia",
     achievement: "Aprovada GO SES-PE",
+    photo: aguidaLeticiaPhoto,
   },
   {
     text: "O intensivo do RE foi essencial na reta final! A orientação individualizada e o direcionamento para as áreas mais importantes da SES-PE fez toda a diferença. Os simulados traziam feedback dos professores sobre quais tópicos focar para garantir o melhor resultado. As aulas ministradas por professores incríveis não só permitiram revisar mas também mostraram que era possível dominar os assuntos. Também não posso deixar de agradecer o apoio da minha prof maravilhosa Mirella 💪 Muita gratidão a equipe e certeza que esse projeto vem ainda mais forte em 2026!!",
