@@ -5,12 +5,14 @@ import mateusRufinoPhoto from "@/assets/students/mateus-rufino.png";
 import rafaellaLinsPhoto from "@/assets/students/rafaella-lins.png";
 import nataliaBezzerraPhoto from "@/assets/students/natalia-bezerra.png";
 import aguidaLeticiaPhoto from "@/assets/students/aguida-leticia.png";
+import daniellePatricioPhoto from "@/assets/students/danielle-patricio.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
     text: "O Residente de Elite foi exatamente o que eu precisava na fase final da preparação: uma revisão completa e focada na prova da SES-PE, priorizando o que realmente cai. Pela primeira vez, compreendi conteúdos que sempre foram confusos e que eu apenas decorava, como as classificações de cirurgia. Os professores são incríveis, ensinam com muita didática e trazem dicas que ajudam a acertar as questões.\n\nMas o MAIOR diferencial foi o feedback individualizado pós-simulado - esse cuidado extra mostrou o compromisso de vocês com a nossa aprovação. Ter a oportunidade de discutir meus erros e evoluir foi fundamental para minha aprovação. Indico demais!",
     name: "Danielle Patrício",
     achievement: "Aprovada GO - 5° lugar Hospital Don Malan",
+    photo: daniellePatricioPhoto,
   },
   {
     text: "Mi, passando pra agradecer a você e a todos os mentores/profs do RDE! Vocês foram essenciais na reta final... O intensivão e simulados garantiram mts questões. Obrigada por todo o suporte e cuidado com a gente!!!!! Feliz demais! Quando tu era R1 no CISAM me ensinasse muito e contribuísse demais por eu estar aqui hoje. Espero ser para os meus ddos/acadêmicos quem você foi pra mim.",
