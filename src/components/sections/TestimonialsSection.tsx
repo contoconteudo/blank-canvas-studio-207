@@ -10,6 +10,7 @@ import lucianaCorreaPhoto from "@/assets/students/luciana-correa.png";
 import natashaLinsPhoto from "@/assets/students/natasha-lins.png";
 import ceciliaMagalhaesPhoto from "@/assets/students/cecilia-magalhaes.png";
 import leticiaQueirozPhoto from "@/assets/students/leticia-queiroz.png";
+import melissaCarneiroPhoto from "@/assets/students/melissa-carneiro.png";
 
 const testimonials: { text: string; name: string; achievement: string; photo?: string }[] = [
   {
