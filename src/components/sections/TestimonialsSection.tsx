@@ -195,11 +195,11 @@ const TestimonialsSection = () => {
               </p>
 
               <div className="border-t border-border/40 pt-4 mt-auto flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-muted/60 border border-border/40 flex items-center justify-center shrink-0 overflow-hidden">
+                <div className="w-14 h-14 rounded-full bg-muted/60 border border-border/40 flex items-center justify-center shrink-0 overflow-hidden">
                   {t.photo ? (
                     <img src={t.photo} alt={t.name} className="w-full h-full object-cover" />
                   ) : (
-                    <User className="w-5 h-5 text-muted-foreground/60" />
+                    <User className="w-6 h-6 text-muted-foreground/60" />
                   )}
                 </div>
                 <div>
