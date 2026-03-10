@@ -23,8 +23,8 @@ const plans = [
     badge: "MENTORIA",
     subtitle: "1 ANO",
     originalPrice: "4.847",
-    installments: "372,28",
-    cashPrice: "3.664",
+    installments: "487,71",
+    cashPrice: "4.800",
     checkoutUrl: "https://pay.hub.la/CqZF7dHdfWFmCbo5ctil",
     features: [
       "Mentoria completa",
