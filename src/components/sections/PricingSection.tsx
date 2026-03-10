@@ -10,7 +10,7 @@ const plans = [
     originalPrice: "5.947",
     installments: "528,35",
     cashPrice: "5.200",
-    checkoutUrl: "https://pay.hub.la/PiSKxMDXWRGthaP8s4Wp",
+    checkoutUrl: "https://hub.la/g/OSukjs6DGCU6sWGrnPBR",
     features: [
       "Mentoria completa",
       "Simulados autorais",
@@ -25,7 +25,7 @@ const plans = [
     originalPrice: "4.847",
     installments: "487,71",
     cashPrice: "4.800",
-    checkoutUrl: "https://pay.hub.la/CqZF7dHdfWFmCbo5ctil",
+    checkoutUrl: "https://hub.la/g/Plaz7FCRpEWbdxYR70iT",
     features: [
       "Mentoria completa",
       "Simulados autorais",
@@ -40,7 +40,7 @@ const plans = [
     originalPrice: "8.694",
     installments: "863,65",
     cashPrice: "8.500",
-    checkoutUrl: "https://pay.hub.la/2oF1e0znhEVShwGOxK0R",
+    checkoutUrl: "https://pay.hub.la/zilY0fskyaQec2zXoNi1",
     highlighted: true,
     features: [
       "Planejamento longo prazo",
@@ -57,7 +57,7 @@ const plans = [
     originalPrice: "4.786",
     installments: "508,03",
     cashPrice: "5.000",
-    checkoutUrl: "https://pay.hub.la/Y08xujLHXsN2NcboFCMi",
+    checkoutUrl: "https://hub.la/g/Y08xujLHXsN2NcboFCMi",
     features: [
       "Mentoria completa",
       "Simulados autorais",
