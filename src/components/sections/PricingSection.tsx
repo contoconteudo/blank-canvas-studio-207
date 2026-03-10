@@ -40,7 +40,7 @@ const plans = [
     originalPrice: "8.694",
     installments: "863,65",
     cashPrice: "8.500",
-    checkoutUrl: "https://pay.hub.la/2oF1e0znhEVShwGOxK0R",
+    checkoutUrl: "https://pay.hub.la/zilY0fskyaQec2zXoNi1",
     highlighted: true,
     features: [
       "Planejamento longo prazo",
