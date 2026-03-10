@@ -38,8 +38,8 @@ const plans = [
     subtitle: "2 ANOS",
     description: "Opção para quem quer se preparar desde o 5° ano",
     originalPrice: "8.694",
-    installments: "650,28",
-    cashPrice: "6.400",
+    installments: "863,65",
+    cashPrice: "8.500",
     checkoutUrl: "https://pay.hub.la/2oF1e0znhEVShwGOxK0R",
     highlighted: true,
     features: [
