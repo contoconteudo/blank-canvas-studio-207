@@ -8,8 +8,8 @@ const plans = [
   {
     badge: "MENTORIA + INTENSIVÃO",
     originalPrice: "5.947",
-    installments: "394,64",
-    cashPrice: "3.884",
+    installments: "528,35",
+    cashPrice: "5.200",
     checkoutUrl: "https://pay.hub.la/PiSKxMDXWRGthaP8s4Wp",
     features: [
       "Mentoria completa",
