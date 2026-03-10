@@ -8,8 +8,8 @@ const plans = [
   {
     badge: "MENTORIA + INTENSIVÃO",
     originalPrice: "5.947",
-    installments: "394,64",
-    cashPrice: "3.884",
+    installments: "528,35",
+    cashPrice: "5.200",
     checkoutUrl: "https://pay.hub.la/PiSKxMDXWRGthaP8s4Wp",
     features: [
       "Mentoria completa",
@@ -23,8 +23,8 @@ const plans = [
     badge: "MENTORIA",
     subtitle: "1 ANO",
     originalPrice: "4.847",
-    installments: "372,28",
-    cashPrice: "3.664",
+    installments: "487,71",
+    cashPrice: "4.800",
     checkoutUrl: "https://pay.hub.la/CqZF7dHdfWFmCbo5ctil",
     features: [
       "Mentoria completa",
@@ -55,8 +55,8 @@ const plans = [
     badge: "4° ANO",
     subtitle: "MENTORIA + INTENSIVÃO ENAMED",
     originalPrice: "4.786",
-    installments: "372,28",
-    cashPrice: "3.664",
+    installments: "508,03",
+    cashPrice: "5.000",
     checkoutUrl: "https://pay.hub.la/Y08xujLHXsN2NcboFCMi",
     features: [
       "Mentoria completa",
