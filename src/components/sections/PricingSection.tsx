@@ -39,7 +39,7 @@ const plans = [
   },
   {
     badge: "4° ANO",
-    subtitle: "MENTORIA + INTENSIVÃO ENAMED",
+    subtitle: "Mentoria 4º ano + intensivão ENAMED",
     originalPrice: "5.947",
     installments: "528,35",
     cashPrice: "5.200",
