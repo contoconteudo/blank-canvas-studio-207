@@ -6,20 +6,6 @@ const CheckoutModal = lazy(() => import("@/components/CheckoutModal"));
 
 const plans = [
   {
-    badge: "MENTORIA + INTENSIVÃO",
-    originalPrice: "5.947",
-    installments: "528,35",
-    cashPrice: "5.200",
-    checkoutUrl: "https://pay.hub.la/OSukjs6DGCU6sWGrnPBR",
-    features: [
-      "Mentoria completa",
-      "Simulados autorais",
-      "Materiais didáticos e aulas",
-      "Heatmaps: mapas de incidência SES-PE",
-      "Intensivão final SES-PE e ENAMED"
-    ]
-  },
-  {
     badge: "MENTORIA",
     subtitle: "1 ANO",
     originalPrice: "5.947",
